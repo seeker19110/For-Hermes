@@ -36,7 +36,7 @@ From there, deterministic code can pick up the payload and do something with it.
 # The LLM takes natural language and returns a structured object
 nextStep = await llm.determineNextStep(
   """
-  create a payment link for $750 to Jeff 
+  create a payment link for $750 to Terri 
   for sponsoring the february AI tinkerers meetup
   """
   )
