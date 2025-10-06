@@ -22,7 +22,7 @@ to a structured object that describes a Stripe API call like
       "product": "prod_8675309",
       "price": "prc_09874329fds",
       "quantity": 1,
-      "memo": "Hey Jeff - see below for the payment link for the february ai tinkerers meetup"
+      "memo": "Hey Terri - see below for the payment link for the february ai tinkerers meetup"
     }
   }
 }
@@ -36,7 +36,7 @@ From there, deterministic code can pick up the payload and do something with it.
 # The LLM takes natural language and returns a structured object
 nextStep = await llm.determineNextStep(
   """
-  create a payment link for $750 to Jeff 
+  create a payment link for $750 to Terri 
   for sponsoring the february AI tinkerers meetup
   """
   )
