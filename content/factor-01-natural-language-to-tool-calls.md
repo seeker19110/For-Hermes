@@ -22,7 +22,7 @@ to a structured object that describes a Stripe API call like
       "product": "prod_8675309",
       "price": "prc_09874329fds",
       "quantity": 1,
-      "memo": "Hey Jeff - see below for the payment link for the february ai tinkerers meetup"
+      "memo": "Hey Terri - see below for the payment link for the february ai tinkerers meetup"
     }
   }
 }
