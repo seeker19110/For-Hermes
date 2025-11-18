@@ -1,4 +1,4 @@
-# 📚 Windows + Ollama + Qwen2-VL セットアップガイド
+# 📚 Windows + Ollama + LLaVA セットアップガイド
 
 **完全ローカル実行**の漫画自動キャプチャ&文字起こしシステム
 
@@ -18,16 +18,16 @@
 └────────┬────────┘
          │
          ↓
-┌───────────────────────────┐
-│ Ollama + Qwen2-VL (Local) │
-│ 画像 → セリフ抽出          │  **APIコスト $0**
-│ 完全オフライン実行可能     │  **インターネット不要**
-└───────────────────────────┘
+┌────────────────────────┐
+│ Ollama + LLaVA (Local) │
+│ 画像 → セリフ抽出       │  **APIコスト $0**
+│ 完全オフライン実行可能  │  **インターネット不要**
+└────────────────────────┘
 ```
 
 **特徴:**
 - ✅ 完全ローカル実行（APIキー不要）
-- ✅ Qwen2-VL Vision モデル使用
+- ✅ LLaVA Vision モデル使用（Ollama公式サポート）
 - ✅ Windows 10/11 対応
 - ✅ GPU加速対応（NVIDIA）
 - ✅ OBS不要でも動作可能
@@ -53,10 +53,10 @@
 
 | 環境 | モデル | 処理時間/ページ | 推奨度 |
 |------|--------|-----------------|--------|
-| **NVIDIA RTX 3060** | qwen2-vl:7b | 1-2秒 | ⭐⭐⭐⭐⭐ |
-| **NVIDIA GTX 1060** | qwen2-vl:2b | 2-3秒 | ⭐⭐⭐⭐ |
-| **CPU (i7-10700)** | qwen2-vl:2b | 5-10秒 | ⭐⭐⭐ |
-| **CPU (i5-8400)** | qwen2-vl:2b | 10-20秒 | ⭐⭐ |
+| **NVIDIA RTX 3060** | llava:13b | 1-2秒 | ⭐⭐⭐⭐⭐ |
+| **NVIDIA GTX 1060** | llava:7b | 2-3秒 | ⭐⭐⭐⭐ |
+| **CPU (i7-10700)** | llava:7b | 5-10秒 | ⭐⭐⭐ |
+| **CPU (i5-8400)** | bakllava | 10-20秒 | ⭐⭐ |
 
 ---
 
@@ -88,25 +88,33 @@ ollama --version
 
 **タスクトレイに Ollama アイコンが表示されていればOK**
 
-### ステップ3: Qwen2-VL モデルダウンロード（15分）
+### ステップ3: LLaVA モデルダウンロード（15分）
 
-Qwen2-VLモデルをダウンロードします（約4-7GB）。
+LLaVAモデルをダウンロードします（約4-8GB）。
 
 #### GPU搭載PCの場合（推奨）
 
 ```cmd
-ollama pull qwen2-vl:7b
+ollama pull llava:7b
 ```
 
 ダウンロード時間: 10-15分（インターネット速度による）
 
+#### 高性能GPU搭載PC（RTX 3060以上）
+
+```cmd
+ollama pull llava:13b
+```
+
+ダウンロード時間: 15-20分
+
 #### CPU環境または低スペックPCの場合
 
 ```cmd
-ollama pull qwen2-vl:2b
+ollama pull bakllava
 ```
 
-ダウンロード時間: 5-10分
+ダウンロード時間: 10-15分
 
 **確認方法:**
 ```cmd
@@ -116,7 +124,7 @@ ollama list
 出力例:
 ```
 NAME                    ID              SIZE      MODIFIED
-qwen2-vl:7b             abc123...       4.7GB     2 minutes ago
+llava:7b                abc123...       4.7GB     2 minutes ago
 ```
 
 ### ステップ4: プロジェクトセットアップ（5分）
@@ -137,11 +145,14 @@ notepad .env
 
 **.envファイル編集:**
 ```env
-# GPU環境の場合
-OLLAMA_MODEL=qwen2-vl:7b
+# GPU環境の場合（推奨）
+OLLAMA_MODEL=llava:7b
 
-# CPU環境の場合
-OLLAMA_MODEL=qwen2-vl:2b
+# 高性能GPU（RTX 3060以上）
+OLLAMA_MODEL=llava:13b
+
+# CPU環境または低スペックPC
+OLLAMA_MODEL=bakllava
 ```
 
 ### ステップ5: OBS Studio（オプション）
@@ -209,11 +220,14 @@ npm run dev capture --no-obs
 ### モデル切り替え
 
 ```env
-# 高品質モード（GPU推奨）
-OLLAMA_MODEL=qwen2-vl:7b
+# 高品質モード（高性能GPU）
+OLLAMA_MODEL=llava:13b
+
+# バランスモード（GPU推奨）
+OLLAMA_MODEL=llava:7b
 
 # 軽量モード（CPU可）
-OLLAMA_MODEL=qwen2-vl:2b
+OLLAMA_MODEL=bakllava
 ```
 
 ### キャプチャ間隔調整
@@ -326,7 +340,7 @@ captures/
 
 **症状:**
 ```
-⚠️ モデル qwen2-vl:7b が見つかりません
+⚠️ モデル llava:7b が見つかりません
 ```
 
 **解決方法:**
@@ -334,10 +348,14 @@ captures/
 # モデル一覧確認
 ollama list
 
-# モデルダウンロード
-ollama pull qwen2-vl:7b
-# または
-ollama pull qwen2-vl:2b
+# モデルダウンロード（推奨）
+ollama pull llava:7b
+
+# または高性能版
+ollama pull llava:13b
+
+# または軽量版
+ollama pull bakllava
 ```
 
 ### GPU が使われていない
@@ -367,12 +385,12 @@ ollama pull qwen2-vl:2b
 
 1. 軽量モデルに切り替え
    ```env
-   OLLAMA_MODEL=qwen2-vl:2b
+   OLLAMA_MODEL=bakllava
    ```
 
 2. コンテキストサイズ削減
    ```env
-   QWEN_NUM_CTX=2048
+   OLLAMA_NUM_CTX=2048
    ```
 
 3. キャプチャ間隔を長くする
@@ -412,10 +430,10 @@ npm run dev capture
 ### GPU環境（NVIDIA）
 
 ```env
-OLLAMA_MODEL=qwen2-vl:7b
+OLLAMA_MODEL=llava:13b
 USE_GPU=true
-QWEN_TEMPERATURE=0.3
-QWEN_NUM_CTX=4096
+OLLAMA_TEMPERATURE=0.3
+OLLAMA_NUM_CTX=4096
 CAPTURE_INTERVAL_MS=1000
 ```
 
@@ -424,9 +442,9 @@ CAPTURE_INTERVAL_MS=1000
 ### CPU環境
 
 ```env
-OLLAMA_MODEL=qwen2-vl:2b
+OLLAMA_MODEL=llava:7b
 USE_GPU=false
-QWEN_NUM_CTX=2048
+OLLAMA_NUM_CTX=2048
 CAPTURE_INTERVAL_MS=2000
 ```
 
@@ -435,8 +453,8 @@ CAPTURE_INTERVAL_MS=2000
 ### メモリ不足の場合
 
 ```env
-OLLAMA_MODEL=qwen2-vl:2b
-QWEN_NUM_CTX=1024
+OLLAMA_MODEL=bakllava
+OLLAMA_NUM_CTX=1024
 MAX_CONCURRENT=1
 ```
 
@@ -469,8 +487,8 @@ npm run dev process --sessionId=1234567890-abc
 ### 実行ログ例
 
 ```
-🚀 Qwen2-VL 初期化中...
-✅ Qwen2-VL 初期化完了
+🚀 Ollama 初期化中...
+✅ Ollama 初期化完了 (llava:7b)
 
 📚 漫画キャプチャモード開始
 
@@ -486,7 +504,7 @@ npm run dev process --sessionId=1234567890-abc
 ✅ ページめくりを検知しました！
 
 📖 ページ 1 の文字起こし開始...
-🔍 Qwen2-VL でVision処理開始: capture-1234567890.png
+🔍 llava:7b でVision処理開始: capture-1234567890.png
 ✅ Vision処理完了
 ✅ 文字起こし完了:
    セリフ: 3個, ナレーション: 1個, 効果音: 2個

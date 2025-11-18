@@ -26,18 +26,24 @@ export interface Narration {
 }
 
 /**
- * Qwen2-VL 漫画文字起こしマネージャー
+ * Ollama Vision 漫画文字起こしマネージャー
  *
- * Windows + Ollama + Qwen2-VL 環境専用
+ * Windows + Ollama + LLaVA 環境専用
  * OCR不要で画像から直接セリフを抽出
+ *
+ * サポート済みモデル:
+ * - llava:7b, llava:13b, llava:34b (推奨)
+ * - llama3.2-vision:11b, llama3.2-vision:90b
+ * - bakllava (軽量版)
  */
-export class QwenVisionManager {
+export class OllamaVisionManager {
   private ollama: OllamaClient;
   private verbose: boolean;
+  private modelName: string;
 
   constructor(
     ollamaBaseUrl: string = 'http://localhost:11434',
-    model: string = 'qwen2-vl:7b',
+    model: string = 'llava:7b',
     verbose: boolean = false
   ) {
     this.ollama = new OllamaClient({
@@ -46,6 +52,7 @@ export class QwenVisionManager {
       temperature: 0.3, // 構造化出力なので低めに設定
       numCtx: 4096,
     });
+    this.modelName = model;
     this.verbose = verbose;
   }
 
@@ -53,7 +60,7 @@ export class QwenVisionManager {
    * 初期化とヘルスチェック
    */
   async initialize(): Promise<void> {
-    console.log('🚀 Qwen2-VL 初期化中...');
+    console.log(`🚀 Ollama 初期化中 (${this.modelName})...`);
 
     // Ollamaサーバー確認
     const isHealthy = await this.ollama.healthCheck();
@@ -67,12 +74,16 @@ export class QwenVisionManager {
     const modelExists = await this.ollama.checkModel();
     if (!modelExists) {
       throw new Error(
-        'Qwen2-VLモデルが見つかりません。' +
-          '\n以下を実行してください: ollama pull qwen2-vl:7b'
+        `モデル ${this.modelName} が見つかりません。\n` +
+          `以下を実行してください: ollama pull ${this.modelName}\n\n` +
+          `推奨モデル:\n` +
+          `  - llava:7b (バランス型、4.7GB)\n` +
+          `  - llava:13b (高性能、8GB)\n` +
+          `  - bakllava (軽量版、4.7GB)`
       );
     }
 
-    console.log('✅ Qwen2-VL 初期化完了');
+    console.log(`✅ Ollama 初期化完了 (${this.modelName})`);
   }
 
   /**
@@ -94,7 +105,7 @@ export class QwenVisionManager {
       // プロンプトを構築
       const prompt = this.buildPrompt(pageNumber);
 
-      // Qwen2-VLで処理
+      // Ollama Vision で処理
       const response = await this.ollama.vision(prompt, imagePath, {
         format: 'json',
         temperature: 0.3,

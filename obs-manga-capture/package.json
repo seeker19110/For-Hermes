@@ -1,7 +1,7 @@
 {
   "name": "obs-manga-capture",
-  "version": "1.0.0",
-  "description": "OBS-based automatic manga capture and transcription system using 12-Factor Agents principles",
+  "version": "2.0.0",
+  "description": "OBS-based automatic manga capture and transcription system using Ollama + LLaVA (12-Factor Agents principles)",
   "main": "src/index.ts",
   "scripts": {
     "dev": "tsx src/index.ts",
@@ -9,10 +9,14 @@
     "process": "tsx src/index.ts process",
     "server": "tsx src/server.ts",
     "build": "tsc",
-    "test": "jest"
+    "test": "jest",
+    "ollama:check": "ollama list",
+    "ollama:pull": "ollama pull llava:7b",
+    "ollama:pull:hd": "ollama pull llava:13b",
+    "ollama:pull:light": "ollama pull bakllava",
+    "setup": "npm install && npm run ollama:check"
   },
   "dependencies": {
-    "@boundaryml/baml": "^0.60.0",
     "tsx": "^4.15.0",
     "typescript": "^5.0.0",
     "sharp": "^0.33.0",
@@ -29,7 +33,19 @@
     "obs",
     "manga",
     "ocr",
+    "ollama",
+    "llava",
     "vision-llm",
-    "12-factor-agents"
+    "windows",
+    "12-factor-agents",
+    "local-ai"
+  ],
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "os": [
+    "win32",
+    "darwin",
+    "linux"
   ]
 }

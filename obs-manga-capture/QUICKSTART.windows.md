@@ -1,4 +1,4 @@
-# 🚀 5分で始める - Windows + Ollama + Qwen2-VL
+# 🚀 5分で始める - Windows + Ollama + LLaVA
 
 **完全ローカル実行** - APIキー不要、インターネット不要（初回セットアップ後）
 
@@ -22,16 +22,16 @@ node --version
 2. インストーラーをダウンロード＆実行
 3. 自動起動を確認（タスクトレイにアイコン表示）
 
-### ステップ3: Qwen2-VL ダウンロード（10-15分）
+### ステップ3: LLaVA ダウンロード（10-15分）
 
 **GPU搭載PC（推奨）:**
 ```cmd
-ollama pull qwen2-vl:7b
+ollama pull llava:7b
 ```
 
 **CPU環境または低スペックPC:**
 ```cmd
-ollama pull qwen2-vl:2b
+ollama pull llava:7b
 ```
 
 待ち時間: コーヒーブレイク☕
@@ -46,11 +46,13 @@ copy .env.windows .env
 
 **`.env`を編集**（メモ帳で開く）:
 ```env
-# GPU環境
-OLLAMA_MODEL=qwen2-vl:7b
+# GPU環境（推奨）
+OLLAMA_MODEL=llava:7b
 
-# CPU環境
-OLLAMA_MODEL=qwen2-vl:2b
+# その他の選択肢
+# OLLAMA_MODEL=llava:13b         # 高性能版（8GB）
+# OLLAMA_MODEL=llama3.2-vision:11b  # 最新版（7.9GB）
+# OLLAMA_MODEL=bakllava           # 軽量版（4.7GB）
 ```
 
 ### ステップ5: テスト実行（1分）
@@ -61,7 +63,7 @@ npm run dev capture --no-obs
 
 **成功したら:**
 ```
-✅ Qwen2-VL 初期化完了
+✅ Ollama 初期化完了
 📸 キャプチャ実行中...
 ```
 
@@ -113,9 +115,9 @@ npm run dev capture
 
 | 環境 | モデル | 速度 |
 |------|--------|------|
-| RTX 3060 | qwen2-vl:7b | ⚡ 1-2秒/ページ |
-| GTX 1060 | qwen2-vl:2b | ⚡⚡ 2-3秒/ページ |
-| Core i7 CPU | qwen2-vl:2b | ⚡⚡⚡ 5-10秒/ページ |
+| RTX 3060 | llava:13b | ⚡ 1-2秒/ページ |
+| GTX 1060 | llava:7b | ⚡⚡ 2-3秒/ページ |
+| Core i7 CPU | llava:7b | ⚡⚡⚡ 5-10秒/ページ |
 
 ---
 
@@ -141,8 +143,8 @@ IMAGE_SIMILARITY_THRESHOLD=0.85
 ### 軽量化（低スペックPC向け）
 
 ```env
-OLLAMA_MODEL=qwen2-vl:2b
-QWEN_NUM_CTX=2048
+OLLAMA_MODEL=bakllava
+OLLAMA_NUM_CTX=2048
 CAPTURE_INTERVAL_MS=3000
 ```
 
@@ -165,9 +167,9 @@ start http://localhost:11434
 
 ```cmd
 ollama list
-# qwen2-vl が表示されない場合
+# llava が表示されない場合
 
-ollama pull qwen2-vl:7b
+ollama pull llava:7b
 ```
 
 ### 処理が遅い
@@ -175,10 +177,10 @@ ollama pull qwen2-vl:7b
 **.envを編集:**
 ```env
 # 軽量モデルに変更
-OLLAMA_MODEL=qwen2-vl:2b
+OLLAMA_MODEL=bakllava
 
 # コンテキストサイズ削減
-QWEN_NUM_CTX=2048
+OLLAMA_NUM_CTX=2048
 
 # キャプチャ間隔を長く
 CAPTURE_INTERVAL_MS=2000
