@@ -1,0 +1,47 @@
+{
+  "name": "obs-manga-capture-ollama",
+  "version": "2.0.0",
+  "description": "OBS manga auto-capture with Ollama + Qwen2-VL (Windows optimized)",
+  "main": "src/index.ts",
+  "scripts": {
+    "dev": "tsx src/index.ts",
+    "capture": "tsx src/index.ts capture",
+    "process": "tsx src/index.ts process",
+    "build": "tsc",
+    "test": "node --test",
+    "ollama:check": "ollama list",
+    "ollama:pull": "ollama pull qwen2-vl:7b",
+    "ollama:pull:light": "ollama pull qwen2-vl:2b",
+    "setup": "npm install && npm run ollama:check"
+  },
+  "dependencies": {
+    "tsx": "^4.15.0",
+    "typescript": "^5.0.0",
+    "sharp": "^0.33.0",
+    "chokidar": "^3.5.3",
+    "obs-websocket-js": "^5.0.3",
+    "dotenv": "^16.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0"
+  },
+  "keywords": [
+    "obs",
+    "manga",
+    "ocr",
+    "ollama",
+    "qwen2-vl",
+    "vision-llm",
+    "windows",
+    "12-factor-agents",
+    "local-ai"
+  ],
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "os": [
+    "win32",
+    "darwin",
+    "linux"
+  ]
+}
