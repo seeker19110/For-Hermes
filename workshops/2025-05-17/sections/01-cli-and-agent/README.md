@@ -188,7 +188,7 @@ export async function agentLoop(thread: Thread): Promise<AgentResponse> {
 
 </details>
 
-The the BAML code is configured to use BASETEN_API_KEY by default
+The BAML code is configured to use BASETEN_API_KEY by default
 
 To get a Baseten API key and URL, create an account at [baseten.co](https://baseten.co),
 and then deploy [Qwen3 32B from the model library](https://www.baseten.co/library/qwen-3-32b/).

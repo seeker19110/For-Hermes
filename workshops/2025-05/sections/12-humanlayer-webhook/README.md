@@ -1,4 +1,4 @@
-# Chapter XX - HumanLayer Webhook Integration
+# Chapter 12 - HumanLayer Webhook Integration
 
 the previous sections used the humanlayer SDK in "synchronous mode" - that 
 means every time we wait for human approval, we sit in a loop 

@@ -4,7 +4,7 @@ Let's add some calculator tools to our agent.
 
 Let's start by adding a tool definition for the calculator
 
-These are simpile structured outputs that we'll ask the model to 
+These are simple structured outputs that we'll ask the model to 
 return as a "next step" in the agentic loop.
 
 

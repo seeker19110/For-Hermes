@@ -4,7 +4,7 @@ Let's start with a basic TypeScript setup and a hello world program.
 
 This guide is written in TypeScript (yes, a python version is coming soon)
 
-There are many checkpoints between the every file edit in theworkshop steps, 
+There are many checkpoints between every file edit in the workshop steps, 
 so even if you aren't super familiar with typescript,
 you should be able to keep up and run each example.
 
@@ -94,7 +94,7 @@ Add the agent implementation
 
     cp ./walkthrough/01-agent.ts src/agent.ts
 
-The the BAML code is configured to use OPENAI_API_KEY by default
+The BAML code is configured to use OPENAI_API_KEY by default
 
 As you're testing, you can change the model / provider to something else
 as you please
@@ -129,7 +129,7 @@ Let's add some calculator tools to our agent.
 
 Let's start by adding a tool definition for the calculator
 
-These are simpile structured outputs that we'll ask the model to 
+These are simple structured outputs that we'll ask the model to 
 return as a "next step" in the agentic loop.
 
 
@@ -690,7 +690,7 @@ workflow agent that uses webhooks for human approval
 
 
 
-# Chapter XX - HumanLayer Webhook Integration
+# Chapter 12 - HumanLayer Webhook Integration
 
 the previous sections used the humanlayer SDK in "synchronous mode" - that 
 means every time we wait for human approval, we sit in a loop 
