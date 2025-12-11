@@ -91,7 +91,7 @@ We're gonna talk a lot about Directed Graphs (DGs) and their Acyclic friends, DA
 
 ### From code to DAGs
 
-Around 20 years ago, we started to see DAG orchestrators become popular. We're talking classics like [Airflow](https://airflow.apache.org/), [Prefect](https://www.prefect.io/), some predecessors, and some newer ones like ([dagster](https://dagster.io/), [inggest](https://www.inngest.com/), [windmill](https://www.windmill.dev/)). These followed the same graph pattern, with the added benefit of observability, modularity, retries, administration, etc.
+Around 20 years ago, we started to see DAG orchestrators become popular. We're talking classics like [Airflow](https://airflow.apache.org/), [Prefect](https://www.prefect.io/), some predecessors, and some newer ones like ([dagster](https://dagster.io/), [inngest](https://www.inngest.com/), [windmill](https://www.windmill.dev/)). These followed the same graph pattern, with the added benefit of observability, modularity, retries, administration, etc.
 
 ![015-dag-orchestrators](https://github.com/humanlayer/12-factor-agents/blob/main/img/015-dag-orchestrators.png)
 
@@ -180,7 +180,7 @@ Anyways back to the thing...
 
 ### Design Patterns for great LLM applications
 
-After digging through hundreds of AI libriaries and working with dozens of founders, my instinct is this:
+After digging through hundreds of AI libraries and working with dozens of founders, my instinct is this:
 
 1. There are some core things that make agents great
 2. Going all in on a framework and building what is essentially a greenfield rewrite may be counter-productive
