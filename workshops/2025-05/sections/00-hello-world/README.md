@@ -4,7 +4,7 @@ Let's start with a basic TypeScript setup and a hello world program.
 
 This guide is written in TypeScript (yes, a python version is coming soon)
 
-There are many checkpoints between the every file edit in theworkshop steps, 
+There are many checkpoints between every file edit in the workshop steps, 
 so even if you aren't super familiar with typescript,
 you should be able to keep up and run each example.
 

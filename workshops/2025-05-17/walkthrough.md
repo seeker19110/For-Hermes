@@ -16,7 +16,7 @@ Let's start with a basic TypeScript setup and a hello world program.
 
 This guide is written in TypeScript (yes, a python version is coming soon)
 
-There are many checkpoints between the every file edit in theworkshop steps, 
+There are many checkpoints between every file edit in the workshop steps, 
 so even if you aren't super familiar with typescript,
 you should be able to keep up and run each example.
 
@@ -341,7 +341,7 @@ export async function agentLoop(thread: Thread): Promise<AgentResponse> {
 
 </details>
 
-The the BAML code is configured to use BASETEN_API_KEY by default
+The BAML code is configured to use BASETEN_API_KEY by default
 
 To get a Baseten API key and URL, create an account at [baseten.co](https://baseten.co),
 and then deploy [Qwen3 32B from the model library](https://www.baseten.co/library/qwen-3-32b/).
@@ -388,7 +388,7 @@ Let's add some calculator tools to our agent.
 
 Let's start by adding a tool definition for the calculator
 
-These are simpile structured outputs that we'll ask the model to 
+These are simple structured outputs that we'll ask the model to 
 return as a "next step" in the agentic loop.
 
 
@@ -2095,7 +2095,7 @@ thats it - in the next chapter, we'll build a fully email-driven
 workflow agent that uses webhooks for human approval
 
 
-## Chapter XX - HumanLayer Webhook Integration
+## Chapter 12 - HumanLayer Webhook Integration
 
 the previous sections used the humanlayer SDK in "synchronous mode" - that
 means every time we wait for human approval, we sit in a loop

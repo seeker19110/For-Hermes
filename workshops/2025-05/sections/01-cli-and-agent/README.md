@@ -177,7 +177,7 @@ export async function agentLoop(thread: Thread): Promise<AgentResponse> {
 
 </details>
 
-The the BAML code is configured to use OPENAI_API_KEY by default
+The BAML code is configured to use OPENAI_API_KEY by default
 
 As you're testing, you can change the model / provider to something else
 as you please
