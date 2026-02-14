@@ -1,0 +1,11 @@
+{
+  "owner": "peetzweg",
+  "slug": "atlassian-cli",
+  "displayName": "Atlassian aCLI Reference Skill for Jira and Confluence",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1770990979366,
+    "commit": "https://github.com/openclaw/skills/commit/fc547024e1070ce140a65ad364df1ea07774e8ad"
+  },
+  "history": []
+}

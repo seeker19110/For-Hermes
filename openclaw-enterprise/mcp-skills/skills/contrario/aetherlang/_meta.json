@@ -1,0 +1,22 @@
+{
+  "owner": "contrario",
+  "slug": "aetherlang",
+  "displayName": "Aetherlang",
+  "latest": {
+    "version": "1.0.3",
+    "publishedAt": 1770809185416,
+    "commit": "https://github.com/openclaw/skills/commit/a9ca0ae6ae8dd0addeed0aabdd0f6032a0082ada"
+  },
+  "history": [
+    {
+      "version": "1.0.1",
+      "publishedAt": 1770757193635,
+      "commit": "https://github.com/openclaw/skills/commit/cedb71f2698b06bc5f690cc04a42dcf76c813255"
+    },
+    {
+      "version": "1.0.0",
+      "publishedAt": 1770720445484,
+      "commit": "https://github.com/openclaw/skills/commit/9dd69a22f369857de03ae9826e7a2696119e2bf8"
+    }
+  ]
+}

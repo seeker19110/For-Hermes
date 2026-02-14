@@ -1,0 +1,11 @@
+{
+  "owner": "batthis",
+  "slug": "amber-voice-assistant",
+  "displayName": "Amber Voice Assistant",
+  "latest": {
+    "version": "1.0.4",
+    "publishedAt": 1771015219859,
+    "commit": "https://github.com/openclaw/skills/commit/5656cc2084e0fd3b838b8b27e0cbb92054cc4b85"
+  },
+  "history": []
+}

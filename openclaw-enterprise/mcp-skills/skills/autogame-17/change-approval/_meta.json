@@ -1,0 +1,11 @@
+{
+  "owner": "autogame-17",
+  "slug": "change-approval",
+  "displayName": "Change Approval",
+  "latest": {
+    "version": "1.0.1",
+    "publishedAt": 1770791141491,
+    "commit": "https://github.com/openclaw/skills/commit/e89622ddb037fad4eba396d9d39b3f165f4bf9c6"
+  },
+  "history": []
+}

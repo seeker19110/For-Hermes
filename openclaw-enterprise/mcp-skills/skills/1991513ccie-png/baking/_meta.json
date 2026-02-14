@@ -1,0 +1,11 @@
+{
+  "owner": "1991513ccie-png",
+  "slug": "baking",
+  "displayName": "ubaking",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1770995912763,
+    "commit": "https://github.com/openclaw/skills/commit/c7ba33342fc3fc6f6eb3b117d451ef4dbcf8a660"
+  },
+  "history": []
+}

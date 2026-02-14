@@ -1,0 +1,11 @@
+{
+  "owner": "adamewozniak",
+  "slug": "turbine-trading-bot",
+  "displayName": "Turbine Prediction Markets - Create a trading bot for 15-minute bitcoin markets",
+  "latest": {
+    "version": "1.0.2",
+    "publishedAt": 1770490394784,
+    "commit": "https://github.com/openclaw/skills/commit/48b02f305befb614211c26d2c0edcfd2aae747a0"
+  },
+  "history": []
+}

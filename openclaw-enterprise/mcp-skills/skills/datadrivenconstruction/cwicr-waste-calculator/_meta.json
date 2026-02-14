@@ -1,0 +1,11 @@
+{
+  "owner": "datadrivenconstruction",
+  "slug": "cwicr-waste-calculator",
+  "displayName": "Cwicr Waste Calculator",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1770475124037,
+    "commit": "https://github.com/openclaw/skills/commit/b2a4968ea0a807feb23dc333675a5526b1a0344e"
+  },
+  "history": []
+}

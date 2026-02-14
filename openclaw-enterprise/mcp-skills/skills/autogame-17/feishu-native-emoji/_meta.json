@@ -1,0 +1,17 @@
+{
+  "owner": "autogame-17",
+  "slug": "feishu-native-emoji",
+  "displayName": "Feishu Native Emoji",
+  "latest": {
+    "version": "1.0.1",
+    "publishedAt": 1770791728284,
+    "commit": "https://github.com/openclaw/skills/commit/e15cb77b341d8ea34f1eef9cf137861214b773a9"
+  },
+  "history": [
+    {
+      "version": "1.0.0",
+      "publishedAt": 1770317600161,
+      "commit": "https://github.com/openclaw/skills/commit/72883189accf1bbbb5a3230ebc774b6a4ac9c156"
+    }
+  ]
+}

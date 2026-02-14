@@ -1,0 +1,17 @@
+{
+  "owner": "sociclaw",
+  "slug": "sociclaw",
+  "displayName": "Sociclaw",
+  "latest": {
+    "version": "0.1.7",
+    "publishedAt": 1771016708564,
+    "commit": "https://github.com/openclaw/skills/commit/3b386f086e28518dfeecf7a88950e8656a14a7de"
+  },
+  "history": [
+    {
+      "version": "0.1.0",
+      "publishedAt": 1771008899631,
+      "commit": "https://github.com/openclaw/skills/commit/b875946359e22feaf497fcef4c2ba0ad89e2cd04"
+    }
+  ]
+}

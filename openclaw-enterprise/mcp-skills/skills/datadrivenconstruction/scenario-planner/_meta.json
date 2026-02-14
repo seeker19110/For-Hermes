@@ -1,0 +1,11 @@
+{
+  "owner": "datadrivenconstruction",
+  "slug": "scenario-planner",
+  "displayName": "Scenario Planner",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1770475730386,
+    "commit": "https://github.com/openclaw/skills/commit/8a48d63b211ca25a1a81d1f56dd9cade29f15a5c"
+  },
+  "history": []
+}

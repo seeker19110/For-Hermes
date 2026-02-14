@@ -1,0 +1,11 @@
+{
+  "owner": "bobdevibecoder",
+  "slug": "bobagent-claw-to-claw",
+  "displayName": "claw-to-claw",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1770901610502,
+    "commit": "https://github.com/openclaw/skills/commit/c31b83f23e75b4a3119fe3dfd28be51a04a57074"
+  },
+  "history": []
+}

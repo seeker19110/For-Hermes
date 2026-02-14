@@ -1,0 +1,11 @@
+{
+  "owner": "dennysubke",
+  "slug": "threema-gateway",
+  "displayName": "Threema Gateway",
+  "latest": {
+    "version": "0.0.1",
+    "publishedAt": 1770828050135,
+    "commit": "https://github.com/openclaw/skills/commit/0ac145169978765a70675e6dff7c495cc11773a5"
+  },
+  "history": []
+}

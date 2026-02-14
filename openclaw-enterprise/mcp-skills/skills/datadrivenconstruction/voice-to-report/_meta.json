@@ -1,0 +1,11 @@
+{
+  "owner": "datadrivenconstruction",
+  "slug": "voice-to-report",
+  "displayName": "Voice To Report",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1770475999487,
+    "commit": "https://github.com/openclaw/skills/commit/32c73fd56d85910164b423f4a111466f8ef96667"
+  },
+  "history": []
+}

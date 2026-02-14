@@ -1,0 +1,97 @@
+{
+  "name": "surrealdb-memory",
+  "version": "1.3.0",
+  "description": "Knowledge graph memory system with SurrealDB, MCP tools, confidence scoring, and LLM-powered extraction",
+  "keywords": [
+    "memory",
+    "knowledge-graph",
+    "surrealdb",
+    "vector-search",
+    "embeddings",
+    "mcp",
+    "llm"
+  ],
+  "author": "Clawdbot",
+  "license": "MIT",
+  "clawdbot": {
+    "type": "skill",
+    "triggers": [
+      "remember",
+      "store fact",
+      "what do you know",
+      "memory search",
+      "knowledge graph",
+      "find relations"
+    ],
+    "requires": {
+      "python": ">=3.10",
+      "surrealdb": ">=2.0.0"
+    },
+    "env": {
+      "OPENAI_API_KEY": {
+        "required": true,
+        "description": "OpenAI API key for text-embedding-3-small embeddings and GPT-4o-mini extraction. Recommend using a scoped key with limited permissions."
+      }
+    },
+    "capabilities": {
+      "network_installer": {
+        "description": "Runs 'curl -sSf https://install.surrealdb.com | sh' to install SurrealDB binary",
+        "files": ["scripts/install.sh", "clawdbot-integration/gateway/memory.ts"],
+        "mitigation": "Review installer at URL before running, or install SurrealDB manually from official releases"
+      },
+      "source_patching": {
+        "description": "scripts/integrate-clawdbot.sh uses sed to patch Clawdbot source files (server-methods.ts, navigation.ts, app.ts) to add Memory UI tab",
+        "files": ["scripts/integrate-clawdbot.sh"],
+        "mitigation": "Run integration manually with code review, or skip UI integration entirely"
+      },
+      "service_management": {
+        "description": "Gateway handlers can start SurrealDB server and run schema imports",
+        "files": ["clawdbot-integration/gateway/memory.ts"],
+        "mitigation": "Start SurrealDB manually instead of using auto-repair"
+      },
+      "python_packages": {
+        "description": "Installs surrealdb, openai, pyyaml Python packages via pip",
+        "files": ["scripts/install.sh", "clawdbot-integration/gateway/memory.ts"],
+        "mitigation": "Use a dedicated venv and review requirements.txt"
+      },
+      "local_file_access": {
+        "description": "Reads MEMORY.md and memory/*.md files for knowledge extraction",
+        "files": ["scripts/extract-knowledge.py"],
+        "mitigation": "Review extracted content before enabling auto-extraction"
+      }
+    },
+    "securityNotes": {
+      "default_credentials": "Examples use root/root for SurrealDB. Change these in production and bind to localhost only.",
+      "api_key_scope": "OPENAI_API_KEY is used for embeddings and LLM extraction. Use a key with minimal permissions.",
+      "auto_repair": "Gateway auto-repair can run network installers. Disable autonomous invocation or review before allowing."
+    },
+    "installWarnings": [
+      "This skill executes 'curl https://install.surrealdb.com | sh' - review the installer URL before running",
+      "Integration script patches Clawdbot source files - backup your installation first",
+      "Default SurrealDB credentials (root/root) are insecure - change for any network-exposed deployment",
+      "Knowledge extraction sends content to OpenAI API - review what files will be processed"
+    ],
+    "mcp": {
+      "server": "scripts/mcp-server.py",
+      "name": "surrealdb-memory",
+      "tools": [
+        "knowledge_search",
+        "knowledge_recall",
+        "knowledge_store",
+        "knowledge_stats"
+      ]
+    },
+    "gateway": {
+      "handlers": "clawdbot-integration/gateway/memory.ts"
+    }
+  },
+  "scripts": {
+    "install": "./scripts/install.sh",
+    "init": "./scripts/init-db.sh",
+    "extract": "python3 scripts/extract-knowledge.py extract",
+    "extract:full": "python3 scripts/extract-knowledge.py extract --full",
+    "status": "python3 scripts/extract-knowledge.py status",
+    "reconcile": "python3 scripts/extract-knowledge.py reconcile",
+    "discover": "python3 scripts/extract-knowledge.py discover-relations"
+  }
+}

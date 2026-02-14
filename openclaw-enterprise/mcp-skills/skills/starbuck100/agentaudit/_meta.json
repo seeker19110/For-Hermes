@@ -1,0 +1,17 @@
+{
+  "owner": "starbuck100",
+  "slug": "agentaudit",
+  "displayName": "AgentAudit",
+  "latest": {
+    "version": "3.0.1",
+    "publishedAt": 1770913654899,
+    "commit": "https://github.com/openclaw/skills/commit/5a54689bcc41ac5dab971a74afd9e6e577eb0b31"
+  },
+  "history": [
+    {
+      "version": "2.1.0",
+      "publishedAt": 1770903077878,
+      "commit": "https://github.com/openclaw/skills/commit/f7a76b9d5de90e5cbe500ac52316537e30b3c9fd"
+    }
+  ]
+}

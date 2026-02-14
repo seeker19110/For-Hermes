@@ -1,0 +1,11 @@
+{
+  "owner": "datadrivenconstruction",
+  "slug": "pdf-report-generator",
+  "displayName": "Pdf Report Generator",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1770475763943,
+    "commit": "https://github.com/openclaw/skills/commit/dd6b2ff66a9de3a4bbd2e5448a19cd35b47773af"
+  },
+  "history": []
+}

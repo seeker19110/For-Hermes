@@ -1,0 +1,11 @@
+{
+  "owner": "datadrivenconstruction",
+  "slug": "sql-query-builder",
+  "displayName": "Sql Query Builder",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1770475388858,
+    "commit": "https://github.com/openclaw/skills/commit/a3812ccb8e8ad6db409441ac94e5174278627e81"
+  },
+  "history": []
+}

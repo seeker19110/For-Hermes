@@ -1,0 +1,11 @@
+{
+  "owner": "chadru",
+  "slug": "appraisal-ai",
+  "displayName": "Appraisal AI",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1771000845363,
+    "commit": "https://github.com/openclaw/skills/commit/3e2617375d164fdd54a71fca8a4ee86cadfc5820"
+  },
+  "history": []
+}

@@ -1,0 +1,11 @@
+{
+  "owner": "xonder",
+  "slug": "supercall",
+  "displayName": "SuperCall - Make phone calls with custom personas and goals",
+  "latest": {
+    "version": "1.2.0",
+    "publishedAt": 1770425466040,
+    "commit": "https://github.com/openclaw/skills/commit/77d837403df82db90cbe998815aa7aabddab4e2d"
+  },
+  "history": []
+}

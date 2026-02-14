@@ -1,0 +1,171 @@
+# OpenClaw Enterprise - Конфигурация MCP-интеграций
+# Версия: 1.0.0
+
+project:
+  name: "OpenClaw Enterprise"
+  version: "1.0.0"
+  description: "Автономный AI-агент для продаж на LoyalFans"
+
+# MCP-серверы
+mcp_servers:
+  # browseract-pro - автоматизация LoyalFans
+  browseract-pro:
+    enabled: true
+    type: "browser-automation"
+    config:
+      platform: "loyalfans"
+      proxy:
+        enabled: true
+        url: "${PROXY_URL}"
+        rotation: true
+      browser:
+        headless: false
+        user_agent: "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)"
+      rate_limits:
+        messages_per_hour: 50
+        posts_per_day: 20
+      login:
+        credentials_env: "LOYALFANS_CREDENTIALS"
+        session_timeout: 3600
+    tools:
+      - name: "login"
+        description: "Авторизация на платформе LoyalFans"
+      - name: "get_messages"
+        description: "Получить новые сообщения"
+        params:
+          limit: 50
+          unread_only: true
+      - name: "send_message"
+        description: "Отправить сообщение подписчику"
+        params:
+          user: "string"
+          text: "string"
+          media?: "string"
+      - name: "get_subscribers"
+        description: "Получить список подписчиков"
+        params:
+          tier?: "string"
+          limit?: 100
+      - name: "post_content"
+        description: "Опубликовать контент"
+        params:
+          content: "string"
+          media?: "string[]"
+          type: "post|story|ppv"
+          price?: number
+      - name: "create_ppv"
+        description: "Создать PPV контент"
+        params:
+          title: "string"
+          description: "string"
+          price: number
+          media: "string[]"
+      - name: "analyze_engagement"
+        description: "Анализ вовлечённости аудитории"
+
+  # whisper-local - обработка аудио и обучение
+  whisper-local:
+    enabled: true
+    type: "audio-processing"
+    config:
+      model: "base"  # tiny|base|small|medium|large
+      language: "ru"
+      device: "cpu"  # cpu|cuda
+      audio_dir: "./recordings"
+      output_dir: "./insights"
+      settings:
+        confidence_threshold: 0.7
+        sentiment_analysis: true
+        keyword_extraction: true
+    tools:
+      - name: "transcribe"
+        description: "Транскрибировать аудио файл"
+        params:
+          audio_file: "string"
+          language?: "ru"
+          output_format?: "json|text"
+      - name: "analyze_sentiment"
+        description: "Анализ тональности текста"
+        params:
+          text: "string"
+      - name: "extract_keywords"
+        description: "Извлечение ключевых слов"
+        params:
+          text: "string"
+          max_keywords?: 10
+      - name: "learn_patterns"
+        description: "Обучение на паттернах из транскрипций"
+        params:
+          transcriptions: "string[]"
+          update_rules: true
+
+# Настройки агента
+agent:
+  model: "kimi-k2.5"
+  provider: "openrouter"
+  temperature: 0.7
+  max_tokens: 4000
+  
+  behavior:
+    personality: "friendly_professional"
+    response_delay_ms: 500  # имитация человеческой задержки
+    max_retries: 3
+    
+  memory:
+    type: "stateless"  # 12-factor: состояние в контексте
+    context_window: 128000
+    persist_insights: true
+
+# Рабочие процессы
+workflows:
+  - name: "daily_routine"
+    trigger: "cron: 0 9 * * *"  # каждый день в 9:00
+    steps:
+      - action: "browseract-pro.get_messages"
+      - action: "process_notifications"
+      - action: "whisper-local.analyze_sentiment"
+      - action: "browseract-pro.respond"
+      
+  - name: "welcome_new_subscriber"
+    trigger: "event: new_subscriber"
+    steps:
+      - action: "browseract-pro.get_subscribers"
+      - action: "generate_personalized_greeting"
+      - action: "browseract-pro.send_message"
+      
+  - name: "learn_from_recordings"
+    trigger: "manual: LEARN"
+    steps:
+      - action: "whisper-local.transcribe"
+      - action: "whisper-local.extract_keywords"
+      - action: "whisper-local.analyze_sentiment"
+      - action: "update_rules"
+
+# Безопасность
+security:
+  encryption:
+    enabled: true
+    algorithm: "AES-256-GCM"
+  secrets_manager: "env"  # env|aws-secrets|hashicorp-vault
+  
+  rate_limiting:
+    enabled: true
+    window_seconds: 3600
+    max_requests: 100
+
+# Мониторинг
+monitoring:
+  logging:
+    level: "INFO"
+    format: "json"
+    destination: "stdout"
+    
+  metrics:
+    enabled: true
+    export_interval_seconds: 60
+    
+  alerts:
+    - type: "rate_limit_exceeded"
+      action: "notify_admin"
+    - type: "auth_failure"
+      action: "lock_account"

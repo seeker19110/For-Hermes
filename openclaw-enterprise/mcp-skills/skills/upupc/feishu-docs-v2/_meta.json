@@ -1,0 +1,11 @@
+{
+  "owner": "upupc",
+  "slug": "feishu-docs-v2",
+  "displayName": "Feishu Docs",
+  "latest": {
+    "version": "0.1.0",
+    "publishedAt": 1770823905893,
+    "commit": "https://github.com/openclaw/skills/commit/0a55e02b9e7c2503d271ab5506a64a03a8743e12"
+  },
+  "history": []
+}

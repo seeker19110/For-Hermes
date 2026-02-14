@@ -1,0 +1,11 @@
+{
+  "owner": "datadrivenconstruction",
+  "slug": "gantt-chart",
+  "displayName": "Gantt Chart",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1770475648516,
+    "commit": "https://github.com/openclaw/skills/commit/b4516f995fa140e9c137728739426e99620441d7"
+  },
+  "history": []
+}

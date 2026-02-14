@@ -1,0 +1,11 @@
+{
+  "owner": "datadrivenconstruction",
+  "slug": "environmental-monitoring",
+  "displayName": "Environmental Monitoring",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1770476345641,
+    "commit": "https://github.com/openclaw/skills/commit/0fce7c8cbdff4fc23832ac8f8904c089e7e7311c"
+  },
+  "history": []
+}

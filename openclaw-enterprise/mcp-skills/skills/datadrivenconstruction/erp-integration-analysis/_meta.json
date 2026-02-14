@@ -1,0 +1,11 @@
+{
+  "owner": "datadrivenconstruction",
+  "slug": "erp-integration-analysis",
+  "displayName": "Erp Integration Analysis",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1770475356681,
+    "commit": "https://github.com/openclaw/skills/commit/10552f2bda1c6660337d0a250a0bfc77a4691d79"
+  },
+  "history": []
+}

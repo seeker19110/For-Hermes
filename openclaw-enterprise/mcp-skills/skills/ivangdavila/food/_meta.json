@@ -1,0 +1,11 @@
+{
+  "owner": "ivangdavila",
+  "slug": "food",
+  "displayName": "Food Tracker",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1770839464438,
+    "commit": "https://github.com/openclaw/skills/commit/32845dd765c109ba17faa64ff32948762515696a"
+  },
+  "history": []
+}

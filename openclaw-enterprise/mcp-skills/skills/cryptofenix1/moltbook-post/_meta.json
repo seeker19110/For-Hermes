@@ -1,0 +1,11 @@
+{
+  "owner": "cryptofenix1",
+  "slug": "moltbook-post",
+  "displayName": "Mint  on mbc20.xyz",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1770839708553,
+    "commit": "https://github.com/openclaw/skills/commit/a8bf5b76244a36c22d68238846c856236f290277"
+  },
+  "history": []
+}

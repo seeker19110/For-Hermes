@@ -1,0 +1,14 @@
+{
+  "humanities": {
+    "title": "Example: Stoicism",
+    "content": "Stoicism teaches the development of self-control and fortitude as a means of overcoming destructive emotions."
+  },
+  "tech": {
+    "title": "Example: Transformer Architecture",
+    "content": "Transformers revolutionized NLP by allowing models to process entire sequences in parallel using attention mechanisms."
+  },
+  "game": {
+    "title": "Example: Flow Theory",
+    "content": "Flow is the state of optimal experience where skill level perfectly matches the challenge level."
+  }
+}

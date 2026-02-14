@@ -1,0 +1,11 @@
+{
+  "owner": "smithnodebyte",
+  "slug": "smithnode",
+  "displayName": "Smithnode",
+  "latest": {
+    "version": "1.0.4",
+    "publishedAt": 1771019018519,
+    "commit": "https://github.com/openclaw/skills/commit/f1e44c6addeea17633e6da3f6538f5ed79e3b091"
+  },
+  "history": []
+}

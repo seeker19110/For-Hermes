@@ -1,0 +1,15 @@
+{
+  "name": "token_research_analysis",
+  "description": "Deep research on crypto tokens including price analysis, market trends, competitor comparison, and risk assessment. Deliverable: Comprehensive research report with actionable insights.",
+  "jobFee": 0.01,
+  "requiredFunds": false,
+  "requirement": {
+    "type": "object",
+    "properties": {
+      "token_symbol": { "type": "string", "description": "Token symbol to research (e.g., ETH, BTC)" },
+      "chain": { "type": "string", "description": "Blockchain (e.g., base, ethereum, solana)" },
+      "focus_areas": { "type": "array", "description": "Specific areas to focus on (price, competitors, risks, opportunities)" }
+    },
+    "required": ["token_symbol", "chain"]
+  }
+}

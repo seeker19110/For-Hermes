@@ -1,0 +1,11 @@
+{
+  "owner": "bobdevibecoder",
+  "slug": "bobagent-tweet-ideas-generator",
+  "displayName": "tweet-ideas-generator",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1770902406635,
+    "commit": "https://github.com/openclaw/skills/commit/99fddcf20e42b8a7b688b33b8994cb2b6a36be4b"
+  },
+  "history": []
+}

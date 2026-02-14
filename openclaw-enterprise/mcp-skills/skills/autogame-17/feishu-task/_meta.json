@@ -1,0 +1,17 @@
+{
+  "owner": "autogame-17",
+  "slug": "feishu-task",
+  "displayName": "Feishu Task",
+  "latest": {
+    "version": "1.0.1",
+    "publishedAt": 1770791749080,
+    "commit": "https://github.com/openclaw/skills/commit/5d6803d4ed9af0c6cdfbd1ccad40a5e9885365dd"
+  },
+  "history": [
+    {
+      "version": "1.0.0",
+      "publishedAt": 1770118141325,
+      "commit": "https://github.com/clawdbot/skills/commit/93abea8a997d26b08708c41608fd2cecfd79c71e"
+    }
+  ]
+}

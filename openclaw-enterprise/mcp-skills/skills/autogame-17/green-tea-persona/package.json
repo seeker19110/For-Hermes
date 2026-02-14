@@ -1,0 +1,16 @@
+{
+  "name": "green-tea-persona",
+  "version": "1.0.0",
+  "description": "A persona skill that sends messages in a 'Green Tea' style: broken sentences, no punctuation, and random delays.",
+  "main": "speak.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": ["persona", "feishu", "green-tea"],
+  "author": "OpenClaw",
+  "license": "ISC",
+  "dependencies": {
+    "commander": "^11.0.0",
+    "dotenv": "^16.0.0"
+  }
+}

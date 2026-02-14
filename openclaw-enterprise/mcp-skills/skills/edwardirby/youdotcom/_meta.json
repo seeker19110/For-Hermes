@@ -1,0 +1,22 @@
+{
+  "owner": "edwardirby",
+  "slug": "youdotcom",
+  "displayName": "You.com  CLI",
+  "latest": {
+    "version": "2.0.5",
+    "publishedAt": 1770928283538,
+    "commit": "https://github.com/openclaw/skills/commit/99cc7e7dcac36db691c99a801891fa6d6df5f6dc"
+  },
+  "history": [
+    {
+      "version": "2.0.0",
+      "publishedAt": 1770747126870,
+      "commit": "https://github.com/openclaw/skills/commit/07d8efc390293dc60dc5cd07cef7446f343ebd3d"
+    },
+    {
+      "version": "1.2.0",
+      "publishedAt": 1770285899806,
+      "commit": "https://github.com/openclaw/skills/commit/be944073ab558289e4bd166430db5209d05d850c"
+    }
+  ]
+}

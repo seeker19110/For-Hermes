@@ -1,0 +1,11 @@
+{
+  "owner": "vdc-k",
+  "slug": "multi-agent-collab",
+  "displayName": "Multi-Agent Collaboration System (MACS）",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1771009105086,
+    "commit": "https://github.com/openclaw/skills/commit/dae3e0449278cc5255e9232cb04c94f744d31549"
+  },
+  "history": []
+}

@@ -1,0 +1,11 @@
+{
+  "owner": "briansmith80",
+  "slug": "clawhub-publish",
+  "displayName": "Clawhub Publish",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1770916369161,
+    "commit": "https://github.com/openclaw/skills/commit/db64ee88ecf2635d3502d090031c8722d68555c9"
+  },
+  "history": []
+}

@@ -1,0 +1,11 @@
+{
+  "owner": "memerdev",
+  "slug": "mim-instant-messenger",
+  "displayName": "MIM Chat",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1771023350063,
+    "commit": "https://github.com/openclaw/skills/commit/631285076f8f18442392bad044a029c1b88a68ef"
+  },
+  "history": []
+}

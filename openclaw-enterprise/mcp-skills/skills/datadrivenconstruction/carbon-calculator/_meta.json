@@ -1,0 +1,11 @@
+{
+  "owner": "datadrivenconstruction",
+  "slug": "carbon-calculator",
+  "displayName": "Carbon Calculator",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1770475316501,
+    "commit": "https://github.com/openclaw/skills/commit/0fca5886e9e1b9ec500648e91aac109ec3029a91"
+  },
+  "history": []
+}

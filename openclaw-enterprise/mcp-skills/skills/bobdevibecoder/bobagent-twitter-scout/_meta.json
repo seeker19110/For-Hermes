@@ -1,0 +1,11 @@
+{
+  "owner": "bobdevibecoder",
+  "slug": "bobagent-twitter-scout",
+  "displayName": "twitter-scout",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1770902413401,
+    "commit": "https://github.com/openclaw/skills/commit/56ad551d15ba0ac2d84d3c214a5415365983c320"
+  },
+  "history": []
+}

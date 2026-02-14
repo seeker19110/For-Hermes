@@ -1,0 +1,11 @@
+{
+  "owner": "bobdevibecoder",
+  "slug": "churn-prevention",
+  "displayName": "Churn Prevention",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1770900742914,
+    "commit": "https://github.com/openclaw/skills/commit/c936269d83bb5bf7be212df500f2d7a3cf36422e"
+  },
+  "history": []
+}

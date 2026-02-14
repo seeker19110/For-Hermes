@@ -1,0 +1,11 @@
+{
+  "owner": "datadrivenconstruction",
+  "slug": "cwicr-risk-calculator",
+  "displayName": "Cwicr Risk Calculator",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1770475079844,
+    "commit": "https://github.com/openclaw/skills/commit/090653676f05a188e4090910c7756f1a1c1d5ef9"
+  },
+  "history": []
+}

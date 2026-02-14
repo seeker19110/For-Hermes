@@ -1,0 +1,17 @@
+{
+  "owner": "adlai88",
+  "slug": "simmer-mertsniper",
+  "displayName": "Simmer Mertsniper",
+  "latest": {
+    "version": "1.0.1",
+    "publishedAt": 1770902735063,
+    "commit": "https://github.com/openclaw/skills/commit/9d44747cffeb0890603f116fdb4ce94992b8a17c"
+  },
+  "history": [
+    {
+      "version": "1.0.0",
+      "publishedAt": 1770620293060,
+      "commit": "https://github.com/openclaw/skills/commit/18ab3c6f78920fa3c811f0ab70165e0b07d5bb41"
+    }
+  ]
+}

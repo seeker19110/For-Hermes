@@ -1,0 +1,11 @@
+{
+  "owner": "bobdevibecoder",
+  "slug": "bobagent-system-monitor",
+  "displayName": "system-monitor",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1770902394067,
+    "commit": "https://github.com/openclaw/skills/commit/676352bd886d93db3cf5a94ce1a1d02ad5b0387c"
+  },
+  "history": []
+}

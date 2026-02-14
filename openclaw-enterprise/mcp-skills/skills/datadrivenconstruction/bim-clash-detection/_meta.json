@@ -1,0 +1,11 @@
+{
+  "owner": "datadrivenconstruction",
+  "slug": "bim-clash-detection",
+  "displayName": "Bim Clash Detection",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1770474758895,
+    "commit": "https://github.com/openclaw/skills/commit/85c941a10010c8a4dacd8281170836cfa656071a"
+  },
+  "history": []
+}

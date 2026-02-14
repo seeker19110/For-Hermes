@@ -1,0 +1,11 @@
+{
+  "owner": "alex-tradequo",
+  "slug": "moltflow-admin",
+  "displayName": "Moltflow Admin",
+  "latest": {
+    "version": "1.6.0",
+    "publishedAt": 1770797705832,
+    "commit": "https://github.com/openclaw/skills/commit/04d82258948efc00271c6661b75ae65d7388fa40"
+  },
+  "history": []
+}

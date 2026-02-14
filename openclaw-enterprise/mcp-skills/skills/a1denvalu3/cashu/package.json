@@ -1,0 +1,14 @@
+{
+  "name": "cashu",
+  "version": "0.18.6",
+  "description": "A Cashu wallet via the Nutshell CLI.",
+  "keywords": ["cashu", "wallet", "cli", "ecash", "bitcoin", "lightning", "nutshell"],
+  "author": "OpenClaw User",
+  "license": "MIT",
+  "engines": {
+    "openclaw": ">=0.6.0"
+  },
+  "openclaw": {
+    "type": "skill"
+  }
+}

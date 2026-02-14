@@ -1,0 +1,11 @@
+{
+  "owner": "datadrivenconstruction",
+  "slug": "meeting-minutes-generator",
+  "displayName": "Meeting Minutes Generator",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1770475158802,
+    "commit": "https://github.com/openclaw/skills/commit/9961311842704dc89db1f47f43a40d1ab732dd0c"
+  },
+  "history": []
+}

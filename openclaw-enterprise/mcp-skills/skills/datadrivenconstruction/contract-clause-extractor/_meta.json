@@ -1,0 +1,11 @@
+{
+  "owner": "datadrivenconstruction",
+  "slug": "contract-clause-extractor",
+  "displayName": "Contract Clause Extractor",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1770476121763,
+    "commit": "https://github.com/openclaw/skills/commit/acd37c8a7cc9dceec469f918ba9dadc49c31362b"
+  },
+  "history": []
+}

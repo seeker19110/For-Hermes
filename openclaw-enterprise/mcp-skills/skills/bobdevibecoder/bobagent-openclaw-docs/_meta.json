@@ -1,0 +1,11 @@
+{
+  "owner": "bobdevibecoder",
+  "slug": "bobagent-openclaw-docs",
+  "displayName": "openclaw-docs",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1770901844335,
+    "commit": "https://github.com/openclaw/skills/commit/32b2c48fbd70df0f9ef7a7b89cde7a1ffe5de7d5"
+  },
+  "history": []
+}

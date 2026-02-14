@@ -1,0 +1,11 @@
+{
+  "owner": "bobdevibecoder",
+  "slug": "bobagent-qmd",
+  "displayName": "qmd",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1770901921831,
+    "commit": "https://github.com/openclaw/skills/commit/8e5bd97d1e65512af5c744373664486d7fefa047"
+  },
+  "history": []
+}

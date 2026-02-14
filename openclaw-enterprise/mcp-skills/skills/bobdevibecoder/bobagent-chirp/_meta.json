@@ -1,0 +1,11 @@
+{
+  "owner": "bobdevibecoder",
+  "slug": "bobagent-chirp",
+  "displayName": "chirp",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1770901532314,
+    "commit": "https://github.com/openclaw/skills/commit/ce56682a76e17b189c3de836fdcb90d2e1edcd41"
+  },
+  "history": []
+}

@@ -1,0 +1,11 @@
+{
+  "owner": "dongsjoa-byte",
+  "slug": "cloudflare-r2",
+  "displayName": "Cloudflare R2",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1770455152859,
+    "commit": "https://github.com/openclaw/skills/commit/fc7ed81213d3613c3b51176947dd5c4772dc8b76"
+  },
+  "history": []
+}

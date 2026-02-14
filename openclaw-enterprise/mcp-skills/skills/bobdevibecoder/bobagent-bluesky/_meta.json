@@ -1,0 +1,11 @@
+{
+  "owner": "bobdevibecoder",
+  "slug": "bobagent-bluesky",
+  "displayName": "bluesky",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1770901511288,
+    "commit": "https://github.com/openclaw/skills/commit/cb88e233b6ea5efe31747f97d7e07006d74f53a0"
+  },
+  "history": []
+}

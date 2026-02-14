@@ -1,0 +1,11 @@
+{
+  "owner": "datadrivenconstruction",
+  "slug": "clash-detection-analysis",
+  "displayName": "Clash Detection Analysis",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1770476288440,
+    "commit": "https://github.com/openclaw/skills/commit/6c6a4f4e87e843a2a75845455db559855fc42041"
+  },
+  "history": []
+}

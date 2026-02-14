@@ -1,0 +1,11 @@
+{
+  "owner": "ivangdavila",
+  "slug": "marketplace",
+  "displayName": "Marketplace",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1770922560975,
+    "commit": "https://github.com/openclaw/skills/commit/75c919eda4f635764d7926ba107572183f237ca0"
+  },
+  "history": []
+}

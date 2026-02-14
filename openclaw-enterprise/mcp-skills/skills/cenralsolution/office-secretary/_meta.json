@@ -1,0 +1,11 @@
+{
+  "owner": "cenralsolution",
+  "slug": "office-secretary",
+  "displayName": "office secretary",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1770987256487,
+    "commit": "https://github.com/openclaw/skills/commit/1c53ecf07f3a0ff83a5516b04f71768b044923dd"
+  },
+  "history": []
+}

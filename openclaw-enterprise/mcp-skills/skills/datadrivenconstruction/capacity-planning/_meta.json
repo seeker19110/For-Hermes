@@ -1,0 +1,11 @@
+{
+  "owner": "datadrivenconstruction",
+  "slug": "capacity-planning",
+  "displayName": "Capacity Planning",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1770476274601,
+    "commit": "https://github.com/openclaw/skills/commit/5004687d256c4187618812807f52f5682baf35c8"
+  },
+  "history": []
+}

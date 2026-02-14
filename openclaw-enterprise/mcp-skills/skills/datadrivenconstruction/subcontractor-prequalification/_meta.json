@@ -1,0 +1,11 @@
+{
+  "owner": "datadrivenconstruction",
+  "slug": "subcontractor-prequalification",
+  "displayName": "Subcontractor Prequalification",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1770475242067,
+    "commit": "https://github.com/openclaw/skills/commit/ce8ad6ec51b472dbbe92337abe0981c1785ba32a"
+  },
+  "history": []
+}

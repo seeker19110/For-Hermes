@@ -1,0 +1,11 @@
+{
+  "owner": "borisolver",
+  "slug": "cleanapp",
+  "displayName": "CleanApp Report Submission",
+  "latest": {
+    "version": "0.1.0",
+    "publishedAt": 1770800708174,
+    "commit": "https://github.com/openclaw/skills/commit/3e83200cf2ef858985c91aee4859d7a6cf5d78d3"
+  },
+  "history": []
+}

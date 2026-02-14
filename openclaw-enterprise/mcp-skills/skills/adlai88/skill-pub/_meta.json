@@ -1,0 +1,17 @@
+{
+  "owner": "adlai88",
+  "slug": "skill-pub",
+  "displayName": "Skill Pub",
+  "latest": {
+    "version": "1.13.1",
+    "publishedAt": 1770887083841,
+    "commit": "https://github.com/openclaw/skills/commit/ea08a549a6a8a9d13570a4b971d03df9affd20e2"
+  },
+  "history": [
+    {
+      "version": "1.12.1",
+      "publishedAt": 1770881530151,
+      "commit": "https://github.com/openclaw/skills/commit/0a9994db1bcd12d510f1c3d879e22e50161c60ae"
+    }
+  ]
+}

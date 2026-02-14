@@ -35,7 +35,7 @@ async function run() {
   }
 
   setStatus(`Запускаю deep crawl (${links.urls.length} стр.)...`);
-  await chrome.runtime.sendMessage({
+  const response = await chrome.runtime.sendMessage({
     type: 'crawl-site',
     payload: {
       dataType,
@@ -44,8 +44,10 @@ async function run() {
       urls: links.urls
     }
   });
-
-  setStatus('Deep crawl в фоне. Файл скачается автоматически.');
+  if (!response?.ok) {
+    throw new Error(response?.error || 'Deep crawl завершился с ошибкой');
+  }
+  setStatus(`Скачано: ${response.filename || 'готово'}`, true);
 }
 
 async function runSingle(tabId, config) {
@@ -97,10 +99,11 @@ async function runSingle(tabId, config) {
       try {
         const r = await fetch(imgUrl);
         if (!r.ok) continue;
-        const blob = await r.blob();
+        const contentType = r.headers.get('content-type') || '';
+        const bytes = new Uint8Array(await r.arrayBuffer());
         const safeName = safeFileName(new URL(imgUrl).pathname.split('/').pop() || 'image');
-        const ext = inferExt(blob.type, safeName);
-        zip.file(`images/assets/${safeName}${ext}`, blob);
+        const ext = inferExt(contentType, safeName);
+        zip.file(`images/assets/${safeName}${ext}`, bytes, { binary: true });
       } catch (_) {
         // ignore single image failures
       }

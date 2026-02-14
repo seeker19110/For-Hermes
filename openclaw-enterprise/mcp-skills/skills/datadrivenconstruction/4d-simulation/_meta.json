@@ -1,0 +1,11 @@
+{
+  "owner": "datadrivenconstruction",
+  "slug": "4d-simulation",
+  "displayName": "4d Simulation",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1770475630645,
+    "commit": "https://github.com/openclaw/skills/commit/f45cc0ce2dbf84b0cc00c68edde5fcf5708fe010"
+  },
+  "history": []
+}

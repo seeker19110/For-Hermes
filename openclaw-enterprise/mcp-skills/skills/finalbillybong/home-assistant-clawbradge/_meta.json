@@ -1,0 +1,11 @@
+{
+  "owner": "finalbillybong",
+  "slug": "home-assistant-clawbradge",
+  "displayName": "Home Assistant Clawbridge",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1770921220254,
+    "commit": "https://github.com/openclaw/skills/commit/b90818696befd82e33335799a2540af2a92b6bcc"
+  },
+  "history": []
+}

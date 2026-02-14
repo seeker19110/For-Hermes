@@ -1,0 +1,22 @@
+{
+  "owner": "yoni-bagelman-thenvoi",
+  "slug": "thenvoi-channel-onboarding",
+  "displayName": "Thenvoi",
+  "latest": {
+    "version": "1.0.6",
+    "publishedAt": 1770932810523,
+    "commit": "https://github.com/openclaw/skills/commit/28c95abc48e530fd5fdd16dabb6d4c43f2207aef"
+  },
+  "history": [
+    {
+      "version": "1.0.5",
+      "publishedAt": 1770834627214,
+      "commit": "https://github.com/openclaw/skills/commit/54bdccc30986d2f0ad04e2b709bd7710a91c73ba"
+    },
+    {
+      "version": "1.0.4",
+      "publishedAt": 1770828529447,
+      "commit": "https://github.com/openclaw/skills/commit/eddc9f5f6e1e60d4c6a03606e41aff4f56039215"
+    }
+  ]
+}

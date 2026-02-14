@@ -1,0 +1,11 @@
+{
+  "owner": "bobdevibecoder",
+  "slug": "bobagent-clawdbot-security-check",
+  "displayName": "clawdbot-security-check",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1770901619190,
+    "commit": "https://github.com/openclaw/skills/commit/ac90ee8ad6d40a581e3cbafc0ce3c2c4ff0b1cf2"
+  },
+  "history": []
+}

@@ -1,0 +1,11 @@
+{
+  "owner": "datadrivenconstruction",
+  "slug": "cwicr-value-engineering",
+  "displayName": "Cwicr Value Engineering",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1770475116675,
+    "commit": "https://github.com/openclaw/skills/commit/64e47338f5a404c717bf49b486baf9231edd42e1"
+  },
+  "history": []
+}

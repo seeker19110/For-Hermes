@@ -1,0 +1,11 @@
+{
+  "owner": "datadrivenconstruction",
+  "slug": "cwicr-location-factor",
+  "displayName": "Cwicr Location Factor",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1770475011309,
+    "commit": "https://github.com/openclaw/skills/commit/4f6ad83b9388efecdf0cc46e545e92370fe124cc"
+  },
+  "history": []
+}

@@ -1,0 +1,11 @@
+{
+  "owner": "charpup",
+  "slug": "task-workflow-v3",
+  "displayName": "Task Workflow V3",
+  "latest": {
+    "version": "3.0.0",
+    "publishedAt": 1770796455981,
+    "commit": "https://github.com/openclaw/skills/commit/f4c1a6cf0b59a5cf5a5d52375c10bcbe59f57ebe"
+  },
+  "history": []
+}

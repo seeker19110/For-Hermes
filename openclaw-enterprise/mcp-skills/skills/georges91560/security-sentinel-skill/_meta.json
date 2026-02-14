@@ -1,0 +1,11 @@
+{
+  "owner": "georges91560",
+  "slug": "security-sentinel-skill",
+  "displayName": "Anti-injection-skill",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1770978622006,
+    "commit": "https://github.com/openclaw/skills/commit/a25e38a732f80b296e0af2fec6142d9e86848ee6"
+  },
+  "history": []
+}

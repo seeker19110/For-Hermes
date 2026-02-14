@@ -1,0 +1,11 @@
+{
+  "owner": "bobdevibecoder",
+  "slug": "bobagent-web-deploy-github",
+  "displayName": "web-deploy-github",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1770902438465,
+    "commit": "https://github.com/openclaw/skills/commit/f552bd714859cd9c1cf5a71ff25417c5d5bb52d3"
+  },
+  "history": []
+}

@@ -1,0 +1,17 @@
+{
+  "owner": "marcosathanasoulis",
+  "slug": "openclaw-web-automation",
+  "displayName": "Openclaw Web Automation",
+  "latest": {
+    "version": "1.0.5",
+    "publishedAt": 1771053064036,
+    "commit": "https://github.com/openclaw/skills/commit/87600fdf651e2ed6647628361ac10a1ca8d875cb"
+  },
+  "history": [
+    {
+      "version": "1.0.1",
+      "publishedAt": 1771049156560,
+      "commit": "https://github.com/openclaw/skills/commit/58fc05c15616df5bc7b463bc4ef53c0965092569"
+    }
+  ]
+}

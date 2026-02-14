@@ -1,0 +1,11 @@
+{
+  "owner": "datadrivenconstruction",
+  "slug": "input-validation",
+  "displayName": "Input Validation",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1770476138704,
+    "commit": "https://github.com/openclaw/skills/commit/8d41f49aead626841cb8072241a14ab87de24c93"
+  },
+  "history": []
+}

@@ -1,0 +1,11 @@
+{
+  "owner": "seenfinity",
+  "slug": "presage",
+  "displayName": "Presage",
+  "latest": {
+    "version": "1.1.0",
+    "publishedAt": 1770841815838,
+    "commit": "https://github.com/openclaw/skills/commit/bd8d5f165fef5ac7d2db963a5e9d46ee71a8f20d"
+  },
+  "history": []
+}

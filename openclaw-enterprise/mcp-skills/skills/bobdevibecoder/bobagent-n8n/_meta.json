@@ -1,0 +1,11 @@
+{
+  "owner": "bobdevibecoder",
+  "slug": "bobagent-n8n",
+  "displayName": "n8n",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1770901818458,
+    "commit": "https://github.com/openclaw/skills/commit/72e1070c7d51c934cca713868c314daf3ff9f78e"
+  },
+  "history": []
+}

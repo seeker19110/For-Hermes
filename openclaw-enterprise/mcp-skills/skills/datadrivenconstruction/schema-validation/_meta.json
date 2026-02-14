@@ -1,0 +1,11 @@
+{
+  "owner": "datadrivenconstruction",
+  "slug": "schema-validation",
+  "displayName": "Schema Validation",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1770476149061,
+    "commit": "https://github.com/openclaw/skills/commit/62b81117874d85f844087b5276003f51c9869c9a"
+  },
+  "history": []
+}

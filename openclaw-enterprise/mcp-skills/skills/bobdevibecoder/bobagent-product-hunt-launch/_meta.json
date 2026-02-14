@@ -1,0 +1,11 @@
+{
+  "owner": "bobdevibecoder",
+  "slug": "bobagent-product-hunt-launch",
+  "displayName": "product-hunt-launch",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1770901896679,
+    "commit": "https://github.com/openclaw/skills/commit/b8d6c5ce96b10d55cec7ba87f6e4f283b3cdef87"
+  },
+  "history": []
+}

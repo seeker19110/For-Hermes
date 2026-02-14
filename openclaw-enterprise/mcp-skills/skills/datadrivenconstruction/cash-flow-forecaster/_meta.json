@@ -1,0 +1,11 @@
+{
+  "owner": "datadrivenconstruction",
+  "slug": "cash-flow-forecaster",
+  "displayName": "Cash Flow Forecaster",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1770474900895,
+    "commit": "https://github.com/openclaw/skills/commit/c2b9e577cdd344f969db3224acedef9a701e2001"
+  },
+  "history": []
+}

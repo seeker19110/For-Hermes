@@ -1,0 +1,17 @@
+{
+  "owner": "dorukardahan",
+  "slug": "zeroapi",
+  "displayName": "ZeroAPI",
+  "latest": {
+    "version": "2.1.1",
+    "publishedAt": 1770904152667,
+    "commit": "https://github.com/openclaw/skills/commit/bbdf00453d03e7434ecffb13a2c2dd3aa7657b66"
+  },
+  "history": [
+    {
+      "version": "2.1.0",
+      "publishedAt": 1770733904179,
+      "commit": "https://github.com/openclaw/skills/commit/db496ec49bcf2672323e36f9490e6b584b041858"
+    }
+  ]
+}

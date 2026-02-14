@@ -1,0 +1,11 @@
+{
+  "owner": "datadrivenconstruction",
+  "slug": "security-review-construction",
+  "displayName": "Security Review Construction",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1770476247694,
+    "commit": "https://github.com/openclaw/skills/commit/3701dd38e843f09de46737c8902eb7f1f5efb7c7"
+  },
+  "history": []
+}

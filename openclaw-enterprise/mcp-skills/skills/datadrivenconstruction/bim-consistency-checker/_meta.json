@@ -1,0 +1,11 @@
+{
+  "owner": "datadrivenconstruction",
+  "slug": "bim-consistency-checker",
+  "displayName": "Bim Consistency Checker",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1770475778664,
+    "commit": "https://github.com/openclaw/skills/commit/da566bc04b9f733ba763d475895950fed3b4d542"
+  },
+  "history": []
+}

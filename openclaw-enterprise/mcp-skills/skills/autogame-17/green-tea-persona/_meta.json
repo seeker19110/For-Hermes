@@ -1,0 +1,17 @@
+{
+  "owner": "autogame-17",
+  "slug": "green-tea-persona",
+  "displayName": "Green Tea Persona",
+  "latest": {
+    "version": "1.0.1",
+    "publishedAt": 1770791786480,
+    "commit": "https://github.com/openclaw/skills/commit/5448a0fbd40c3c6d4a2fb35807b76e0a2c53a8e4"
+  },
+  "history": [
+    {
+      "version": "1.0.0",
+      "publishedAt": 1770430964721,
+      "commit": "https://github.com/openclaw/skills/commit/8b1908b8a2b8173a85030021de6c6e3a65664d5c"
+    }
+  ]
+}

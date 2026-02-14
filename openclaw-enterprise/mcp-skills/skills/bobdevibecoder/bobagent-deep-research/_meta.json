@@ -1,0 +1,11 @@
+{
+  "owner": "bobdevibecoder",
+  "slug": "bobagent-deep-research",
+  "displayName": "deep-research",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1770901678658,
+    "commit": "https://github.com/openclaw/skills/commit/ff40263601478244aac6d341407ddf5db1b59b14"
+  },
+  "history": []
+}

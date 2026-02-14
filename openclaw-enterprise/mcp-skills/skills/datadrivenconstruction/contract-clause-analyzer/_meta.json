@@ -1,0 +1,11 @@
+{
+  "owner": "datadrivenconstruction",
+  "slug": "contract-clause-analyzer",
+  "displayName": "Contract Clause Analyzer",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1770475151812,
+    "commit": "https://github.com/openclaw/skills/commit/d8fccbf75f8dbc9c9842b7fa4d357df3b215413c"
+  },
+  "history": []
+}

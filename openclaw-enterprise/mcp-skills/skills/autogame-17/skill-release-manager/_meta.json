@@ -1,0 +1,17 @@
+{
+  "owner": "autogame-17",
+  "slug": "skill-release-manager",
+  "displayName": "Skill Release Manager",
+  "latest": {
+    "version": "1.0.1",
+    "publishedAt": 1770791877275,
+    "commit": "https://github.com/openclaw/skills/commit/38beb8a808a7af965c265569696261360ec573a0"
+  },
+  "history": [
+    {
+      "version": "1.0.0",
+      "publishedAt": 1770118216835,
+      "commit": "https://github.com/clawdbot/skills/commit/6e0baea7b217aac4dc726d81f445a40ea73c50cf"
+    }
+  ]
+}

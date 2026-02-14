@@ -1,0 +1,11 @@
+{
+  "owner": "charpup",
+  "slug": "openclaw-clawhub-publisher",
+  "displayName": "OpenClaw ClawHub Publisher",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1770786115483,
+    "commit": "https://github.com/openclaw/skills/commit/aa573525dc8ba7152f10fc5b0d6ef1866cd552a0"
+  },
+  "history": []
+}

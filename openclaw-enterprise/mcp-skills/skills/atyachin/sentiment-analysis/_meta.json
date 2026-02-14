@@ -1,0 +1,11 @@
+{
+  "owner": "atyachin",
+  "slug": "sentiment-analysis",
+  "displayName": "Sentiment Analysis — Social Media Brand Monitoring",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1770848767552,
+    "commit": "https://github.com/openclaw/skills/commit/6c35d07fe70465489ce48ebb22e871eaaf3e7ea0"
+  },
+  "history": []
+}

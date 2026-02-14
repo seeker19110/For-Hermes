@@ -1,0 +1,11 @@
+{
+  "owner": "henrino3",
+  "slug": "ec-x-video-transcribe",
+  "displayName": "X Video Transcribe",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1770472085204,
+    "commit": "https://github.com/openclaw/skills/commit/060bf4c3ade0937c95eb977c551b8920e99989b5"
+  },
+  "history": []
+}

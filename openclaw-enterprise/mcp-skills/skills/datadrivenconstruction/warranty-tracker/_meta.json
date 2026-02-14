@@ -1,0 +1,11 @@
+{
+  "owner": "datadrivenconstruction",
+  "slug": "warranty-tracker",
+  "displayName": "Warranty Tracker",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1770474879086,
+    "commit": "https://github.com/openclaw/skills/commit/3c0d9318f46ab00a8df60fd7020443888c111f8e"
+  },
+  "history": []
+}

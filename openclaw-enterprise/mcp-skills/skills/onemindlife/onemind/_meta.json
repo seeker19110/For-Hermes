@@ -1,0 +1,11 @@
+{
+  "owner": "onemindlife",
+  "slug": "onemind",
+  "displayName": "OneMind",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1770489056900,
+    "commit": "https://github.com/openclaw/skills/commit/8e0a6d0428ec6a0f4a4eb042637258a7c98d768b"
+  },
+  "history": []
+}

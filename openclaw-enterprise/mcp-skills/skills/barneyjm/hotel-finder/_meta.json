@@ -1,0 +1,11 @@
+{
+  "owner": "barneyjm",
+  "slug": "hotel-finder",
+  "displayName": "Hotel Finder",
+  "latest": {
+    "version": "2.0.0",
+    "publishedAt": 1770520095622,
+    "commit": "https://github.com/openclaw/skills/commit/24751d261e90b521238c48abe914b32d25c9fbb7"
+  },
+  "history": []
+}

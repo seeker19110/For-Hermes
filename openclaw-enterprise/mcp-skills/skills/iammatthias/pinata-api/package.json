@@ -1,0 +1,8 @@
+{
+  "name": "pinata-api-skill",
+  "version": "1.0.1",
+  "type": "module",
+  "dependencies": {
+    "zod": "^3.24.2"
+  }
+}

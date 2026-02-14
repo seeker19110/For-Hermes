@@ -1,0 +1,11 @@
+{
+  "owner": "datadrivenconstruction",
+  "slug": "toolbox-talk-generator",
+  "displayName": "Toolbox Talk Generator",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1770476054782,
+    "commit": "https://github.com/openclaw/skills/commit/28e87f8ddbe0670665de9f3727bc5bc921d81ef1"
+  },
+  "history": []
+}

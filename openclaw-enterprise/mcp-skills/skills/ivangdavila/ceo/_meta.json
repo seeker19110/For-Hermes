@@ -1,0 +1,17 @@
+{
+  "owner": "ivangdavila",
+  "slug": "ceo",
+  "displayName": "Chief Executive Officer",
+  "latest": {
+    "version": "1.0.2",
+    "publishedAt": 1770991520348,
+    "commit": "https://github.com/openclaw/skills/commit/c5ffa2d93ffa70f97b8d2ffeb932dc353686b430"
+  },
+  "history": [
+    {
+      "version": "1.0.0",
+      "publishedAt": 1770672048149,
+      "commit": "https://github.com/openclaw/skills/commit/d74fa6f30c8f380dfa7b9998939c9a137d9ede87"
+    }
+  ]
+}

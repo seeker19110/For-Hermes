@@ -1,0 +1,11 @@
+{
+  "owner": "cosformula",
+  "slug": "douban-sync-skill",
+  "displayName": "Douban Sync",
+  "latest": {
+    "version": "0.1.4",
+    "publishedAt": 1770976158859,
+    "commit": "https://github.com/openclaw/skills/commit/e77873ced62e03c8d5ef752fd1a75c84ea7a14fb"
+  },
+  "history": []
+}

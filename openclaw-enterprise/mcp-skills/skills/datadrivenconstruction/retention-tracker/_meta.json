@@ -1,0 +1,11 @@
+{
+  "owner": "datadrivenconstruction",
+  "slug": "retention-tracker",
+  "displayName": "Retention Tracker",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1770476219917,
+    "commit": "https://github.com/openclaw/skills/commit/ff313b47099f682ff9c1aa7c2f4e489d834d77ca"
+  },
+  "history": []
+}

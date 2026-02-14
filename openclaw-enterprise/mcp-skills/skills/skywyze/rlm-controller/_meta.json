@@ -1,0 +1,11 @@
+{
+  "owner": "skywyze",
+  "slug": "rlm-controller",
+  "displayName": "RLM Controller",
+  "latest": {
+    "version": "1.1.0",
+    "publishedAt": 1770774257169,
+    "commit": "https://github.com/openclaw/skills/commit/3be5c149ff9b88f4d08a6c5f0f60d03cc83307e3"
+  },
+  "history": []
+}

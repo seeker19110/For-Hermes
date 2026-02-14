@@ -1,0 +1,11 @@
+{
+  "owner": "datadrivenconstruction",
+  "slug": "pandas-construction-analysis",
+  "displayName": "Pandas Construction Analysis",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1770475445181,
+    "commit": "https://github.com/openclaw/skills/commit/05c0633f27d2e574a3f4ef6ed335a3f4cf445920"
+  },
+  "history": []
+}

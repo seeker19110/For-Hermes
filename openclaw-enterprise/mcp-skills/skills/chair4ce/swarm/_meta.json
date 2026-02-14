@@ -1,0 +1,22 @@
+{
+  "owner": "chair4ce",
+  "slug": "swarm",
+  "displayName": "Swarm",
+  "latest": {
+    "version": "1.0.4",
+    "publishedAt": 1770801419028,
+    "commit": "https://github.com/openclaw/skills/commit/5fb59768f2fd4fdc53f255c393f19de5809f34ec"
+  },
+  "history": [
+    {
+      "version": "0.3.0",
+      "publishedAt": 1769828021674,
+      "commit": "https://github.com/clawdbot/skills/commit/f8c6e8b173c986e7427966018f7c30605ac8d652"
+    },
+    {
+      "version": "0.2.0",
+      "publishedAt": 1769385856753,
+      "commit": "https://github.com/clawdbot/skills/commit/fc7b610b5b9fb3a328762cf6deaa671979a5f8dd"
+    }
+  ]
+}

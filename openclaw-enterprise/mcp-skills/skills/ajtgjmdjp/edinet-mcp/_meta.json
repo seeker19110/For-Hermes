@@ -1,0 +1,11 @@
+{
+  "owner": "ajtgjmdjp",
+  "slug": "edinet-mcp",
+  "displayName": "Edinet Mcp",
+  "latest": {
+    "version": "0.4.1",
+    "publishedAt": 1771053689506,
+    "commit": "https://github.com/openclaw/skills/commit/0d29b533fc2d9b9afdab863201f92a49af1e4f78"
+  },
+  "history": []
+}

@@ -1,0 +1,78 @@
+spec_version: "1.0"
+module_name: "notion_mcp_wrapper"
+skill_name: "notion-mcp-wrapper"
+description: "Notion MCP Server wrapper with health check, auto-reconnect, and fallback"
+author: "Galatea"
+version: "1.0.0"
+
+interfaces:
+  - name: "HealthChecker"
+    type: "class"
+    description: "MCP server health monitoring"
+    methods:
+      - name: "checkHealth"
+        signature: "() -> {status: string, latency: number}"
+        description: "Check MCP server connectivity"
+        test_cases:
+          - id: "TC-HEALTH-001"
+            name: "Healthy server"
+            expected: {status: "healthy", latency: "< 1000ms"}
+          - id: "TC-HEALTH-002"
+            name: "Unhealthy server"
+            expected: {status: "unhealthy", error: "Connection refused"}
+
+  - name: "Reconnector"
+    type: "class"
+    description: "Auto-reconnect with exponential backoff"
+    properties:
+      - name: "maxRetries"
+        type: "int"
+        default: 5
+      - name: "baseDelayMs"
+        type: "int"
+        default: 1000
+    methods:
+      - name: "reconnect"
+        signature: "() -> boolean"
+        description: "Attempt to reconnect to MCP server"
+        test_cases:
+          - id: "TC-RECONNECT-001"
+            name: "Successful reconnect"
+            expected: {success: true, attempts: 1}
+          - id: "TC-RECONNECT-002"
+            name: "Failed after max retries"
+            expected: {success: false, attempts: 5}
+
+  - name: "NotionMCPWrapper"
+    type: "class"
+    description: "Main wrapper with health check and fallback"
+    methods:
+      - name: "execute"
+        signature: "(operation: string, params: object) -> result"
+        description: "Execute Notion operation with fallback"
+        test_cases:
+          - id: "TC-WRAP-001"
+            name: "Primary success"
+            expected: {source: "mcp", success: true}
+          - id: "TC-WRAP-002"
+            name: "Fallback success"
+            expected: {source: "fallback", success: true}
+
+scenarios:
+  - id: "E2E-001"
+    name: "MCP healthy - direct execution"
+    given: ["MCP server is running"]
+    when: ["Execute Notion query"]
+    then: ["Return MCP result"]
+
+  - id: "E2E-002"
+    name: "MCP failed - fallback execution"
+    given: ["MCP server is down"]
+    when: ["Execute Notion query"]
+    then: ["Return fallback result", "Trigger reconnection"]
+
+  - id: "E2E-003"
+    name: "MCP recovered - switch back"
+    given: ["MCP was down, now recovered"]
+    when: ["Health check passes"]
+    then: ["Switch back to MCP", "Return MCP result"]

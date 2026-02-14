@@ -1,0 +1,11 @@
+{
+  "owner": "datadrivenconstruction",
+  "slug": "cwicr-crew-optimizer",
+  "displayName": "Cwicr Crew Optimizer",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1770474965671,
+    "commit": "https://github.com/openclaw/skills/commit/3bfab183840860a36ba7115f3cb0f0100e42ee7e"
+  },
+  "history": []
+}

@@ -1,0 +1,11 @@
+{
+  "owner": "barneyjm",
+  "slug": "safety-checker",
+  "displayName": "Safety Checker",
+  "latest": {
+    "version": "2.0.0",
+    "publishedAt": 1770520307861,
+    "commit": "https://github.com/openclaw/skills/commit/ce93cd714f2d80cd228d0481f1833a90658c2760"
+  },
+  "history": []
+}

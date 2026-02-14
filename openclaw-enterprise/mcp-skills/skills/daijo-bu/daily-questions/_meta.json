@@ -1,0 +1,11 @@
+{
+  "owner": "daijo-bu",
+  "slug": "daily-questions",
+  "displayName": "Daily Questions",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1770950038211,
+    "commit": "https://github.com/openclaw/skills/commit/e602784bcbbc3d29177d3f2b6684aca584b3644a"
+  },
+  "history": []
+}

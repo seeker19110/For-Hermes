@@ -1,0 +1,17 @@
+{
+  "owner": "swaylq",
+  "slug": "lambda-lang",
+  "displayName": "Lambda Lang",
+  "latest": {
+    "version": "1.5.1",
+    "publishedAt": 1770804575507,
+    "commit": "https://github.com/openclaw/skills/commit/c679ec9a7f6333c8f857b96325dc404ccb6794df"
+  },
+  "history": [
+    {
+      "version": "1.5.0",
+      "publishedAt": 1770570436813,
+      "commit": "https://github.com/openclaw/skills/commit/c44d8d27feaa07198fe67416b5281913f24d0ff8"
+    }
+  ]
+}

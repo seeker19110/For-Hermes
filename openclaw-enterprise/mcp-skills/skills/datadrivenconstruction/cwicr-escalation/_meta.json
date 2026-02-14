@@ -1,0 +1,11 @@
+{
+  "owner": "datadrivenconstruction",
+  "slug": "cwicr-escalation",
+  "displayName": "Cwicr Escalation",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1770474992020,
+    "commit": "https://github.com/openclaw/skills/commit/1855374a582a64efe91a84c238aa94cc4fd90597"
+  },
+  "history": []
+}

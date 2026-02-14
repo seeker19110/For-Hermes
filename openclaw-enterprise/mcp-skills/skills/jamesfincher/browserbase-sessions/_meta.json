@@ -1,0 +1,11 @@
+{
+  "owner": "jamesfincher",
+  "slug": "browserbase-sessions",
+  "displayName": "browserbase-sessions",
+  "latest": {
+    "version": "2.4.0",
+    "publishedAt": 1770794010290,
+    "commit": "https://github.com/openclaw/skills/commit/e91ed7e02a02b5a216a471d690a2dc93a1a233ba"
+  },
+  "history": []
+}

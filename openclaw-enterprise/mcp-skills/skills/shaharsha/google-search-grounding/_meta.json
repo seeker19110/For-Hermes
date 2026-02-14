@@ -1,0 +1,11 @@
+{
+  "owner": "shaharsha",
+  "slug": "google-search-grounding",
+  "displayName": "Google Search",
+  "latest": {
+    "version": "3.0.0",
+    "publishedAt": 1770477980308,
+    "commit": "https://github.com/openclaw/skills/commit/c75796ddb7656f7e4734a7191fc66d8d8c8f066e"
+  },
+  "history": []
+}

@@ -1,0 +1,11 @@
+{
+  "owner": "datadrivenconstruction",
+  "slug": "bim-to-schedule-4d",
+  "displayName": "Bim To Schedule 4d",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1770475277620,
+    "commit": "https://github.com/openclaw/skills/commit/f025091d2cf5ca74fc2be9fa66cbda8704675795"
+  },
+  "history": []
+}

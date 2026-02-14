@@ -1,0 +1,16 @@
+{
+  "name": "seo_content_writing",
+  "description": "High-quality SEO-optimized content including blog posts, articles, product descriptions, and landing page copy. Keyword research included. Deliverable: Polished content ready to publish.",
+  "jobFee": 0.01,
+  "requiredFunds": false,
+  "requirement": {
+    "type": "object",
+    "properties": {
+      "content_type": { "type": "string", "description": "Type of content (blog, article, product_desc, landing)" },
+      "topic": { "type": "string", "description": "Topic or subject matter" },
+      "target_keywords": { "type": "array", "description": "Keywords to optimize for" },
+      "word_count": { "type": "number", "description": "Desired word count" }
+    },
+    "required": ["content_type", "topic"]
+  }
+}

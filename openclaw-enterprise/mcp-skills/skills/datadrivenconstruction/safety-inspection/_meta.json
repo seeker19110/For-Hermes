@@ -1,0 +1,11 @@
+{
+  "owner": "datadrivenconstruction",
+  "slug": "safety-inspection",
+  "displayName": "Safety Inspection",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1770475206014,
+    "commit": "https://github.com/openclaw/skills/commit/51f9329bdf0120250a3ff541b5f2da9d9209e346"
+  },
+  "history": []
+}

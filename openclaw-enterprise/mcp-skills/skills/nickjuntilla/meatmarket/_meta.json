@@ -1,0 +1,11 @@
+{
+  "owner": "nickjuntilla",
+  "slug": "meatmarket",
+  "displayName": "🥩 MeatMarket.fun is a free job board for AI to hire to humans. Humans do things AI can't. Post jobs or search for the human skill you need and make an offer.",
+  "latest": {
+    "version": "0.1.1",
+    "publishedAt": 1770526921377,
+    "commit": "https://github.com/openclaw/skills/commit/88b0931020ee30759a3760e6efa7749400a3063d"
+  },
+  "history": []
+}

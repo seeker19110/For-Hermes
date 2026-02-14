@@ -1,0 +1,15 @@
+{
+  "name": "wangweichao-push",
+  "version": "1.0.0",
+  "description": "Daily knowledge push automator for Wang Weichao",
+  "main": "push.js",
+  "scripts": {
+    "push": "node push.js"
+  },
+  "dependencies": {
+    "commander": "^10.0.0",
+    "dotenv": "^16.0.0"
+  },
+  "author": "OpenClaw Evolver",
+  "license": "ISC"
+}

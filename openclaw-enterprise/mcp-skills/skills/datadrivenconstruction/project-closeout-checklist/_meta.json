@@ -1,0 +1,11 @@
+{
+  "owner": "datadrivenconstruction",
+  "slug": "project-closeout-checklist",
+  "displayName": "Project Closeout Checklist",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1770475247725,
+    "commit": "https://github.com/openclaw/skills/commit/91a7e452c45424eb730dae5f45387443ae89f008"
+  },
+  "history": []
+}

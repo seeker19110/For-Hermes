@@ -1,0 +1,11 @@
+{
+  "owner": "datadrivenconstruction",
+  "slug": "predictive-analytics-construction",
+  "displayName": "Predictive Analytics Construction",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1770475719243,
+    "commit": "https://github.com/openclaw/skills/commit/cea461804716f27b6069aaa17eb9cdb97b3edffb"
+  },
+  "history": []
+}

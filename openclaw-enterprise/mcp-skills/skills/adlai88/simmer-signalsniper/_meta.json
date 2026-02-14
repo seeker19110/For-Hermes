@@ -1,0 +1,27 @@
+{
+  "owner": "adlai88",
+  "slug": "simmer-signalsniper",
+  "displayName": "Polymarket Signal Sniper",
+  "latest": {
+    "version": "1.3.1",
+    "publishedAt": 1770472754501,
+    "commit": "https://github.com/openclaw/skills/commit/358f30419eee7d7550799660b3e64480367129a0"
+  },
+  "history": [
+    {
+      "version": "1.3.0",
+      "publishedAt": 1770442571475,
+      "commit": "https://github.com/openclaw/skills/commit/c3274f03e7015d4c8ad3074685069615c1439dd5"
+    },
+    {
+      "version": "1.2.0",
+      "publishedAt": 1769977887215,
+      "commit": "https://github.com/clawdbot/skills/commit/1a873dc5628a2257bb88b3b27b957d20393414f6"
+    },
+    {
+      "version": "1.1.0",
+      "publishedAt": 1769669744987,
+      "commit": "https://github.com/clawdbot/skills/commit/214c4be0bd8182583bfb8e4fcbff4a4262055fcf"
+    }
+  ]
+}

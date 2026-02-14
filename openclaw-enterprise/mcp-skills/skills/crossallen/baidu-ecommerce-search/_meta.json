@@ -1,0 +1,17 @@
+{
+  "owner": "crossallen",
+  "slug": "baidu-ecommerce-search",
+  "displayName": "Baidu Ecommerce Search",
+  "latest": {
+    "version": "1.0.2",
+    "publishedAt": 1770965505718,
+    "commit": "https://github.com/openclaw/skills/commit/412eb42ebdb9b5a6c3abcfe32238e8b3bd1371dd"
+  },
+  "history": [
+    {
+      "version": "1.0.0",
+      "publishedAt": 1770892322619,
+      "commit": "https://github.com/openclaw/skills/commit/1507e0c0ba72adf2a3753bf68e3eb264ce209c3c"
+    }
+  ]
+}

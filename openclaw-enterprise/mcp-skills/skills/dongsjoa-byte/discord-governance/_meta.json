@@ -1,0 +1,11 @@
+{
+  "owner": "dongsjoa-byte",
+  "slug": "discord-governance",
+  "displayName": "Discord Governance",
+  "latest": {
+    "version": "1.0.1",
+    "publishedAt": 1770455399568,
+    "commit": "https://github.com/openclaw/skills/commit/8e8389a1e81a4761beaa01f35c48498678f9faad"
+  },
+  "history": []
+}

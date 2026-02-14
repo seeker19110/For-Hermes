@@ -1,0 +1,302 @@
+{
+    "mcp_servers": {
+        "browseract-pro": {
+            "name": "browseract-pro",
+            "type": "stdio",
+            "command": "node",
+            "mcp_server_path": "/Users/work/.local/share/opencode/worktree/3492fc5455829fa1f151b58aefd743e1f6dc3335/cosmic-knight/12-factor-agents/openclaw-enterprise/mcp-skills/skills/riverho/browser-secure/dist/cli.js",
+            "notes": "Использует browser-secure с Playwright. Уже скомпилирован.",
+            "args": [],
+            "env": {
+                "LOYALFANS_USERNAME": "${LOYALFANS_USERNAME}",
+                "LOYALFANS_PASSWORD": "${LOYALFANS_PASSWORD}",
+                "BROWSERACT_PROXY": "${BROWSERACT_PROXY}"
+            },
+            "description": "Автоматизация LoyalFans - управление сообщениями, подписчиками и контентом",
+            "capabilities": [
+                "loyalfans_automation",
+                "message_management",
+                "subscriber_tracking",
+                "content_publishing",
+                "engagement_analysis"
+            ],
+            "tools": [
+                {
+                    "name": "login",
+                    "description": "Авторизация на платформе LoyalFans",
+                    "input_schema": {
+                        "type": "object",
+                        "properties": {
+                            "credentials": {
+                                "type": "object",
+                                "properties": {
+                                    "username": {
+                                        "type": "string"
+                                    },
+                                    "password": {
+                                        "type": "string"
+                                    }
+                                },
+                                "required": [
+                                    "username",
+                                    "password"
+                                ]
+                            }
+                        },
+                        "required": [
+                            "credentials"
+                        ]
+                    }
+                },
+                {
+                    "name": "get_messages",
+                    "description": "Получить список новых сообщений",
+                    "input_schema": {
+                        "type": "object",
+                        "properties": {
+                            "limit": {
+                                "type": "number",
+                                "default": 50
+                            },
+                            "unread_only": {
+                                "type": "boolean",
+                                "default": true
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "send_message",
+                    "description": "Отправить сообщение подписчику",
+                    "input_schema": {
+                        "type": "object",
+                        "properties": {
+                            "user": {
+                                "type": "string",
+                                "description": "Имя пользователя получателя"
+                            },
+                            "text": {
+                                "type": "string",
+                                "description": "Текст сообщения"
+                            }
+                        },
+                        "required": [
+                            "user",
+                            "text"
+                        ]
+                    }
+                },
+                {
+                    "name": "get_subscribers",
+                    "description": "Получить список подписчиков",
+                    "input_schema": {
+                        "type": "object",
+                        "properties": {
+                            "limit": {
+                                "type": "number",
+                                "default": 100
+                            },
+                            "sort_by": {
+                                "type": "string",
+                                "enum": [
+                                    "recent",
+                                    "spending",
+                                    "engagement"
+                                ],
+                                "default": "recent"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "post_content",
+                    "description": "Опубликовать контент на платформе",
+                    "input_schema": {
+                        "type": "object",
+                        "properties": {
+                            "content": {
+                                "type": "object",
+                                "properties": {
+                                    "text": {
+                                        "type": "string"
+                                    },
+                                    "media": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": {
+                                        "type": "string",
+                                        "enum": [
+                                            "post",
+                                            "story",
+                                            "message"
+                                        ]
+                                    }
+                                }
+                            }
+                        },
+                        "required": [
+                            "content"
+                        ]
+                    }
+                },
+                {
+                    "name": "create_ppv",
+                    "description": "Создать платный контент (pay-per-view)",
+                    "input_schema": {
+                        "type": "object",
+                        "properties": {
+                            "title": {
+                                "type": "string"
+                            },
+                            "price": {
+                                "type": "number"
+                            },
+                            "media": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            },
+                            "description": {
+                                "type": "string"
+                            }
+                        },
+                        "required": [
+                            "title",
+                            "price",
+                            "media"
+                        ]
+                    }
+                },
+                {
+                    "name": "analyze_engagement",
+                    "description": "Анализ вовлечённости аудитории",
+                    "input_schema": {
+                        "type": "object",
+                        "properties": {
+                            "period": {
+                                "type": "string",
+                                "enum": [
+                                    "day",
+                                    "week",
+                                    "month"
+                                ],
+                                "default": "week"
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        "whisper-local": {
+            "name": "whisper-local",
+            "type": "stdio",
+            "command": "npx",
+            "args": [
+                "-y",
+                "@lobstore/whisper-local"
+            ],
+            "env": {
+                "WHISPER_MODEL": "${WHISPER_MODEL}",
+                "WHISPER_DEVICE": "${WHISPER_DEVICE}"
+            },
+            "description": "Локальная обработка аудио - транскрибирование и анализ речи",
+            "capabilities": [
+                "audio_transcription",
+                "sentiment_analysis",
+                "keyword_extraction",
+                "pattern_learning"
+            ],
+            "tools": [
+                {
+                    "name": "transcribe",
+                    "description": "Транскрибировать аудиофайл",
+                    "input_schema": {
+                        "type": "object",
+                        "properties": {
+                            "audio_file": {
+                                "type": "string",
+                                "description": "Путь к аудиофайлу"
+                            },
+                            "language": {
+                                "type": "string",
+                                "default": "ru"
+                            }
+                        },
+                        "required": [
+                            "audio_file"
+                        ]
+                    }
+                },
+                {
+                    "name": "analyze_sentiment",
+                    "description": "Анализ тональности текста",
+                    "input_schema": {
+                        "type": "object",
+                        "properties": {
+                            "text": {
+                                "type": "string"
+                            }
+                        },
+                        "required": [
+                            "text"
+                        ]
+                    }
+                },
+                {
+                    "name": "extract_keywords",
+                    "description": "Извлечь ключевые слова из текста",
+                    "input_schema": {
+                        "type": "object",
+                        "properties": {
+                            "text": {
+                                "type": "string"
+                            },
+                            "max_keywords": {
+                                "type": "number",
+                                "default": 10
+                            }
+                        },
+                        "required": [
+                            "text"
+                        ]
+                    }
+                },
+                {
+                    "name": "learn_patterns",
+                    "description": "Обучить модель на основе транскрипций",
+                    "input_schema": {
+                        "type": "object",
+                        "properties": {
+                            "transcriptions": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            },
+                            "target": {
+                                "type": "string",
+                                "description": "Цель обучения (e.g., 'sales_scripts', 'subscriber_preferences')"
+                            }
+                        },
+                        "required": [
+                            "transcriptions",
+                            "target"
+                        ]
+                    }
+                }
+            ]
+        }
+    },
+    "settings": {
+        "default_timeout": 30000,
+        "max_retries": 3,
+        "rate_limit": {
+            "messages_per_hour": 50,
+            "cooldown_period": 1000
+        }
+    }
+}

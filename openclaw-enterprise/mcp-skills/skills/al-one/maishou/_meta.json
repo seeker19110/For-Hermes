@@ -1,0 +1,17 @@
+{
+  "owner": "al-one",
+  "slug": "maishou",
+  "displayName": "淘宝/京东/拼多多/抖音/快手商品比价, 获取优惠券",
+  "latest": {
+    "version": "1.0.4",
+    "publishedAt": 1770786757544,
+    "commit": "https://github.com/openclaw/skills/commit/7b0362d3fb202fc72222ffa2d17f707fa0d041d3"
+  },
+  "history": [
+    {
+      "version": "1.0.3",
+      "publishedAt": 1770537120377,
+      "commit": "https://github.com/openclaw/skills/commit/f827d073804428c1ff3c8d591927a9397170d5ec"
+    }
+  ]
+}

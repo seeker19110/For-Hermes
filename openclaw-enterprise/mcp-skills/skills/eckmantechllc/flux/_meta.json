@@ -1,0 +1,11 @@
+{
+  "owner": "eckmantechllc",
+  "slug": "flux",
+  "displayName": "Flux",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1770836688466,
+    "commit": "https://github.com/openclaw/skills/commit/41eddaeb80aca0ca184c221bfdcbba65455ad996"
+  },
+  "history": []
+}

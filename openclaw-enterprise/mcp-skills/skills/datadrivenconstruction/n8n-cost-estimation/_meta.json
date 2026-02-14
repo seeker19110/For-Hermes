@@ -1,0 +1,11 @@
+{
+  "owner": "datadrivenconstruction",
+  "slug": "n8n-cost-estimation",
+  "displayName": "N8n Cost Estimation",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1770475933173,
+    "commit": "https://github.com/openclaw/skills/commit/85f9c26583c3de408fce3799f121abcf2db78bf3"
+  },
+  "history": []
+}

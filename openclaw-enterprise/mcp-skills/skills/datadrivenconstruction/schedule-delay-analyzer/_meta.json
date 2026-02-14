@@ -1,0 +1,11 @@
+{
+  "owner": "datadrivenconstruction",
+  "slug": "schedule-delay-analyzer",
+  "displayName": "Schedule Delay Analyzer",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1770475309575,
+    "commit": "https://github.com/openclaw/skills/commit/18a0fa9f5cbc67054959eb0bdebabe1911ee0f30"
+  },
+  "history": []
+}

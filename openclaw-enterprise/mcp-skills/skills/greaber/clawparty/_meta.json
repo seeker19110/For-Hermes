@@ -1,0 +1,11 @@
+{
+  "owner": "greaber",
+  "slug": "clawparty",
+  "displayName": "clawparty",
+  "latest": {
+    "version": "0.0.0",
+    "publishedAt": 1770493857348,
+    "commit": "https://github.com/openclaw/skills/commit/c2178b3c3a0ddf3cc44816626b930ce6b3c6eab7"
+  },
+  "history": []
+}

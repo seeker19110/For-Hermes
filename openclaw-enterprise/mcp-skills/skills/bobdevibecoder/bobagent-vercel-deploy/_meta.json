@@ -1,0 +1,11 @@
+{
+  "owner": "bobdevibecoder",
+  "slug": "bobagent-vercel-deploy",
+  "displayName": "vercel-deploy",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1770902426330,
+    "commit": "https://github.com/openclaw/skills/commit/e0cddba7cd28ea0fab0eaa2e6eb23bdde2dcd031"
+  },
+  "history": []
+}

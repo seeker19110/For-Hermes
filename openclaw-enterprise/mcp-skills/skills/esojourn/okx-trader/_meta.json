@@ -1,0 +1,17 @@
+{
+  "owner": "esojourn",
+  "slug": "okx-trader",
+  "displayName": "Okx Trader",
+  "latest": {
+    "version": "1.1.2",
+    "publishedAt": 1770878572710,
+    "commit": "https://github.com/openclaw/skills/commit/d846c1145dd5e34a84da3ea87b73b6369ca2dcbf"
+  },
+  "history": [
+    {
+      "version": "1.1.1",
+      "publishedAt": 1770877677096,
+      "commit": "https://github.com/openclaw/skills/commit/2d2cb8692a9a56e94343eff5bef3ab8eeba57a14"
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "owner": "alex-tradequo",
+  "slug": "whatsapp-automation-a2a",
+  "displayName": "WhatsApp All-in-One — AI Messaging, Leads, Bulk Send & A2A",
+  "latest": {
+    "version": "2.3.2",
+    "publishedAt": 1770987622562,
+    "commit": "https://github.com/openclaw/skills/commit/6c6d2f443b271d8daf6f5a7aea89af5bbbee6733"
+  },
+  "history": [
+    {
+      "version": "2.3.0",
+      "publishedAt": 1770986919076,
+      "commit": "https://github.com/openclaw/skills/commit/db15fc55e58fbeea6427273ef2a65f241ebfe63b"
+    },
+    {
+      "version": "2.1.2",
+      "publishedAt": 1770885750132,
+      "commit": "https://github.com/openclaw/skills/commit/3b9c80fb7b734fa097631a765c0b155a91b3b469"
+    },
+    {
+      "version": "2.0.3",
+      "publishedAt": 1770851950703,
+      "commit": "https://github.com/openclaw/skills/commit/6fdeda9162cef136e944cd95877599e36b5d29cb"
+    },
+    {
+      "version": "1.4.1",
+      "publishedAt": 1770491025311,
+      "commit": "https://github.com/openclaw/skills/commit/2e478d32ae307c444616acf702d9a61c410044db"
+    },
+    {
+      "version": "1.4.0",
+      "publishedAt": 1770371356398,
+      "commit": "https://github.com/openclaw/skills/commit/a8b8ec5b5b16c9b0c737a22873d4c9b801d5ee79"
+    }
+  ]
+}

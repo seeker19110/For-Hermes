@@ -1,0 +1,11 @@
+{
+  "owner": "datadrivenconstruction",
+  "slug": "airflow-dag",
+  "displayName": "Airflow Dag",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1770475740883,
+    "commit": "https://github.com/openclaw/skills/commit/c22825448e693346aa6d37b6705e1a2f1c1dda82"
+  },
+  "history": []
+}

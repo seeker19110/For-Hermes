@@ -1,0 +1,11 @@
+{
+  "owner": "datadrivenconstruction",
+  "slug": "subcontractor-payment-tracker",
+  "displayName": "Subcontractor Payment Tracker",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1770474927321,
+    "commit": "https://github.com/openclaw/skills/commit/e3df6422260eb2606df9411eb7fcd0f95cdddb5b"
+  },
+  "history": []
+}

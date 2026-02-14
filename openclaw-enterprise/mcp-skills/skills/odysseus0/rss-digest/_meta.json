@@ -1,0 +1,17 @@
+{
+  "owner": "odysseus0",
+  "slug": "rss-digest",
+  "displayName": "RSS Digest",
+  "latest": {
+    "version": "1.2.0",
+    "publishedAt": 1771018474005,
+    "commit": "https://github.com/openclaw/skills/commit/ad32920886ba6758d4ce620d8ab7c3799b136576"
+  },
+  "history": [
+    {
+      "version": "1.0.1",
+      "publishedAt": 1770969485324,
+      "commit": "https://github.com/openclaw/skills/commit/e527e5c1c5beac686cb52f8cfd8685a04b1cbcfb"
+    }
+  ]
+}

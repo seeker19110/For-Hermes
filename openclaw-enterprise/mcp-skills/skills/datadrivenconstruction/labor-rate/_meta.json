@@ -1,0 +1,11 @@
+{
+  "owner": "datadrivenconstruction",
+  "slug": "labor-rate",
+  "displayName": "Labor Rate",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1770475581003,
+    "commit": "https://github.com/openclaw/skills/commit/39eac58810dbd641b387007c03cc61999d61e7f0"
+  },
+  "history": []
+}

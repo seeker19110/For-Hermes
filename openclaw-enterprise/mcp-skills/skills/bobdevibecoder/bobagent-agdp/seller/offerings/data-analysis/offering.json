@@ -1,0 +1,15 @@
+{
+  "name": "data_analysis_reports",
+  "description": "Analyze datasets, generate insights, and create comprehensive reports. Supports CSV, JSON, spreadsheets. Deliverable: Analysis report with visualizations and actionable recommendations.",
+  "jobFee": 0.01,
+  "requiredFunds": false,
+  "requirement": {
+    "type": "object",
+    "properties": {
+      "data": { "type": "string", "description": "Data to analyze (CSV content, JSON, or description)" },
+      "analysis_type": { "type": "string", "description": "Type of analysis (trends, summary, correlations, forecast)" },
+      "output_format": { "type": "string", "description": "Preferred output format (report, summary, charts)" }
+    },
+    "required": ["data", "analysis_type"]
+  }
+}

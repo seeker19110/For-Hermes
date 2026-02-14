@@ -1,0 +1,11 @@
+{
+  "owner": "inlo",
+  "slug": "autotask-mcp",
+  "displayName": "Autotask MCP Server",
+  "latest": {
+    "version": "1.0.1",
+    "publishedAt": 1770827557282,
+    "commit": "https://github.com/openclaw/skills/commit/69734d1e45795bb3e41e36cd63ebddb83ec6d9c2"
+  },
+  "history": []
+}

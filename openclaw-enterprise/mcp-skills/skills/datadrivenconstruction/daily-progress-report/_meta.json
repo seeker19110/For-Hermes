@@ -1,0 +1,11 @@
+{
+  "owner": "datadrivenconstruction",
+  "slug": "daily-progress-report",
+  "displayName": "Daily Progress Report",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1770474593062,
+    "commit": "https://github.com/openclaw/skills/commit/3f0536b5a660506fc19edef12d13411fac46e1db"
+  },
+  "history": []
+}

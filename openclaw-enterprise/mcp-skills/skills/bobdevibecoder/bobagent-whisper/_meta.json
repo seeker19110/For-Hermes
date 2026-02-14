@@ -1,0 +1,11 @@
+{
+  "owner": "bobdevibecoder",
+  "slug": "bobagent-whisper",
+  "displayName": "whisper",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1770902452235,
+    "commit": "https://github.com/openclaw/skills/commit/c6c9f9b78eac0a367a90330a05322cbf89d0afef"
+  },
+  "history": []
+}

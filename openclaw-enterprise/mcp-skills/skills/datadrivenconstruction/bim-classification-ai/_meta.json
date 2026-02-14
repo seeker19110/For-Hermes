@@ -1,0 +1,11 @@
+{
+  "owner": "datadrivenconstruction",
+  "slug": "bim-classification-ai",
+  "displayName": "Bim Classification Ai",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1770474766649,
+    "commit": "https://github.com/openclaw/skills/commit/46642021f79bbecef2f95afcba44faf23b13429b"
+  },
+  "history": []
+}

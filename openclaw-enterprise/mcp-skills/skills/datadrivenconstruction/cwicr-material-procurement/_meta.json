@@ -1,0 +1,11 @@
+{
+  "owner": "datadrivenconstruction",
+  "slug": "cwicr-material-procurement",
+  "displayName": "Cwicr Material Procurement",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1770475018404,
+    "commit": "https://github.com/openclaw/skills/commit/f901fae4d18fbea3a3818a7bce0371a785e3c0d5"
+  },
+  "history": []
+}

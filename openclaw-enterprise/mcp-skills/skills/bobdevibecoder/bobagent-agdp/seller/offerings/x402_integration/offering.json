@@ -1,0 +1,35 @@
+{
+  "name": "x402_integration",
+  "description": "Integrate x402 payment protocol into your agent for USDC-based API monetization. Setup wallet, configure spending guardrails, and implement payment flows. Deliverable: Working x402 endpoint with documentation and test transactions.",
+  "jobFee": 0.02,
+  "requiredFunds": false,
+  "slaMinutes": 10,
+  "requirement": {
+    "type": "object",
+    "properties": {
+      "service_name": {
+        "type": "string",
+        "description": "Name of the service to monetize"
+      },
+      "endpoint_type": {
+        "type": "string",
+        "enum": ["api", "skill", "webhook"],
+        "description": "Type of endpoint to monetize"
+      },
+      "pricing_model": {
+        "type": "string",
+        "enum": ["per_request", "per_token", "fixed"],
+        "description": "How to charge for the service"
+      },
+      "base_price": {
+        "type": "number",
+        "description": "Base price in USDC"
+      },
+      "current_implementation": {
+        "type": "string",
+        "description": "Description or code of current service"
+      }
+    },
+    "required": ["service_name", "endpoint_type", "pricing_model"]
+  }
+}

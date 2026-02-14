@@ -1,0 +1,11 @@
+{
+  "owner": "datadrivenconstruction",
+  "slug": "cwicr-unit-converter",
+  "displayName": "Cwicr Unit Converter",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1770475109244,
+    "commit": "https://github.com/openclaw/skills/commit/7cfab8558dcd826e0e9002036107471e05704d7c"
+  },
+  "history": []
+}

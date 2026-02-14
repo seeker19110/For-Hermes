@@ -1,0 +1,17 @@
+{
+  "owner": "autogame-17",
+  "slug": "code-search",
+  "displayName": "Code Search",
+  "latest": {
+    "version": "1.0.1",
+    "publishedAt": 1770791145315,
+    "commit": "https://github.com/openclaw/skills/commit/d766a4eaf5455fede129eb1b516e59c20c171d05"
+  },
+  "history": [
+    {
+      "version": "1.0.0",
+      "publishedAt": 1770790830087,
+      "commit": "https://github.com/openclaw/skills/commit/4154578d6b091635b53bfb74f46b4f265b360be1"
+    }
+  ]
+}
