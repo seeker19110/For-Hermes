@@ -1,0 +1,27 @@
+{
+  "owner": "alstja98",
+  "slug": "hey-traders",
+  "displayName": "Hey-Traders Quant Skills",
+  "latest": {
+    "version": "1.0.3",
+    "publishedAt": 1770982171006,
+    "commit": "https://github.com/openclaw/skills/commit/0469587ebe1bd6a2552ba96de9509818c2194929"
+  },
+  "history": [
+    {
+      "version": "1.0.2",
+      "publishedAt": 1770821748915,
+      "commit": "https://github.com/openclaw/skills/commit/768143abf0901f795698ca01d872a2458a72c93d"
+    },
+    {
+      "version": "1.0.1",
+      "publishedAt": 1770738083366,
+      "commit": "https://github.com/openclaw/skills/commit/01f4a4b9d9f291697a655f23605d65b7241b3897"
+    },
+    {
+      "version": "1.0.0",
+      "publishedAt": 1770646067626,
+      "commit": "https://github.com/openclaw/skills/commit/f9d1088004fe012cf155684462c75c8c649f9da9"
+    }
+  ]
+}

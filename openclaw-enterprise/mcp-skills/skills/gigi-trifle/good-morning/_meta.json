@@ -1,0 +1,11 @@
+{
+  "owner": "gigi-trifle",
+  "slug": "good-morning",
+  "displayName": "Good Morning Game",
+  "latest": {
+    "version": "1.0.1",
+    "publishedAt": 1770522318871,
+    "commit": "https://github.com/openclaw/skills/commit/4ef96223dd58f1cb88e801f6cd91c42436cfd970"
+  },
+  "history": []
+}

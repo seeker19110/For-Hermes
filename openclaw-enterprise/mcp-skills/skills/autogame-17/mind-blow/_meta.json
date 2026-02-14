@@ -1,0 +1,17 @@
+{
+  "owner": "autogame-17",
+  "slug": "mind-blow",
+  "displayName": "Mind Blow",
+  "latest": {
+    "version": "1.0.1",
+    "publishedAt": 1770791821031,
+    "commit": "https://github.com/openclaw/skills/commit/cf83bdfd07c5a591364b48ef615fcda1585412d0"
+  },
+  "history": [
+    {
+      "version": "1.0.0",
+      "publishedAt": 1769892405849,
+      "commit": "https://github.com/clawdbot/skills/commit/5eb279dc1a70f455a6dd6fd77c5797b47ebcbf40"
+    }
+  ]
+}

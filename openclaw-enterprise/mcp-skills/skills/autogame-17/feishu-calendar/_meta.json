@@ -1,0 +1,17 @@
+{
+  "owner": "autogame-17",
+  "slug": "feishu-calendar",
+  "displayName": "Feishu Calendar",
+  "latest": {
+    "version": "1.0.2",
+    "publishedAt": 1770791197591,
+    "commit": "https://github.com/openclaw/skills/commit/6b9a1e5faba66db5de47e5e0721ca8d75fab9a6c"
+  },
+  "history": [
+    {
+      "version": "1.0.0",
+      "publishedAt": 1770118148570,
+      "commit": "https://github.com/clawdbot/skills/commit/931a71f3a9521611d75a752a04e6b14771282118"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "owner": "datadrivenconstruction",
+  "slug": "safety-compliance-checker",
+  "displayName": "Safety Compliance Checker",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1770476437607,
+    "commit": "https://github.com/openclaw/skills/commit/e25c6cae970eff34779809fe8ab9d5a9846ef3d9"
+  },
+  "history": []
+}

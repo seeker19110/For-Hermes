@@ -1,0 +1,17 @@
+{
+  "owner": "autogame-17",
+  "slug": "identity-manager",
+  "displayName": "Identity Manager",
+  "latest": {
+    "version": "1.0.1",
+    "publishedAt": 1770791791965,
+    "commit": "https://github.com/openclaw/skills/commit/8a856e4c5c65e37b036aa023c9d684cb4d827d72"
+  },
+  "history": [
+    {
+      "version": "1.0.0",
+      "publishedAt": 1770118185196,
+      "commit": "https://github.com/clawdbot/skills/commit/e6ccdffcae028e195156fc6df9288075d428283e"
+    }
+  ]
+}

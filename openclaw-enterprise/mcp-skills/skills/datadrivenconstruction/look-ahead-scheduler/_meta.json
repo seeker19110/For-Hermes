@@ -1,0 +1,11 @@
+{
+  "owner": "datadrivenconstruction",
+  "slug": "look-ahead-scheduler",
+  "displayName": "Look Ahead Scheduler",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1770476079582,
+    "commit": "https://github.com/openclaw/skills/commit/afc56a7f97d04e3e219fa72f645bf5245b14efa1"
+  },
+  "history": []
+}

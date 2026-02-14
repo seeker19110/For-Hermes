@@ -1,0 +1,17 @@
+{
+  "owner": "jameslemke10",
+  "slug": "clawtan",
+  "displayName": "clawtan",
+  "latest": {
+    "version": "1.0.3",
+    "publishedAt": 1770999791975,
+    "commit": "https://github.com/openclaw/skills/commit/dcd6da7cfab1ec00ebf29908447150c7d6093007"
+  },
+  "history": [
+    {
+      "version": "1.0.2",
+      "publishedAt": 1770936968275,
+      "commit": "https://github.com/openclaw/skills/commit/5cd68c86a7f0228c0daa4fea40b455e67f9a2d5b"
+    }
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "user_id": "whale_fan_001",
+  "facts": [
+    {
+      "id": "ad5a815d63db565d",
+      "user_id": "whale_fan_001",
+      "content": "любит красный цвет",
+      "category": "preference",
+      "importance": 8,
+      "source": "conversation",
+      "created_at": "2026-02-14T09:54:29.649166",
+      "updated_at": "2026-02-14T09:54:29.649168",
+      "metadata": {}
+    },
+    {
+      "id": "140613a6ae26b5b3",
+      "user_id": "whale_fan_001",
+      "content": "у него есть собака по кличке Рекс",
+      "category": "personal",
+      "importance": 7,
+      "source": "conversation",
+      "created_at": "2026-02-14T09:54:29.649424",
+      "updated_at": "2026-02-14T09:54:29.649425",
+      "metadata": {}
+    },
+    {
+      "id": "4b7b38e6a2237461",
+      "user_id": "whale_fan_001",
+      "content": "интересуется premium контентом",
+      "category": "interest",
+      "importance": 6,
+      "source": "conversation",
+      "created_at": "2026-02-14T09:54:29.649737",
+      "updated_at": "2026-02-14T09:54:29.649741",
+      "metadata": {}
+    },
+    {
+      "id": "6d99fc6e76c39742",
+      "user_id": "whale_fan_001",
+      "content": "предпочитает вечерние сообщения",
+      "category": "preference",
+      "importance": 5,
+      "source": "conversation",
+      "created_at": "2026-02-14T09:54:29.650029",
+      "updated_at": "2026-02-14T09:54:29.650030",
+      "metadata": {}
+    },
+    {
+      "id": "3dc8d1a9b4a04520",
+      "user_id": "whale_fan_001",
+      "content": "недавно купил подписку",
+      "category": "purchase",
+      "importance": 9,
+      "source": "conversation",
+      "created_at": "2026-02-14T09:54:29.650221",
+      "updated_at": "2026-02-14T09:54:29.650222",
+      "metadata": {}
+    }
+  ]
+}

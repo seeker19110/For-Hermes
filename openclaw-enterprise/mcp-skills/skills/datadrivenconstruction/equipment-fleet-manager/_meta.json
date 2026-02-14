@@ -1,0 +1,11 @@
+{
+  "owner": "datadrivenconstruction",
+  "slug": "equipment-fleet-manager",
+  "displayName": "Equipment Fleet Manager",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1770475260142,
+    "commit": "https://github.com/openclaw/skills/commit/4eb1d0b97861fb0627586379f44509a89ae9dd88"
+  },
+  "history": []
+}

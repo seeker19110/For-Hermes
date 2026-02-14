@@ -1,0 +1,11 @@
+{
+  "owner": "bobdevibecoder",
+  "slug": "bobagent-supabase",
+  "displayName": "supabase",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1770902389393,
+    "commit": "https://github.com/openclaw/skills/commit/d906e569335166cacbd9cfd164fb936acc18a18b"
+  },
+  "history": []
+}

@@ -1,0 +1,11 @@
+{
+  "owner": "datadrivenconstruction",
+  "slug": "cwicr-historical-cost",
+  "displayName": "Cwicr Historical Cost",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1770474998159,
+    "commit": "https://github.com/openclaw/skills/commit/747742d8ad29efefbe0b1c073af5fa08301c1e09"
+  },
+  "history": []
+}

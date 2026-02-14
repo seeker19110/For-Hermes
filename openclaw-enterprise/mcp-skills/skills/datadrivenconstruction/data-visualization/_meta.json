@@ -1,0 +1,11 @@
+{
+  "owner": "datadrivenconstruction",
+  "slug": "data-visualization",
+  "displayName": "Data Visualization",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1770475695650,
+    "commit": "https://github.com/openclaw/skills/commit/903f961e5e7baff51de46072942833a6c5e81b2b"
+  },
+  "history": []
+}

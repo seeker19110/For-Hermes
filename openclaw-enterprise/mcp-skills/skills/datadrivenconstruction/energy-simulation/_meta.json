@@ -1,0 +1,11 @@
+{
+  "owner": "datadrivenconstruction",
+  "slug": "energy-simulation",
+  "displayName": "Energy Simulation",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1770476331457,
+    "commit": "https://github.com/openclaw/skills/commit/812276a6de05031325e68eb7a4f2f61bf6d869f2"
+  },
+  "history": []
+}

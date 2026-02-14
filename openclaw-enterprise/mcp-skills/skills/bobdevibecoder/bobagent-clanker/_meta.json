@@ -1,0 +1,11 @@
+{
+  "owner": "bobdevibecoder",
+  "slug": "bobagent-clanker",
+  "displayName": "clanker",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1770901541534,
+    "commit": "https://github.com/openclaw/skills/commit/780f970f34b2a0b7e791bbd477fba2d412415d7c"
+  },
+  "history": []
+}

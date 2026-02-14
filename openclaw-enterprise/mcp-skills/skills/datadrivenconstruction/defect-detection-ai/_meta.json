@@ -1,0 +1,11 @@
+{
+  "owner": "datadrivenconstruction",
+  "slug": "defect-detection-ai",
+  "displayName": "Defect Detection Ai",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1770476302332,
+    "commit": "https://github.com/openclaw/skills/commit/f8848f340c204fbbcad280098ff7624efa7f6dfc"
+  },
+  "history": []
+}

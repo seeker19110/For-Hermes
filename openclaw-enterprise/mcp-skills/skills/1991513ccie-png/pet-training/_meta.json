@@ -1,0 +1,11 @@
+{
+  "owner": "1991513ccie-png",
+  "slug": "pet-training",
+  "displayName": "upet training",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1770995294342,
+    "commit": "https://github.com/openclaw/skills/commit/6ff330d05cfd0813a00eb828e05dd36f73a99ee4"
+  },
+  "history": []
+}

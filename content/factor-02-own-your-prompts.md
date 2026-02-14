@@ -88,4 +88,49 @@ Having full control over your prompts gives you the flexibility and prompt contr
 
 I don't know what's the best prompt, but I know you want the flexibility to be able to try EVERYTHING.
 
+### Claude Example
+
+With Claude, you have direct control over the system prompt and can leverage its understanding of XML-style formatting:
+
+```python
+from anthropic import Anthropic
+
+client = Anthropic()
+
+# Own every token in your prompt
+system_prompt = """You are a deployment assistant. Follow these rules:
+
+1. Always verify git tags exist before deploying
+2. Request human approval for production deployments
+3. Use structured JSON output with "intent" field
+4. If uncertain, use request_human_input tool
+
+<deployment_rules>
+  <rule priority="high">Never deploy on Fridays after 4 PM</rule>
+  <rule priority="high">Always verify database migrations before production</rule>
+  <rule priority="medium">Notify #deployments channel after completion</rule>
+</deployment_rules>
+
+Current git tags:
+{% for tag in git_tags %}
+- {{ tag.name }} ({{ tag.date }})
+{% endfor %}
+
+Respond with a JSON object containing an "intent" field."""
+
+response = client.messages.create(
+    model="claude-3-5-sonnet-20241022",
+    max_tokens=4096,
+    system=system_prompt,
+    messages=[{"role": "user", "content": "Deploy the latest version to production"}],
+    tools=tools
+)
+```
+
+Claude responds well to:
+- Clear, explicit instructions in system prompts
+- XML-style tags for structuring context
+- Examples of desired output format
+- Role-based instructions (system vs user messages)
+
 [← Natural Language To Tool Calls](https://github.com/humanlayer/12-factor-agents/blob/main/content/factor-01-natural-language-to-tool-calls.md) | [Own Your Context Window →](https://github.com/humanlayer/12-factor-agents/blob/main/content/factor-03-own-your-context-window.md)

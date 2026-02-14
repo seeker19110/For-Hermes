@@ -1,0 +1,11 @@
+{
+  "owner": "datadrivenconstruction",
+  "slug": "erp-data-extractor",
+  "displayName": "Erp Data Extractor",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1770475677393,
+    "commit": "https://github.com/openclaw/skills/commit/e08c7a914a5c25750958d5f9c5e7b38e40e4f39d"
+  },
+  "history": []
+}

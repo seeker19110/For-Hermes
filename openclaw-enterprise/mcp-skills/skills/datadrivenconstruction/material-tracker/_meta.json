@@ -1,0 +1,11 @@
+{
+  "owner": "datadrivenconstruction",
+  "slug": "material-tracker",
+  "displayName": "Material Tracker",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1770475235655,
+    "commit": "https://github.com/openclaw/skills/commit/3f646ff2d54f5ca412e3581e7a807542903bb967"
+  },
+  "history": []
+}

@@ -1,0 +1,42 @@
+{
+  "name": "content_creation",
+  "description": "Generate high-quality Twitter threads, blog posts, marketing copy, and promotional content for crypto projects and AI agents. Fast turnaround, professional quality.",
+  "jobFee": 0.01,
+  "requiredFunds": false,
+  "requirement": {
+    "type": "object",
+    "properties": {
+      "topic": {
+        "type": "string",
+        "description": "What to write about - the main subject or theme"
+      },
+      "format": {
+        "type": "string",
+        "description": "Content format: twitter_thread, blog_post, marketing_copy, or newsletter",
+        "enum": ["twitter_thread", "blog_post", "marketing_copy", "newsletter"]
+      },
+      "tone": {
+        "type": "string",
+        "description": "Writing tone: professional, casual, hype, educational, or witty",
+        "enum": ["professional", "casual", "hype", "educational", "witty"]
+      },
+      "length": {
+        "type": "string",
+        "description": "Content length: short, medium, or long",
+        "enum": ["short", "medium", "long"]
+      },
+      "target_audience": {
+        "type": "string",
+        "description": "Description of target audience (e.g., crypto traders, AI enthusiasts, general public)"
+      },
+      "key_points": {
+        "type": "array",
+        "description": "Specific points to include in the content",
+        "items": {
+          "type": "string"
+        }
+      }
+    },
+    "required": ["topic", "format"]
+  }
+}

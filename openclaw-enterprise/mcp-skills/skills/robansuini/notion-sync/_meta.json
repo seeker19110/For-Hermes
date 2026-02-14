@@ -1,0 +1,22 @@
+{
+  "owner": "robansuini",
+  "slug": "notion-sync",
+  "displayName": "Notion Sync",
+  "latest": {
+    "version": "2.2.0",
+    "publishedAt": 1770938462987,
+    "commit": "https://github.com/openclaw/skills/commit/ef96ca081c3134dba3c8a132f1c839925f4ead3f"
+  },
+  "history": [
+    {
+      "version": "1.0.6",
+      "publishedAt": 1770934851305,
+      "commit": "https://github.com/openclaw/skills/commit/dc5328c9fbba56088297122fb22175182782465d"
+    },
+    {
+      "version": "1.0.2",
+      "publishedAt": 1770389821908,
+      "commit": "https://github.com/openclaw/skills/commit/204b236e10d1231d8c7fd40d508d41c76339ad68"
+    }
+  ]
+}

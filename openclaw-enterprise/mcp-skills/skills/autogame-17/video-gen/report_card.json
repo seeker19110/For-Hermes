@@ -1,0 +1,37 @@
+{
+  "elements": [
+    {
+      "tag": "div",
+      "text": {
+        "content": "✅ **Tencent Cloud VOD Video Generation Integrated**\n\nThe video generation capability is now active and ready to use.\n\n**Best Practices for Model Selection:**\n\n*   🎥 **Kling 2.5** (`kling-v2.5`): **Best Overall**. Use for high fidelity, realistic textures, and complex motion.\n*   🎨 **Vidu** (`vidu`): Use for **Reference Image Consistency**.\n*   ⚡ **Hailuo** (`hailuo`): Good for faster prototyping.\n\n**Usage:**\n`node skills/video-gen/index.js \"Prompt...\" --model=kling-v2.5`",
+        "tag": "lark_md"
+      }
+    },
+    {
+      "tag": "hr"
+    },
+    {
+      "actions": [
+        {
+          "tag": "button",
+          "text": {
+            "content": "View Docs",
+            "tag": "lark_md"
+          },
+          "type": "default",
+          "value": {
+            "key": "view_docs"
+          }
+        }
+      ],
+      "tag": "action"
+    }
+  ],
+  "header": {
+    "template": "blue",
+    "title": {
+      "content": "Video Generation Ready",
+      "tag": "plain_text"
+    }
+  }
+}

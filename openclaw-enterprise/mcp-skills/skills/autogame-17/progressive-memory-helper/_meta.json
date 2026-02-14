@@ -1,0 +1,17 @@
+{
+  "owner": "autogame-17",
+  "slug": "progressive-memory-helper",
+  "displayName": "Progressive Memory Helper",
+  "latest": {
+    "version": "1.0.1",
+    "publishedAt": 1770791858932,
+    "commit": "https://github.com/openclaw/skills/commit/6ab66856e7353dbdd0108e33949c92c5833b3ea3"
+  },
+  "history": [
+    {
+      "version": "1.0.0",
+      "publishedAt": 1770648971717,
+      "commit": "https://github.com/openclaw/skills/commit/e4fba6772ef349ae2eca220acaa9e060bb780358"
+    }
+  ]
+}

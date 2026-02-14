@@ -1,0 +1,11 @@
+{
+  "owner": "datadrivenconstruction",
+  "slug": "ids-checker",
+  "displayName": "Ids Checker",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1770475801320,
+    "commit": "https://github.com/openclaw/skills/commit/4d4ac18bd7a962b7b30d6db489783a70524e634a"
+  },
+  "history": []
+}

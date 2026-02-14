@@ -59,4 +59,51 @@ else:  # the model didn't call a tool we know about
 
 **Instead**, We're actually going to skip that step here, and save it for another factor, which you may or may not want to also incorporate (up to you!)
 
+### Claude Example
+
+Claude excels at converting natural language to structured tool calls. Using Claude's tool use API:
+
+```python
+from anthropic import Anthropic
+
+client = Anthropic()
+
+# Define available tools
+tools = [
+    {
+        "name": "create_payment_link",
+        "description": "Create a Stripe payment link",
+        "input_schema": {
+            "type": "object",
+            "properties": {
+                "amount": {"type": "integer", "description": "Amount in cents"},
+                "customer": {"type": "string", "description": "Customer ID"},
+                "memo": {"type": "string", "description": "Payment memo"}
+            },
+            "required": ["amount", "customer"]
+        }
+    }
+]
+
+# Convert natural language to tool call
+response = client.messages.create(
+    model="claude-3-5-sonnet-20241022",
+    max_tokens=4096,
+    messages=[{
+        "role": "user",
+        "content": "Can you create a payment link for $750 to Terri for sponsoring the February AI tinkerers meetup?"
+    }],
+    tools=tools
+)
+
+# Claude outputs structured JSON matching the schema
+if response.content[0].type == "tool_use":
+    tool_call = response.content[0]
+    # tool_call.name = "create_payment_link"
+    # tool_call.input = {"amount": 75000, "customer": "cust_...", "memo": "..."}
+    stripe.paymentlinks.create(**tool_call.input)
+```
+
+Claude's tool use API provides type-safe structured outputs that map directly to your function signatures, making the natural language to tool call conversion reliable and predictable.
+
 [← How We Got Here](https://github.com/humanlayer/12-factor-agents/blob/main/content/brief-history-of-software.md) | [Own Your Prompts →](https://github.com/humanlayer/12-factor-agents/blob/main/content/factor-02-own-your-prompts.md)

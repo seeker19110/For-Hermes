@@ -1,0 +1,11 @@
+{
+  "owner": "datadrivenconstruction",
+  "slug": "big-data-analysis",
+  "displayName": "Big Data Analysis",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1770475810038,
+    "commit": "https://github.com/openclaw/skills/commit/fdd8e4d3af5c4f590e18a99f05e8d0a7c15cd3d7"
+  },
+  "history": []
+}

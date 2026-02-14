@@ -1,0 +1,11 @@
+{
+  "owner": "titunito",
+  "slug": "jellyfin-control",
+  "displayName": "Jellyfin Control",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1770897090798,
+    "commit": "https://github.com/openclaw/skills/commit/37077ae97830776d1333fa7c38ac23681b8aa7a0"
+  },
+  "history": []
+}

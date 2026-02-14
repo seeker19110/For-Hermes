@@ -1,0 +1,11 @@
+{
+  "owner": "savor3",
+  "slug": "agentx-marketplace",
+  "displayName": "agentX marketplace",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1770814068488,
+    "commit": "https://github.com/openclaw/skills/commit/38b01ef17efb1f08e3db2c7642babf2e7ff52ab8"
+  },
+  "history": []
+}

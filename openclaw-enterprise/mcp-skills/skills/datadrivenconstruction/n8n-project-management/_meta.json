@@ -1,0 +1,11 @@
+{
+  "owner": "datadrivenconstruction",
+  "slug": "n8n-project-management",
+  "displayName": "N8n Project Management",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1770475969002,
+    "commit": "https://github.com/openclaw/skills/commit/e086d14e46b45ce68f33614ba0c153c687aaa098"
+  },
+  "history": []
+}

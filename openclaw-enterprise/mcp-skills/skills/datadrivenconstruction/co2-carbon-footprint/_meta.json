@@ -1,0 +1,11 @@
+{
+  "owner": "datadrivenconstruction",
+  "slug": "co2-carbon-footprint",
+  "displayName": "Co2 Carbon Footprint",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1770474779014,
+    "commit": "https://github.com/openclaw/skills/commit/3e206e9e30687855832998bfcf218d3ebbae0eda"
+  },
+  "history": []
+}

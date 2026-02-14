@@ -1,0 +1,137 @@
+{
+    "categories": {
+        "instructions": {
+            "name": "Instructions (JOI)",
+            "description": "Пошаговые обучающие материалы",
+            "base_prices": {
+                "basic": 15,
+                "premium": 30,
+                "exclusive": 50
+            },
+            "items": [
+                {
+                    "id": "joi_001",
+                    "name": "Basic JOI",
+                    "price": 15,
+                    "duration": "5 min"
+                },
+                {
+                    "id": "joi_002",
+                    "name": "Premium JOI",
+                    "price": 30,
+                    "duration": "15 min"
+                },
+                {
+                    "id": "joi_003",
+                    "name": "Exclusive JOI",
+                    "price": 50,
+                    "duration": "30 min"
+                }
+            ]
+        },
+        "transform": {
+            "name": "Transform (Sissy/Identity)",
+            "description": "Трансформационные услуги",
+            "base_prices": {
+                "basic": 25,
+                "premium": 50,
+                "exclusive": 100
+            },
+            "items": [
+                {
+                    "id": "trans_001",
+                    "name": "Sissy Training",
+                    "price": 25,
+                    "duration": "10 min"
+                },
+                {
+                    "id": "trans_002",
+                    "name": "Full feminization guide",
+                    "price": 50,
+                    "duration": "20 min"
+                },
+                {
+                    "id": "trans_003",
+                    "name": "VIP Transformation",
+                    "price": 100,
+                    "duration": "45 min"
+                }
+            ]
+        },
+        "access": {
+            "name": "Access (Content/Chat)",
+            "description": "Доступ к контенту и приватному чату",
+            "base_prices": {
+                "day_pass": 10,
+                "week_pass": 25,
+                "month_pass": 75,
+                "lifetime": 200
+            },
+            "items": [
+                {
+                    "id": "acc_001",
+                    "name": "1 Day VIP",
+                    "price": 10,
+                    "duration": "24 hours"
+                },
+                {
+                    "id": "acc_002",
+                    "name": "Week Pass",
+                    "price": 25,
+                    "duration": "7 days"
+                },
+                {
+                    "id": "acc_003",
+                    "name": "Month Pass",
+                    "price": 75,
+                    "duration": "30 days"
+                },
+                {
+                    "id": "acc_004",
+                    "name": "Lifetime Access",
+                    "price": 200,
+                    "duration": "unlimited"
+                }
+            ]
+        },
+        "custom": {
+            "name": "Custom Requests",
+            "description": "Персональные заказы",
+            "base_prices": {
+                "low": 20,
+                "medium": 50,
+                "high": 100,
+                "whale": 200
+            }
+        }
+    },
+    "dynamic_pricing": {
+        "tier_1": {
+            "name": "LOW_SPENDER",
+            "range": "0-50",
+            "multiplier": 1.0
+        },
+        "tier_2": {
+            "name": "MEDIUM_SPENDER",
+            "range": "50-100",
+            "multiplier": 1.1
+        },
+        "tier_3": {
+            "name": "HIGH_SPENDER",
+            "range": "100-200",
+            "multiplier": 1.2
+        },
+        "tier_4": {
+            "name": "WHALE",
+            "range": "200+",
+            "multiplier": 1.3
+        }
+    },
+    "upsell_rules": {
+        "trigger_amount": 20,
+        "upsell_amount": 50,
+        "delay_messages": 3,
+        "description": "Автоматический upsell после покупки на $20 - через 3 сообщения предложить $50"
+    },
+    "last_updated": "2026-02-14T12:00:00Z"
+}

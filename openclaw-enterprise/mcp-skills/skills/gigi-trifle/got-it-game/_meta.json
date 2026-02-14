@@ -1,0 +1,11 @@
+{
+  "owner": "gigi-trifle",
+  "slug": "got-it-game",
+  "displayName": "Got It Game",
+  "latest": {
+    "version": "1.0.2",
+    "publishedAt": 1770522910257,
+    "commit": "https://github.com/openclaw/skills/commit/58dfaf2aa15cc23e96b9a241224e01c5c6fb2ef5"
+  },
+  "history": []
+}

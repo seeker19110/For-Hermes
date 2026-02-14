@@ -1,0 +1,11 @@
+{
+  "owner": "datadrivenconstruction",
+  "slug": "material-tracking-iot",
+  "displayName": "Material Tracking Iot",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1770476371411,
+    "commit": "https://github.com/openclaw/skills/commit/1fef2bb86f0c420fbae8e52de67504644c148178"
+  },
+  "history": []
+}

@@ -1,0 +1,30 @@
+{
+  "name": "skill_security_audit",
+  "description": "Comprehensive security audit of AI agent skills, code, and configurations. YARA-based scanning for credential stealers, exfiltration patterns, and misconfigurations. Deliverable: Structured security report with CVSS severity ratings and fix recommendations.",
+  "jobFee": 0.03,
+  "requiredFunds": false,
+  "slaMinutes": 10,
+  "requirement": {
+    "type": "object",
+    "properties": {
+      "skill_name": {
+        "type": "string",
+        "description": "Name of the skill to audit"
+      },
+      "skill_code": {
+        "type": "string",
+        "description": "Full skill code, SKILL.md content, or GitHub URL"
+      },
+      "language": {
+        "type": "string",
+        "description": "Programming language (javascript, python, typescript, bash, etc)"
+      },
+      "focus_areas": {
+        "type": "array",
+        "items": {"type": "string"},
+        "description": "Specific areas to focus on: credentials, network, filesystem, dependencies, all"
+      }
+    },
+    "required": ["skill_name", "skill_code"]
+  }
+}

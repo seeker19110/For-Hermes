@@ -1,0 +1,11 @@
+{
+  "owner": "autogame-17",
+  "slug": "surprise-protocol",
+  "displayName": "Surprise Protocol",
+  "latest": {
+    "version": "1.0.1",
+    "publishedAt": 1770994892016,
+    "commit": "https://github.com/openclaw/skills/commit/aebfa513aad6900f1fce812f684786b8a14e51d9"
+  },
+  "history": []
+}

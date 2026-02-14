@@ -1,0 +1,11 @@
+{
+  "owner": "datadrivenconstruction",
+  "slug": "contractor-matching-ai",
+  "displayName": "Contractor Matching Ai",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1770476295117,
+    "commit": "https://github.com/openclaw/skills/commit/aebb09d6cbd008377bb300246f956af8fdb0c89e"
+  },
+  "history": []
+}

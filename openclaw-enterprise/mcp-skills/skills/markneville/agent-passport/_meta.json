@@ -1,0 +1,17 @@
+{
+  "owner": "markneville",
+  "slug": "agent-passport",
+  "displayName": "Agent Passport Lite",
+  "latest": {
+    "version": "2.0.2",
+    "publishedAt": 1770844902248,
+    "commit": "https://github.com/openclaw/skills/commit/351078bf43f3e695b7c3fa4a140bca99a4e7a91f"
+  },
+  "history": [
+    {
+      "version": "2.0.0",
+      "publishedAt": 1770652144282,
+      "commit": "https://github.com/openclaw/skills/commit/bf54517da8c3f7c15480579515fc811482faa53e"
+    }
+  ]
+}

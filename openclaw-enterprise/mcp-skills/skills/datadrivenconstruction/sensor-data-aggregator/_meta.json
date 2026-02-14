@@ -1,0 +1,11 @@
+{
+  "owner": "datadrivenconstruction",
+  "slug": "sensor-data-aggregator",
+  "displayName": "Sensor Data Aggregator",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1770476446048,
+    "commit": "https://github.com/openclaw/skills/commit/033e4c3bcde1ce1059030e39a3f2baf8a5fe5ca9"
+  },
+  "history": []
+}

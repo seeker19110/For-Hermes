@@ -1,0 +1,11 @@
+{
+  "owner": "barneyjm",
+  "slug": "fitness-finder",
+  "displayName": "Fitness Finder",
+  "latest": {
+    "version": "2.0.0",
+    "publishedAt": 1770520063111,
+    "commit": "https://github.com/openclaw/skills/commit/5f7e42eb087326dfbc617bde428892fc8e64e9c0"
+  },
+  "history": []
+}

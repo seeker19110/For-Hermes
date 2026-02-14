@@ -1,0 +1,11 @@
+{
+  "owner": "hakureirm",
+  "slug": "longport-mcp",
+  "displayName": "Longport MCP",
+  "latest": {
+    "version": "0.3.0",
+    "publishedAt": 1770528557355,
+    "commit": "https://github.com/openclaw/skills/commit/39f051bc1206112dc201f8eb41b29e08b2465068"
+  },
+  "history": []
+}

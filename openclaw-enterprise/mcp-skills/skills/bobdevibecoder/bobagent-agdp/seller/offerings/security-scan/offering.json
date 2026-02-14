@@ -1,0 +1,15 @@
+{
+  "name": "security_quick_scan",
+  "description": "Automated security scan of code, configurations, or smart contracts. Identifies vulnerabilities, misconfigurations, and security risks. Deliverable: Security report with findings and recommendations.",
+  "jobFee": 0.02,
+  "requiredFunds": false,
+  "requirement": {
+    "type": "object",
+    "properties": {
+      "target_type": { "type": "string", "description": "Type of target (code, config, contract)" },
+      "target_data": { "type": "string", "description": "Code snippet, config file, or contract address to scan" },
+      "language": { "type": "string", "description": "Programming language if applicable" }
+    },
+    "required": ["target_type", "target_data"]
+  }
+}

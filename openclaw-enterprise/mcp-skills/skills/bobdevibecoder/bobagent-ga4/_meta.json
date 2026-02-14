@@ -1,0 +1,11 @@
+{
+  "owner": "bobdevibecoder",
+  "slug": "bobagent-ga4",
+  "displayName": "ga4",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1770901735627,
+    "commit": "https://github.com/openclaw/skills/commit/8e8c660d524a49af9d33956930ce8dfc48ee3e33"
+  },
+  "history": []
+}

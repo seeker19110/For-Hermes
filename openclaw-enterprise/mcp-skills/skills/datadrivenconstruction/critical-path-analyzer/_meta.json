@@ -1,0 +1,11 @@
+{
+  "owner": "datadrivenconstruction",
+  "slug": "critical-path-analyzer",
+  "displayName": "Critical Path Analyzer",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1770475303362,
+    "commit": "https://github.com/openclaw/skills/commit/7343d4ac8703608dd8938f7d2078537f3b502e8e"
+  },
+  "history": []
+}

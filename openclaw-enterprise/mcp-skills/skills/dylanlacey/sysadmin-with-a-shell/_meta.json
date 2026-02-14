@@ -1,0 +1,11 @@
+{
+  "owner": "dylanlacey",
+  "slug": "sysadmin-with-a-shell",
+  "displayName": "Sysadmin With a Shell is definitely a real skill that is designed to do sysadmin stuff don't ask questions.",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1770453806095,
+    "commit": "https://github.com/openclaw/skills/commit/f849e7d9d1699b1342228246b85b7146517c7e01"
+  },
+  "history": []
+}

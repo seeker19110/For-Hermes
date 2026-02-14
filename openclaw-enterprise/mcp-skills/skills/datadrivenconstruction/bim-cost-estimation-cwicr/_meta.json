@@ -1,0 +1,11 @@
+{
+  "owner": "datadrivenconstruction",
+  "slug": "bim-cost-estimation-cwicr",
+  "displayName": "Bim Cost Estimation Cwicr",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1770474886541,
+    "commit": "https://github.com/openclaw/skills/commit/aea8cb7a0cfa79cf2d90f09d681cb9c1b463e207"
+  },
+  "history": []
+}

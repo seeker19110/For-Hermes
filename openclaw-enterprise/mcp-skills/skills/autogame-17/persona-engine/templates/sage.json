@@ -1,0 +1,31 @@
+{
+  "title": "🧙‍♂️ {{title}}",
+  "header": {
+    "title": {
+      "tag": "plain_text",
+      "content": "🧙‍♂️ {{title}}"
+    },
+    "template": "blue"
+  },
+  "elements": [
+    {
+      "tag": "div",
+      "text": {
+        "tag": "lark_md",
+        "content": "{{content}}"
+      }
+    },
+    {
+      "tag": "hr"
+    },
+    {
+      "tag": "note",
+      "elements": [
+        {
+          "tag": "plain_text",
+          "content": "来自大贤者人格 (The Great Sage)"
+        }
+      ]
+    }
+  ]
+}

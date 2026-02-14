@@ -1,0 +1,22 @@
+{
+  "owner": "chenkuansun",
+  "slug": "bullybuddy",
+  "displayName": "Bullybuddy",
+  "latest": {
+    "version": "0.5.1",
+    "publishedAt": 1770938826245,
+    "commit": "https://github.com/openclaw/skills/commit/8c98e3fb74cf777625dc67b3946f6228666d5f31"
+  },
+  "history": [
+    {
+      "version": "0.3.1",
+      "publishedAt": 1770936316286,
+      "commit": "https://github.com/openclaw/skills/commit/c9c315d82b72c103969e81209b067d8937ec49f0"
+    },
+    {
+      "version": "0.1.1",
+      "publishedAt": 1770803305983,
+      "commit": "https://github.com/openclaw/skills/commit/21beca3542e6bb410e2a7643366a0bde24ecdb56"
+    }
+  ]
+}

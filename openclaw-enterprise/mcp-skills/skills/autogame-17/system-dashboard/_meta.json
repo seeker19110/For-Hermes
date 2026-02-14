@@ -1,0 +1,11 @@
+{
+  "owner": "autogame-17",
+  "slug": "system-dashboard",
+  "displayName": "System Dashboard",
+  "latest": {
+    "version": "1.0.1",
+    "publishedAt": 1770791892154,
+    "commit": "https://github.com/openclaw/skills/commit/5b89be0d8da2c6732a75926c894c23bebfd0e601"
+  },
+  "history": []
+}

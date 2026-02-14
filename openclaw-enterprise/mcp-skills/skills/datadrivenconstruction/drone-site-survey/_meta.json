@@ -1,0 +1,11 @@
+{
+  "owner": "datadrivenconstruction",
+  "slug": "drone-site-survey",
+  "displayName": "Drone Site Survey",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1770476325018,
+    "commit": "https://github.com/openclaw/skills/commit/19d24ef891295462cebec152015e29b5f2a9a5d9"
+  },
+  "history": []
+}

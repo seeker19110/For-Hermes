@@ -1,0 +1,11 @@
+{
+  "owner": "bobdevibecoder",
+  "slug": "bobagent-base",
+  "displayName": "base",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1770901492821,
+    "commit": "https://github.com/openclaw/skills/commit/28424d01c621f9a8daeb315ed0b34644cb5167fd"
+  },
+  "history": []
+}

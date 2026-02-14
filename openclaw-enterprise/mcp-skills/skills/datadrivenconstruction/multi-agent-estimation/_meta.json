@@ -1,0 +1,11 @@
+{
+  "owner": "datadrivenconstruction",
+  "slug": "multi-agent-estimation",
+  "displayName": "Multi Agent Estimation",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1770475918627,
+    "commit": "https://github.com/openclaw/skills/commit/2a63f9d2a8b0b0acec15ddf3b834daa1c393d5ac"
+  },
+  "history": []
+}

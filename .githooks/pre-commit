@@ -1,0 +1,185 @@
+#!/bin/bash
+#
+# Pre-commit hook для проверки безопасности
+# Установка: cp .githooks/pre-commit .git/hooks/pre-commit && chmod +x .git/hooks/pre-commit
+#
+
+echo "🔒 Проверка безопасности перед commit..."
+echo ""
+
+EXIT_CODE=0
+
+# 1. Проверка на секреты в коде
+echo "📋 Проверка на секреты..."
+
+FORBIDDEN_PATTERNS=(
+    "password[[:space:]]*="
+    "secret[[:space:]]*="
+    "api_key[[:space:]]*="
+    "token[[:space:]]*="
+    "ghp_[a-zA-Z0-9]{36}"
+    "sk-[a-zA-Z0-9]{48}"
+    "AKIA[0-9A-Z]{16}"
+    "-----BEGIN.*PRIVATE KEY-----"
+    "postgresql://.*:.*@"
+    "redis://.*:.*@"
+)
+
+STAGED_FILES=$(git diff --cached --name-only)
+
+for file in $STAGED_FILES; do
+    # Пропускаем бинарные и специальные файлы
+    if [[ "$file" =~ \.(jpg|jpeg|png|gif|ico|pdf|zip|tar|gz)$ ]]; then
+        continue
+    fi
+    
+    # Провускаем audit log
+    if [[ "$file" == ".claude/audit.log" ]]; then
+        continue
+    fi
+    
+    for pattern in "${FORBIDDEN_PATTERNS[@]}"; do
+        if git diff --cached "$file" | grep -iE "$pattern" > /dev/null 2>&1; then
+            echo "❌ НАЙДЕН СЕКРЕТ в $file:"
+            git diff --cached "$file" | grep -iE "$pattern" | head -5
+            echo ""
+            EXIT_CODE=1
+        fi
+    done
+done
+
+if [ $EXIT_CODE -eq 0 ]; then
+    echo "✅ Секреты не найдены"
+fi
+
+echo ""
+
+# 2. Проверка .env файла
+echo "📋 Проверка .env файла..."
+
+if git diff --cached --name-only | grep -q "\.env"; then
+    echo "❌ ОШИБКА: Файл .env не должен попадать в git!"
+    echo "   Добавь .env в .gitignore:"
+    echo '   echo ".env" >> .gitignore'
+    echo '   git add .gitignore'
+    EXIT_CODE=1
+else
+    echo "✅ .env не отслеживается"
+fi
+
+echo ""
+
+# 3. Проверка ключей и сертификатов
+echo "📋 Проверка ключей..."
+
+KEY_FILES=$(git diff --cached --name-only | grep -E "\.(key|pem|p12|pfx)$" || true)
+
+if [ -n "$KEY_FILES" ]; then
+    echo "❌ ОШИБКА: Обнаружены файлы ключей:"
+    echo "$KEY_FILES"
+    echo ""
+    echo "Ключи не должны попадать в git!"
+    echo "Добавь в .gitignore:"
+    echo '   echo "*.key" >> .gitignore'
+    echo '   echo "*.pem" >> .gitignore'
+    EXIT_CODE=1
+else
+    echo "✅ Файлы ключей не найдены"
+fi
+
+echo ""
+
+# 4. Проверка audit log
+echo "📋 Проверка audit log..."
+
+if [ -f ".claude/audit.log" ]; then
+    # Проверка подозрительных операций за последние 24 часа
+    SUSPICIOUS=$(grep "$(date +%Y-%m-%d)" .claude/audit.log 2>/dev/null | \
+        grep -iE "(rm|delete|force|reset)" | wc -l)
+    
+    if [ "$SUSPICIOUS" -gt 0 ]; then
+        echo "⚠️  Предупреждение: Обнаружены потенциально опасные операции в audit log:"
+        grep "$(date +%Y-%m-%d)" .claude/audit.log | \
+            grep -iE "(rm|delete|force|reset)" | tail -5
+        echo ""
+        echo "Убедитесь, что эти операции были намеренными."
+    else
+        echo "✅ Подозрительных операций не обнаружено"
+    fi
+else
+    echo "⚠️  Audit log не найден"
+fi
+
+echo ""
+
+# 5. Проверка размера изменений
+echo "📋 Проверка размера изменений..."
+
+LARGE_FILES=$(git diff --cached --stat | grep -E "[0-9]{4,}\s+\+" || true)
+
+if [ -n "$LARGE_FILES" ]; then
+    echo "⚠️  Обнаружены большие изменения:"
+    echo "$LARGE_FILES"
+    echo ""
+    echo "Проверьте, что это ожидаемые изменения."
+fi
+
+echo ""
+
+# 6. Проверка branch
+echo "📋 Проверка ветки..."
+
+CURRENT_BRANCH=$(git branch --show-current)
+
+if [ "$CURRENT_BRANCH" = "main" ] || [ "$CURRENT_BRANCH" = "master" ]; then
+    echo "❌ ВНИМАНИЕ: Ты в ветке $CURRENT_BRANCH!"
+    echo ""
+    echo "Рекомендуется работать в feature branch:"
+    echo "   git checkout -b feature/my-changes"
+    echo ""
+    echo "Точно хочешь commit в $CURRENT_BRANCH?"
+    echo "Для отмены нажми Ctrl+C, для продолжения Enter"
+    read
+fi
+
+echo ""
+
+# 7. Проверка сообщения commit
+echo "📋 Проверка сообщения commit..."
+
+COMMIT_MSG_FILE="$1"
+if [ -f "$COMMIT_MSG_FILE" ]; then
+    COMMIT_MSG=$(head -1 "$COMMIT_MSG_FILE")
+    
+    if [ ${#COMMIT_MSG} -lt 10 ]; then
+        echo "⚠️  Сообщение commit слишком короткое (минимум 10 символов)"
+        echo "   Текущее сообщение: '$COMMIT_MSG'"
+        EXIT_CODE=1
+    fi
+    
+    if echo "$COMMIT_MSG" | grep -qE "(password|secret|key|token)"; then
+        echo "❌ Сообщение commit содержит подозрительные слова:"
+        echo "   $COMMIT_MSG"
+        EXIT_CODE=1
+    fi
+fi
+
+echo ""
+
+# Итог
+if [ $EXIT_CODE -eq 0 ]; then
+    echo "✅ Все проверки безопасности пройдены!"
+    echo ""
+    exit 0
+else
+    echo "❌ Обнаружены проблемы безопасности!"
+    echo ""
+    echo "Исправь проблемы перед commit:"
+    echo "   git add <исправленные_файлы>"
+    echo "   git commit"
+    echo ""
+    echo "Или пропусти проверку (НЕ РЕКОМЕНДУЕТСЯ):"
+    echo "   git commit --no-verify"
+    echo ""
+    exit 1
+fi

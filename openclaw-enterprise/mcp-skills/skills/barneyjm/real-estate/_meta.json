@@ -1,0 +1,11 @@
+{
+  "owner": "barneyjm",
+  "slug": "real-estate",
+  "displayName": "Real Estate",
+  "latest": {
+    "version": "2.0.0",
+    "publishedAt": 1770520226074,
+    "commit": "https://github.com/openclaw/skills/commit/0bd4a6be78f328cf616f31d073c5ddfbcd446d7f"
+  },
+  "history": []
+}

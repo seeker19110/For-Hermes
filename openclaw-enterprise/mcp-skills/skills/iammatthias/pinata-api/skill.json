@@ -1,0 +1,22 @@
+{
+  "name": "pinata-api",
+  "version": "1.0.5",
+  "description": "Pinata IPFS API skill for file storage, groups, gateways, and more",
+  "entrypoint": "index.ts",
+  "source": "https://github.com/PinataCloud/pinata-mcp",
+  "homepage": "https://pinata.cloud",
+  "env": {
+    "PINATA_JWT": {
+      "description": "Pinata API JWT token for authentication",
+      "required": true
+    },
+    "GATEWAY_URL": {
+      "description": "Pinata gateway domain (e.g., your-gateway.mypinata.cloud)",
+      "required": true
+    },
+    "GATEWAY_KEY": {
+      "description": "Gateway key for accessing public IPFS content not tied to your Pinata account. See https://docs.pinata.cloud/gateways/gateway-access-controls#gateway-keys",
+      "required": false
+    }
+  }
+}

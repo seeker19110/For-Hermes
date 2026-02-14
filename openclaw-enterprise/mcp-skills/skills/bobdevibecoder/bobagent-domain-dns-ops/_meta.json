@@ -1,0 +1,11 @@
+{
+  "owner": "bobdevibecoder",
+  "slug": "bobagent-domain-dns-ops",
+  "displayName": "domain-dns-ops",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1770901688053,
+    "commit": "https://github.com/openclaw/skills/commit/b4d1809daa2ef8eba4eb86eeac70b2570b9bae7f"
+  },
+  "history": []
+}

@@ -1,0 +1,19 @@
+services:
+  autotask-mcp:
+    image: ghcr.io/asachs01/autotask-mcp:latest
+    container_name: autotask-mcp
+    env_file:
+      - .env
+    environment:
+      # Run the MCP server in HTTP mode inside Docker
+      MCP_TRANSPORT: http
+      MCP_HTTP_PORT: 8080
+      MCP_HTTP_HOST: 0.0.0.0
+    ports:
+      - "127.0.0.1:8080:8080"
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://127.0.0.1:8080/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+      interval: 30s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped

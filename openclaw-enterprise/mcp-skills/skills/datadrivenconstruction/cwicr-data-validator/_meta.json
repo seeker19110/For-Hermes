@@ -1,0 +1,11 @@
+{
+  "owner": "datadrivenconstruction",
+  "slug": "cwicr-data-validator",
+  "displayName": "Cwicr Data Validator",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1770474979673,
+    "commit": "https://github.com/openclaw/skills/commit/070319f11bf89efe98b3f7d84c30b24f5a3ce4d5"
+  },
+  "history": []
+}

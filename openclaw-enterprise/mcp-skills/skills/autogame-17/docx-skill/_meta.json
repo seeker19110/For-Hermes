@@ -1,0 +1,17 @@
+{
+  "owner": "autogame-17",
+  "slug": "docx-skill",
+  "displayName": "Docx Skill",
+  "latest": {
+    "version": "1.0.2",
+    "publishedAt": 1770791156942,
+    "commit": "https://github.com/openclaw/skills/commit/31f0e325dcc1526d7196fe692b8a4434ce13a0d0"
+  },
+  "history": [
+    {
+      "version": "1.0.0",
+      "publishedAt": 1770002785365,
+      "commit": "https://github.com/clawdbot/skills/commit/0327a8925435e5cc399cf85da9721534d9ce5837"
+    }
+  ]
+}

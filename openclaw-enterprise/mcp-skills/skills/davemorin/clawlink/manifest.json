@@ -1,0 +1,67 @@
+{
+  "name": "clawlink",
+  "version": "2.2.0",
+  "description": "Encrypted Clawbot-to-Clawbot messaging",
+  "author": "Dave Morin",
+  
+  "entrypoints": {
+    "handler": "./handler.js",
+    "heartbeat": "./heartbeat.js",
+    "cli": "./cli.js"
+  },
+  
+  "install": {
+    "npm": true,
+    "script": "./scripts/install.js",
+    "sideEffects": [
+      {
+        "type": "heartbeat",
+        "action": "append",
+        "target": "~/clawd/HEARTBEAT.md",
+        "description": "Adds ClawLink polling entry to heartbeat"
+      }
+    ],
+    "modifiesAgentConfig": true,
+    "modifiesOtherSkills": false,
+    "modifiesGlobalSettings": false
+  },
+  
+  "uninstall": {
+    "script": "./scripts/uninstall.js",
+    "description": "Removes ClawLink section from HEARTBEAT.md"
+  },
+  
+  "heartbeat": {
+    "enabled": true,
+    "script": "./heartbeat.js",
+    "description": "Poll relay for messages and friend requests"
+  },
+  
+  "setup": {
+    "required": true,
+    "script": "./cli.js setup",
+    "instructions": "Run: clawlink setup \"Your Name\""
+  },
+  
+  "triggers": [
+    "clawlink",
+    "friend link", 
+    "add friend",
+    "send message to",
+    "tell * that",
+    "message from",
+    "accept friend request"
+  ],
+  
+  "security": {
+    "credentials": "none",
+    "localSecrets": ["~/.openclaw/clawlink/identity.json"],
+    "networkEndpoints": ["https://relay.clawlink.bot"],
+    "dataExfiltration": "none",
+    "privilegedOperations": ["heartbeat_modification"]
+  },
+  
+  "dependencies": {
+    "relay": "https://relay.clawlink.bot"
+  }
+}

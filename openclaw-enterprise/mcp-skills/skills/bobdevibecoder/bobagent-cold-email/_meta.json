@@ -1,0 +1,11 @@
+{
+  "owner": "bobdevibecoder",
+  "slug": "bobagent-cold-email",
+  "displayName": "cold-email",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1770901652331,
+    "commit": "https://github.com/openclaw/skills/commit/c7ff98d8c4560c894a43725e728537d4d3a7b1ca"
+  },
+  "history": []
+}

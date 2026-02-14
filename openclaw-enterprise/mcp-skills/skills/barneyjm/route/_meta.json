@@ -1,0 +1,22 @@
+{
+  "owner": "barneyjm",
+  "slug": "route",
+  "displayName": "Route",
+  "latest": {
+    "version": "2.0.0",
+    "publishedAt": 1770520284911,
+    "commit": "https://github.com/openclaw/skills/commit/7a254e615f53dc2b6034ddfc98c628822456635e"
+  },
+  "history": [
+    {
+      "version": "0.1.2",
+      "publishedAt": 1770131826965,
+      "commit": "https://github.com/clawdbot/skills/commit/9a6d074b178ec54a72b5075349c734470a656406"
+    },
+    {
+      "version": "0.1.1",
+      "publishedAt": 1769878123469,
+      "commit": "https://github.com/clawdbot/skills/commit/abc40383c2cc4ff2217b042b70bff8ccb3d88455"
+    }
+  ]
+}

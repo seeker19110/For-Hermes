@@ -1,0 +1,11 @@
+{
+  "owner": "bobdevibecoder",
+  "slug": "bobagent-gsc",
+  "displayName": "gsc",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1770901766940,
+    "commit": "https://github.com/openclaw/skills/commit/adfd1981b997d46631ce8fea6c6b44b1b6734b11"
+  },
+  "history": []
+}

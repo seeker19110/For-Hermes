@@ -1,0 +1,22 @@
+{
+  "owner": "autogame-17",
+  "slug": "kusa",
+  "displayName": "Kusa",
+  "latest": {
+    "version": "1.0.2",
+    "publishedAt": 1770791807428,
+    "commit": "https://github.com/openclaw/skills/commit/0982f606a5b41f54e361115f087162add412b49a"
+  },
+  "history": [
+    {
+      "version": "1.0.1",
+      "publishedAt": 1770451812432,
+      "commit": "https://github.com/openclaw/skills/commit/b11799c4bc8b0076936a7ee5a0aa3936aeb5eb76"
+    },
+    {
+      "version": "1.0.0",
+      "publishedAt": 1770435732438,
+      "commit": "https://github.com/openclaw/skills/commit/4fdd85481082dcd0067b03504aa25b7b998a7abe"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "owner": "nextaltair",
+  "slug": "soul-in-sapphire",
+  "displayName": "Soul In Sapphire",
+  "latest": {
+    "version": "1.0.4",
+    "publishedAt": 1770990451668,
+    "commit": "https://github.com/openclaw/skills/commit/cbda12814e7cd9b6e7c279b9e52bbc922f58b717"
+  },
+  "history": [
+    {
+      "version": "0.1.4",
+      "publishedAt": 1770905274019,
+      "commit": "https://github.com/openclaw/skills/commit/a8fcf7d46fb507b0559caf41eba078c6d662e608"
+    },
+    {
+      "version": "0.1.1",
+      "publishedAt": 1770824218272,
+      "commit": "https://github.com/openclaw/skills/commit/fcd0506f5046f928b3e41da3124bcc7dba8bcc51"
+    },
+    {
+      "version": "0.1.0",
+      "publishedAt": 1770729727862,
+      "commit": "https://github.com/openclaw/skills/commit/97cc0c58c9cf9505997d6188995164c6f2250e6b"
+    }
+  ]
+}

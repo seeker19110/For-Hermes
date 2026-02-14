@@ -1,0 +1,11 @@
+{
+  "owner": "autogame-17",
+  "slug": "kusa-image",
+  "displayName": "Kusa Image",
+  "latest": {
+    "version": "1.0.1",
+    "publishedAt": 1770435646846,
+    "commit": "https://github.com/openclaw/skills/commit/0c4fe5e687e46269c9f30bb6ef5926743dbc6338"
+  },
+  "history": []
+}

@@ -1,0 +1,11 @@
+{
+  "owner": "barneyjm",
+  "slug": "ev-charger",
+  "displayName": "Ev Charger",
+  "latest": {
+    "version": "2.0.0",
+    "publishedAt": 1770520039105,
+    "commit": "https://github.com/openclaw/skills/commit/d4691ccc1bcd816250dede0d593324929b204f7c"
+  },
+  "history": []
+}

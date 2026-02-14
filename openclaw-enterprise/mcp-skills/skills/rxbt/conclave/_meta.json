@@ -1,0 +1,42 @@
+{
+  "owner": "rxbt",
+  "slug": "conclave",
+  "displayName": "conclave",
+  "latest": {
+    "version": "2.0.1",
+    "publishedAt": 1770812500127,
+    "commit": "https://github.com/openclaw/skills/commit/f48a6f5d48741e0b9d2b7ea2a884a0652a8bec82"
+  },
+  "history": [
+    {
+      "version": "2.0.0",
+      "publishedAt": 1770710103903,
+      "commit": "https://github.com/openclaw/skills/commit/07da87550ac3db0e8217d6f73cebcede2ad82b78"
+    },
+    {
+      "version": "1.0.22",
+      "publishedAt": 1770649068723,
+      "commit": "https://github.com/openclaw/skills/commit/868ba7d54928c830897a2b152749898752b962bc"
+    },
+    {
+      "version": "1.0.13",
+      "publishedAt": 1770610149810,
+      "commit": "https://github.com/openclaw/skills/commit/99f556989447b373b2aaa818d1feef7af0e0b918"
+    },
+    {
+      "version": "1.0.11",
+      "publishedAt": 1770560028564,
+      "commit": "https://github.com/openclaw/skills/commit/ea24a9c9e187538577bd2fb04075ad13ae8c631d"
+    },
+    {
+      "version": "1.0.2",
+      "publishedAt": 1770462778927,
+      "commit": "https://github.com/openclaw/skills/commit/65776f5bea37c692430708171c25796d42e390d8"
+    },
+    {
+      "version": "1.0.0",
+      "publishedAt": 1770282238228,
+      "commit": "https://github.com/clawdbot/skills/commit/bc14f2c5546426711b86d8dec227f171f2f62989"
+    }
+  ]
+}

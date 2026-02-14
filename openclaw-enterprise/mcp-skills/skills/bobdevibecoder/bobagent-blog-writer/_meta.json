@@ -1,0 +1,11 @@
+{
+  "owner": "bobdevibecoder",
+  "slug": "bobagent-blog-writer",
+  "displayName": "blog-writer",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1770901501179,
+    "commit": "https://github.com/openclaw/skills/commit/232a77b48798dbe318ca9332b4f027aa2f0745eb"
+  },
+  "history": []
+}

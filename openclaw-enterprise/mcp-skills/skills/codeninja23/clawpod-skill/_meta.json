@@ -1,0 +1,11 @@
+{
+  "owner": "codeninja23",
+  "slug": "clawpod-skill",
+  "displayName": "Clawpod",
+  "latest": {
+    "version": "0.1.0",
+    "publishedAt": 1770838757336,
+    "commit": "https://github.com/openclaw/skills/commit/90079b2d3ced3897f7236039e669b2e88d57c884"
+  },
+  "history": []
+}

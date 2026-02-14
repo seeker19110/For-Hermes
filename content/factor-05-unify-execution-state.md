@@ -37,4 +37,96 @@ This approach has several benefits:
 6. **Forking**: Can fork the thread at any point by copying some subset of the thread into a new context / state ID
 7. **Human Interfaces and Observability**: Trivial to convert a thread into a human-readable markdown or a rich Web app UI
 
+### Claude Example
+
+With Claude, the conversation thread serves as the single source of truth:
+
+```python
+from anthropic import Anthropic
+import json
+import redis
+
+client = Anthropic()
+
+class ClaudeAgent:
+    def __init__(self):
+        self.thread = []
+        self.redis = redis.Redis()
+    
+    async def run(self, initial_message):
+        """Business state IS the execution state"""
+        self.thread = [{"role": "user", "content": initial_message}]
+        
+        while True:
+            # Infer execution state from thread
+            state = self.infer_state_from_thread()
+            
+            if state["waiting_for"] == "human_approval":
+                thread_id = await self.save_thread()
+                return {"status": "paused", "thread_id": thread_id}
+            
+            # Continue execution...
+            response = client.messages.create(
+                model="claude-3-5-sonnet-20241022",
+                messages=self.thread,
+                tools=self.tools
+            )
+            
+            # Update thread (business state)
+            if response.content[0].type == "tool_use":
+                self.thread.append({
+                    "role": "assistant",
+                    "content": json.dumps({
+                        "tool_call": response.content[0].name,
+                        "arguments": response.content[0].input
+                    })
+                })
+    
+    def infer_state_from_thread(self):
+        """Derive execution state from business state (thread)"""
+        if not self.thread:
+            return {"waiting_for": "initial_request"}
+        
+        last_message = self.thread[-1]
+        
+        # Check for pending human approval
+        if "tool_call" in last_message.get("content", ""):
+            tool_data = json.loads(last_message["content"])
+            if tool_data.get("tool_call") == "request_human_input":
+                return {"waiting_for": "human_approval"}
+        
+        return {"waiting_for": "llm_response"}
+    
+    async def save_thread(self):
+        """Serialize thread for resumption"""
+        thread_id = f"thread_{hash(str(self.thread))}"
+        self.redis.set(thread_id, json.dumps(self.thread))
+        return thread_id
+    
+    async def load_and_resume(self, thread_id):
+        """Resume from saved state"""
+        thread_data = self.redis.get(thread_id)
+        self.thread = json.loads(thread_data)
+        return await self.run_continue()
+    
+    async def fork_thread(self, thread_id, event_index):
+        """Fork thread at specific point"""
+        thread_data = self.redis.get(thread_id)
+        original_thread = json.loads(thread_data)
+        
+        # Create new thread from subset
+        new_thread = original_thread[:event_index]
+        new_thread_id = f"fork_{hash(str(new_thread))}"
+        self.redis.set(new_thread_id, json.dumps(new_thread))
+        
+        return new_thread_id
+```
+
+With Claude:
+- The message thread contains all business logic and execution state
+- No separate "workflow state" to manage
+- Easy serialization via JSON
+- Simple forking by copying message subsets
+- Full observability by inspecting the thread
+
 [← Tools Are Structured Outputs](https://github.com/humanlayer/12-factor-agents/blob/main/content/factor-04-tools-are-structured-outputs.md) | [Launch/Pause/Resume →](https://github.com/humanlayer/12-factor-agents/blob/main/content/factor-06-launch-pause-resume.md)

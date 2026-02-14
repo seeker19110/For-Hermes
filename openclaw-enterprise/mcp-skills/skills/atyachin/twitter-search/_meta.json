@@ -1,0 +1,11 @@
+{
+  "owner": "atyachin",
+  "slug": "twitter-search",
+  "displayName": "Twitter Search — Find Tweets, Mentions & Trends",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1770848765974,
+    "commit": "https://github.com/openclaw/skills/commit/8f31f5afe4f0979b3872ca6ac969a5a3336420de"
+  },
+  "history": []
+}

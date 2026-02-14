@@ -49,4 +49,99 @@ else: #... the model didn't call a tool we know about
 
 The "next step" might not be as atomic as just "run a pure function and return the result". You unlock a lot of flexibility when you think of "tool calls" as just a model outputting JSON describing what deterministic code should do. Put this together with [factor 8 own your control flow](https://github.com/humanlayer/12-factor-agents/blob/main/content/factor-08-own-your-control-flow.md).
 
+### Claude Example
+
+Claude's tool use API provides type-safe structured outputs via JSON Schema:
+
+```python
+from anthropic import Anthropic
+import json
+
+client = Anthropic()
+
+# Define tools with JSON Schema - Claude validates outputs against these schemas
+tools = [
+    {
+        "name": "create_issue",
+        "description": "Create a Linear issue with title, description, and priority",
+        "input_schema": {
+            "type": "object",
+            "properties": {
+                "title": {
+                    "type": "string",
+                    "description": "Issue title - be specific and actionable"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Detailed description of the issue"
+                },
+                "priority": {
+                    "type": "string",
+                    "enum": ["low", "medium", "high", "urgent"],
+                    "description": "Issue priority level"
+                },
+                "team_id": {
+                    "type": "string",
+                    "description": "Linear team identifier"
+                }
+            },
+            "required": ["title", "description", "priority"]
+        }
+    },
+    {
+        "name": "search_issues",
+        "description": "Search for existing issues",
+        "input_schema": {
+            "type": "object",
+            "properties": {
+                "query": {
+                    "type": "string",
+                    "description": "Search query string"
+                },
+                "state": {
+                    "type": "string",
+                    "enum": ["backlog", "todo", "in_progress", "done", "canceled"],
+                    "description": "Filter by issue state"
+                }
+            },
+            "required": ["query"]
+        }
+    }
+]
+
+# Claude outputs structured JSON matching the schema
+response = client.messages.create(
+    model="claude-3-5-sonnet-20241022",
+    max_tokens=4096,
+    messages=[{
+        "role": "user",
+        "content": "Create a high priority issue about the login bug affecting production users"
+    }],
+    tools=tools
+)
+
+# Extract tool call from response
+if response.content[0].type == "tool_use":
+    tool_call = response.content[0]
+    print(f"Tool: {tool_call.name}")
+    print(f"Arguments: {json.dumps(tool_call.input, indent=2)}")
+    # Output:
+    # Tool: create_issue
+    # Arguments: {
+    #   "title": "Login bug affecting production users",
+    #   "description": "Users are unable to log in to the production environment...",
+    #   "priority": "high"
+    # }
+    
+    # Execute deterministic code based on structured output
+    if tool_call.name == "create_issue":
+        result = linear_client.create_issue(**tool_call.input)
+```
+
+Claude's tool use provides:
+- JSON Schema validation for type safety
+- Automatic parameter extraction from natural language
+- Support for complex nested objects
+- Clear separation between LLM decision-making and code execution
+
 [← Own Your Context Window](https://github.com/humanlayer/12-factor-agents/blob/main/content/factor-03-own-your-context-window.md) | [Unify Execution State →](https://github.com/humanlayer/12-factor-agents/blob/main/content/factor-05-unify-execution-state.md)

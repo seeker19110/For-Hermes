@@ -1,0 +1,11 @@
+{
+  "owner": "1991513ccie-png",
+  "slug": "speed-read",
+  "displayName": "uspeed read",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1770996156937,
+    "commit": "https://github.com/openclaw/skills/commit/2a2a2140624275bb6539675b963cdd7a84dbbf90"
+  },
+  "history": []
+}

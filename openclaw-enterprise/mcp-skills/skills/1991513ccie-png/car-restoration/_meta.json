@@ -1,0 +1,11 @@
+{
+  "owner": "1991513ccie-png",
+  "slug": "car-restoration",
+  "displayName": "ucar restoration",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1770997635219,
+    "commit": "https://github.com/openclaw/skills/commit/3bf159c3caaf96b56bfc77e067a678d915d72d2e"
+  },
+  "history": []
+}

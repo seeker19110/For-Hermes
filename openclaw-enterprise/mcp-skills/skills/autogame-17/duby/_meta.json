@@ -1,0 +1,17 @@
+{
+  "owner": "autogame-17",
+  "slug": "duby",
+  "displayName": "Duby",
+  "latest": {
+    "version": "1.0.2",
+    "publishedAt": 1770791159704,
+    "commit": "https://github.com/openclaw/skills/commit/e6d0053d7bdad13ab8d78dee4c59e8f3d7232fba"
+  },
+  "history": [
+    {
+      "version": "1.0.0",
+      "publishedAt": 1769892384484,
+      "commit": "https://github.com/clawdbot/skills/commit/113e4d367f9eefc314e48c5b7317fde811032de9"
+    }
+  ]
+}

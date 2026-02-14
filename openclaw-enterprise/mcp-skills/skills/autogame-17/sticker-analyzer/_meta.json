@@ -1,0 +1,17 @@
+{
+  "owner": "autogame-17",
+  "slug": "sticker-analyzer",
+  "displayName": "Sticker Analyzer",
+  "latest": {
+    "version": "1.0.1",
+    "publishedAt": 1770791882501,
+    "commit": "https://github.com/openclaw/skills/commit/3769caf6f0bc19014937c843630cf07f8e0f03dd"
+  },
+  "history": [
+    {
+      "version": "1.0.0",
+      "publishedAt": 1769892408100,
+      "commit": "https://github.com/clawdbot/skills/commit/de129bd3cd65720824cc3c748641fe73674dea23"
+    }
+  ]
+}

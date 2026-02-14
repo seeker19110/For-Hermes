@@ -1,0 +1,53 @@
+{
+  "name": "apiosk",
+  "version": "1.1.0",
+  "description": "Pay-per-request API access using USDC micropayments on Base. Proper Ethereum wallet with local key storage.",
+  "author": "Olivier Brinkman",
+  "homepage": "https://apiosk.com",
+  "repository": "https://github.com/olivierbrinkman/apiosk-skill",
+  "license": "MIT",
+  "tags": ["payment", "api", "usdc", "x402", "crypto", "micropayments"],
+  "changelog": "v1.1.0: Replaced Foundry (curl|bash) with ethers.js for wallet generation. Proper Ethereum keypair with local private key storage (chmod 600). No external installers required.",
+  "dependencies": {
+    "system": [
+      {
+        "name": "node",
+        "description": "Node.js (used for wallet address generation)",
+        "required": true,
+        "install": "Pre-installed with OpenClaw"
+      },
+      {
+        "name": "jq",
+        "description": "JSON processor (required for parsing responses)",
+        "required": true,
+        "install": "brew install jq (macOS) or apt install jq (Linux)"
+      },
+      {
+        "name": "curl",
+        "description": "HTTP client (usually pre-installed)",
+        "required": true,
+        "install": "Pre-installed on most systems"
+      }
+    ]
+  },
+  "setup": {
+    "required": true,
+    "steps": [
+      "Run ./setup-wallet.sh to generate wallet address",
+      "Fund wallet with USDC on Base (minimum $1-10 for testing)",
+      "Call APIs with ./call-api.sh"
+    ]
+  },
+  "security": {
+    "privateKeyStorage": "plaintext-local",
+    "walletLocation": "~/.apiosk/wallet.json",
+    "permissions": "chmod 600 (user-only)",
+    "notes": [
+      "Private key stored locally in plaintext (chmod 600, owner-only)",
+      "Private key is never transmitted — only wallet address sent to gateway",
+      "No external installers required (no curl|bash) — uses ethers.js via npm",
+      "All gateway communication over HTTPS",
+      "Only fund with small amounts for testing; use hardware wallet/KMS for production"
+    ]
+  }
+}

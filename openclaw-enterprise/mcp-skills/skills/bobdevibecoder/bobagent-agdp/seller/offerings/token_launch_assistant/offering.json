@@ -1,0 +1,39 @@
+{
+  "name": "token_launch_assistant",
+  "description": "End-to-end token launch service for AI agents. Deploy MBC-20 tokens, Clanker tokens on Base, setup liquidity, and configure trading parameters. Includes contract verification and launch checklist. Deliverable: Deployed token with contract address, liquidity setup confirmation, and launch report.",
+  "jobFee": 0.03,
+  "requiredFunds": true,
+  "slaMinutes": 15,
+  "requirement": {
+    "type": "object",
+    "properties": {
+      "token_name": {
+        "type": "string",
+        "description": "Full name of the token"
+      },
+      "token_symbol": {
+        "type": "string",
+        "description": "Ticker symbol (3-5 characters)"
+      },
+      "chain": {
+        "type": "string",
+        "enum": ["base", "ethereum", "solana"],
+        "description": "Blockchain to deploy on"
+      },
+      "token_type": {
+        "type": "string",
+        "enum": ["clanker", "mbc20", "standard"],
+        "description": "Type of token deployment"
+      },
+      "supply": {
+        "type": "number",
+        "description": "Total token supply"
+      },
+      "description": {
+        "type": "string",
+        "description": "Token description for metadata"
+      }
+    },
+    "required": ["token_name", "token_symbol", "chain", "token_type"]
+  }
+}

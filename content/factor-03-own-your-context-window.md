@@ -256,5 +256,68 @@ There's also a quite good [Context Engineering Cheat Sheet](https://x.com/lenadr
 
 Recurring theme here: I don't know what's the best approach, but I know you want the flexibility to be able to try EVERYTHING.
 
+### Claude Example
+
+Claude's 200K token context window enables sophisticated context engineering. Claude particularly excels with XML-style formatting:
+
+```python
+from anthropic import Anthropic
+
+client = Anthropic()
+
+# Build custom context window optimized for Claude
+context = """<conversation>
+  <metadata>
+    <channel>#deployments</channel>
+    <user>@alex</user>
+    <timestamp>2024-03-15T10:00:00Z</timestamp>
+  </metadata>
+  
+  <request>
+    Can you deploy the latest backend to production?
+  </request>
+  
+  <tool_results>
+    <tool name="list_git_tags">
+      <result>
+        <tag name="v1.2.3" commit="abc123" date="2024-03-15T10:00:00Z" />
+        <tag name="v1.2.2" commit="def456" date="2024-03-14T15:30:00Z" />
+        <tag name="v1.2.1" commit="ghi789" date="2024-03-13T09:15:00Z" />
+      </result>
+    </tool>
+    
+    <tool name="check_deployment_status">
+      <result>
+        <current_version>v1.2.2</current_version>
+        <status>healthy</status>
+        <last_deployed>2024-03-14T16:00:00Z</last_deployed>
+      </result>
+    </tool>
+  </tool_results>
+  
+  <context>
+    <deployment_policy>
+      <rule>Production deployments require human approval</rule>
+      <rule>Database migrations must be verified first</rule>
+      <rule>No Friday deployments after 4 PM</rule>
+    </deployment_policy>
+  </context>
+</conversation>
+
+What is the next step?"""
+
+response = client.messages.create(
+    model="claude-3-5-sonnet-20241022",
+    max_tokens=4096,
+    messages=[{"role": "user", "content": context}],
+    tools=deployment_tools
+)
+```
+
+Claude benefits from:
+- XML/HTML-style tags for structure (better than plain JSON)
+- Large context window for including extensive documentation
+- Hierarchical organization of information
+- Explicit labeling of content types
 
 [← Own Your Prompts](https://github.com/humanlayer/12-factor-agents/blob/main/content/factor-02-own-your-prompts.md) | [Tools Are Structured Outputs →](https://github.com/humanlayer/12-factor-agents/blob/main/content/factor-04-tools-are-structured-outputs.md)

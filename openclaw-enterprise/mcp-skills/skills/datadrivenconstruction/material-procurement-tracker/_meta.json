@@ -1,0 +1,11 @@
+{
+  "owner": "datadrivenconstruction",
+  "slug": "material-procurement-tracker",
+  "displayName": "Material Procurement Tracker",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1770475227951,
+    "commit": "https://github.com/openclaw/skills/commit/88977f43f136b4b61efdf7a2017d025ff3e77558"
+  },
+  "history": []
+}

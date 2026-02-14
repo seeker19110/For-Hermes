@@ -1,0 +1,11 @@
+{
+  "owner": "itzsubhadip",
+  "slug": "youtube-transcript-yt-dlp",
+  "displayName": "YouTube Transcript (yt-dlp)",
+  "latest": {
+    "version": "1.0.1",
+    "publishedAt": 1770988715560,
+    "commit": "https://github.com/openclaw/skills/commit/228bae322f0c52cfc2e051d8fc77d4f65e13a96c"
+  },
+  "history": []
+}

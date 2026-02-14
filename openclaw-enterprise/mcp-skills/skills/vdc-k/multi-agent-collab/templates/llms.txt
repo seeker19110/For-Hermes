@@ -1,0 +1,50 @@
+# [项目名称]
+
+> [一句话项目描述]
+
+## 🎯 Current Focus
+- 当前任务：[任务描述] → TASK-current.md
+
+## 📂 Documentation Map
+
+### Core Files (Always Read)
+- [README](PROJECT-README.md): Project overview, critical rules
+- [TASK-current](TASK-current.md): Active tasks (200 tokens)
+- This file (llms.txt): Navigation index
+
+### Reference (Read When Needed)
+- [CHANGELOG](CHANGELOG.md): Recent changes (last 2 weeks)
+- [CONTEXT](CONTEXT.md): Design decisions, key insights
+- [TASK-planned](TASK-planned.md): Upcoming tasks
+
+### Guides
+- [Best Practices](PROJECT-BEST-PRACTICES.md): Workflow & optimization
+- [Model Router](MODEL-ROUTER.md): When to use Flash/Sonnet/Opus
+- [Task Delegation](TASK-DELEGATION-GUIDE.md): Delegate to cheap models
+
+## 🔄 Workflow
+1. Read this file → quick orientation
+2. Read TASK-current → what to do now
+3. Read CHANGELOG (last 3-5 days) → recent context
+4. Work → update TASK + CHANGELOG
+5. Weekly: auto-archive (Cron on Sunday)
+
+## 🤖 Model Strategy
+- **Gemini Flash** ($0.15/1M): Archive, cleanup, format conversion
+- **Sonnet 4.5** ($3/1M): Development, discussion
+- **Opus 4.6** ($15/1M): Architecture, deep analysis
+
+## 🚨 Critical Rules
+- Keep TASK-current < 200 tokens
+- Keep CHANGELOG < 2k tokens (archive after 2 weeks)
+- One-line changelog entries only
+- No secrets in any file
+
+## 🔗 External Resources
+- Archive: `archive/` (2+ weeks old content)
+- Full history: Available on request
+
+---
+
+**Token budget**: ~1k (Layer 1) + ~3k (Layer 2 when needed) = 4k total
+vs 50k-100k full conversation history → **90%+ savings**

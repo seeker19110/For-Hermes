@@ -1,0 +1,11 @@
+{
+  "owner": "charpup",
+  "slug": "notion-mcp-wrapper",
+  "displayName": "Notion MCP Wrapper",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1770783997621,
+    "commit": "https://github.com/openclaw/skills/commit/43ca3d2cec0dd71e23b44b605df8cdd2b9e609ff"
+  },
+  "history": []
+}

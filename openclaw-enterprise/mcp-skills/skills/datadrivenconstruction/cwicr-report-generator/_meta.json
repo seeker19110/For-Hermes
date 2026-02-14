@@ -1,0 +1,11 @@
+{
+  "owner": "datadrivenconstruction",
+  "slug": "cwicr-report-generator",
+  "displayName": "Cwicr Report Generator",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1770475066245,
+    "commit": "https://github.com/openclaw/skills/commit/8a878be5de2d8a5d8b2505808afd666ee1e87e41"
+  },
+  "history": []
+}

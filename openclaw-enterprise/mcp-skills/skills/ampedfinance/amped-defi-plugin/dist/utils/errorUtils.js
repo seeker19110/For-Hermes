@@ -1,0 +1,19 @@
+/**
+ * Serialize SDK error objects for readable error messages
+ */
+function bigintReplacer(key, value) {
+    return typeof value === 'bigint' ? value.toString() : value;
+}
+export function serializeError(error) {
+    if (error instanceof Error)
+        return error.message;
+    if (typeof error === 'string')
+        return error;
+    try {
+        return JSON.stringify(error, bigintReplacer, 2);
+    }
+    catch {
+        return String(error);
+    }
+}
+//# sourceMappingURL=errorUtils.js.map

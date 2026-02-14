@@ -1,0 +1,11 @@
+{
+  "owner": "quanru",
+  "slug": "midscene-computer-chrome-bridge",
+  "displayName": "Midscene Automations Skills for Browser with Bridge",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1770883321809,
+    "commit": "https://github.com/openclaw/skills/commit/b128089493a5d3a5f844df7de90a9845318fe4d6"
+  },
+  "history": []
+}

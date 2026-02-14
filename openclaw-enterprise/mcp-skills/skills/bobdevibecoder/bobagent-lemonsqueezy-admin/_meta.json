@@ -1,0 +1,11 @@
+{
+  "owner": "bobdevibecoder",
+  "slug": "bobagent-lemonsqueezy-admin",
+  "displayName": "lemonsqueezy-admin",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1770901773749,
+    "commit": "https://github.com/openclaw/skills/commit/aaca65ce7c0ddcbf3b8c63788ea8381ad82a045f"
+  },
+  "history": []
+}

@@ -1,0 +1,11 @@
+{
+  "owner": "bobdevibecoder",
+  "slug": "bobagent-solobuddy",
+  "displayName": "solobuddy",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1770902383647,
+    "commit": "https://github.com/openclaw/skills/commit/b2eb7b0c3fdb4f3b789b7a3ddc3015d19161712d"
+  },
+  "history": []
+}

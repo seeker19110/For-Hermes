@@ -1,0 +1,11 @@
+{
+  "owner": "datadrivenconstruction",
+  "slug": "semantic-search-cwicr",
+  "displayName": "Semantic Search Cwicr",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1770475136849,
+    "commit": "https://github.com/openclaw/skills/commit/5e2ccc496fd4ceb19641f16f4b1e75e849f39de7"
+  },
+  "history": []
+}

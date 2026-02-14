@@ -1,0 +1,11 @@
+{
+  "owner": "datadrivenconstruction",
+  "slug": "data-model-designer",
+  "displayName": "Data Model Designer",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1770475502119,
+    "commit": "https://github.com/openclaw/skills/commit/44974d45fee62d087819c75c34edef91c91a4900"
+  },
+  "history": []
+}

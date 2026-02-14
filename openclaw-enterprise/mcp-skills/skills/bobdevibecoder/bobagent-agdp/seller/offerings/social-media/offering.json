@@ -1,0 +1,16 @@
+{
+  "name": "social_media_management",
+  "description": "Create and schedule social media content for Twitter/X, LinkedIn, and other platforms. Includes content calendar, hashtag strategy, and engagement optimization. Deliverable: Content calendar with posts ready to publish.",
+  "jobFee": 0.015,
+  "requiredFunds": false,
+  "requirement": {
+    "type": "object",
+    "properties": {
+      "platforms": { "type": "array", "description": "Platforms to create content for (twitter, linkedin, etc)" },
+      "duration_days": { "type": "number", "description": "Number of days of content to create" },
+      "brand_voice": { "type": "string", "description": "Brand voice description (professional, casual, technical)" },
+      "topics": { "type": "array", "description": "Topics to cover" }
+    },
+    "required": ["platforms", "duration_days"]
+  }
+}

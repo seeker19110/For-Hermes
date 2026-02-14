@@ -1,0 +1,11 @@
+{
+  "owner": "0xbeekeeper",
+  "slug": "security",
+  "displayName": "Agentguard",
+  "latest": {
+    "version": "0.1.0",
+    "publishedAt": 1770528636501,
+    "commit": "https://github.com/openclaw/skills/commit/2e26a82355f4de1ad3e78411c376e27815175921"
+  },
+  "history": []
+}

@@ -83,4 +83,143 @@ you're forced to either:
 
 You may notice this is closely related to [factor 5 - unify execution state and business state](https://github.com/humanlayer/12-factor-agents/blob/main/content/factor-05-unify-execution-state.md) and [factor 6 - launch/pause/resume with simple APIs](https://github.com/humanlayer/12-factor-agents/blob/main/content/factor-06-launch-pause-resume.md), but can be implemented independently.
 
+### Claude Example
+
+Build custom control flow with Claude to handle approval workflows, retries, and interrupts:
+
+```python
+from anthropic import Anthropic
+import asyncio
+from tenacity import retry, wait_exponential, stop_after_attempt
+
+client = Anthropic()
+
+class ClaudeAgentWithControlFlow:
+    def __init__(self):
+        self.thread = []
+        self.consecutive_errors = 0
+        self.max_steps = 20
+    
+    async def run_with_custom_control_flow(self, initial_message):
+        """Custom control flow with interrupts and custom logic"""
+        self.thread = [{"role": "user", "content": initial_message}]
+        
+        for step in range(self.max_steps):
+            next_step = await self._get_next_step()
+            
+            # Add tool call to thread
+            self.thread.append({
+                "role": "assistant",
+                "content": json.dumps(next_step)
+            })
+            
+            # Custom control flow based on intent
+            if next_step["intent"] == "done_for_now":
+                return {"status": "completed", "result": next_step}
+            
+            elif next_step["intent"] == "request_clarification":
+                # Async step: break loop and wait for human
+                await self._send_clarification_request(next_step)
+                return {
+                    "status": "paused",
+                    "reason": "awaiting_clarification",
+                    "thread_id": await self._save_thread()
+                }
+            
+            elif next_step["intent"] == "deploy_production":
+                # High-stakes: interrupt before execution for approval
+                await self._request_deployment_approval(next_step)
+                return {
+                    "status": "paused",
+                    "reason": "awaiting_deployment_approval",
+                    "pending_action": next_step,
+                    "thread_id": await self._save_thread()
+                }
+            
+            elif next_step["intent"] == "fetch_git_tags":
+                # Sync step: execute and continue immediately
+                try:
+                    tags = await self._fetch_git_tags_with_retry()
+                    self.thread.append({
+                        "role": "user",
+                        "content": f"Git tags: {json.dumps(tags)}"
+                    })
+                    self.consecutive_errors = 0  # Reset error counter
+                    continue  # Pass immediately back to LLM
+                except Exception as e:
+                    # Factor 9: Error handling
+                    self.consecutive_errors += 1
+                    if self.consecutive_errors >= 3:
+                        # Escalate to human after 3 failures
+                        await self._escalate_to_human(e)
+                        return {"status": "paused", "reason": "error_escalation"}
+                    
+                    # Add error to context and retry
+                    self.thread.append({
+                        "role": "user",
+                        "content": f"<error>Failed to fetch tags: {str(e)}. Retrying...</error>"
+                    })
+                    continue
+            
+            elif next_step["intent"] == "summarize_logs":
+                # Custom pre-processing before LLM call
+                logs = await self._fetch_logs()
+                
+                # Summarize if logs are too long
+                if len(logs) > 10000:
+                    logs = await self._summarize_logs_with_claude(logs)
+                
+                self.thread.append({
+                    "role": "user",
+                    "content": f"Logs: {logs}"
+                })
+                continue
+            
+            elif next_step["intent"] == "rate_limited_api_call":
+                # Client-side rate limiting
+                await self._rate_limiter.acquire()
+                result = await self._make_api_call()
+                self.thread.append({
+                    "role": "user",
+                    "content": f"API result: {json.dumps(result)}"
+                })
+                continue
+            
+            elif next_step["intent"] == "wait_for_event":
+                # Durable sleep/wait
+                await self._schedule_resume(next_step.get("wait_duration", 300))
+                return {
+                    "status": "paused",
+                    "reason": "scheduled_wait",
+                    "resume_at": next_step.get("resume_time")
+                }
+        
+        return {"status": "max_steps_reached"}
+    
+    @retry(wait=wait_exponential(multiplier=1, min=4, max=60))
+    async def _fetch_git_tags_with_retry(self):
+        """Retry with exponential backoff for Claude API"""
+        return await git_client.list_tags()
+    
+    async def _summarize_logs_with_claude(self, logs):
+        """Use Claude to compact large context"""
+        response = client.messages.create(
+            model="claude-3-5-sonnet-20241022",
+            max_tokens=2000,
+            messages=[{
+                "role": "user",
+                "content": f"Summarize these deployment logs, focusing on errors and warnings:\n\n{logs[:50000]}"
+            }]
+        )
+        return response.content[0].text
+```
+
+This custom control flow enables:
+- Interrupt between tool selection and execution for approvals
+- Client-side rate limiting for Claude API calls
+- Automatic retry with exponential backoff
+- Context window compaction for large data
+- Error escalation after threshold
+- Durable wait/sleep without holding memory
+
 [← Contact Humans With Tools](https://github.com/humanlayer/12-factor-agents/blob/main/content/factor-07-contact-humans-with-tools.md) | [Compact Errors →](https://github.com/humanlayer/12-factor-agents/blob/main/content/factor-09-compact-errors.md)

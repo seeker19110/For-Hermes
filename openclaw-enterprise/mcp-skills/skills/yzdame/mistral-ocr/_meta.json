@@ -1,0 +1,11 @@
+{
+  "owner": "yzdame",
+  "slug": "mistral-ocr",
+  "displayName": "Mistral-OCR",
+  "latest": {
+    "version": "1.0.2",
+    "publishedAt": 1770823509253,
+    "commit": "https://github.com/openclaw/skills/commit/a590b8cf593cfec9d75eda7e1d14daa31b25b044"
+  },
+  "history": []
+}

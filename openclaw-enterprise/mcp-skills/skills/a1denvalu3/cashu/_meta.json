@@ -1,0 +1,11 @@
+{
+  "owner": "a1denvalu3",
+  "slug": "cashu",
+  "displayName": "Cashu Wallet (Nutshell)",
+  "latest": {
+    "version": "0.18.6",
+    "publishedAt": 1771000612438,
+    "commit": "https://github.com/openclaw/skills/commit/d15ba5ccc620fb00e95aeb8870b6ec64dbcedefd"
+  },
+  "history": []
+}

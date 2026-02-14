@@ -1,0 +1,11 @@
+{
+  "owner": "7schmiede",
+  "slug": "hookaido",
+  "displayName": "Hookaido Operator",
+  "latest": {
+    "version": "1.2.0",
+    "publishedAt": 1771022873991,
+    "commit": "https://github.com/openclaw/skills/commit/5773bd316c760a8465f228598f50d2e38a0b37ae"
+  },
+  "history": []
+}

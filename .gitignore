@@ -1,1 +1,40 @@
 .promptx
+
+# Security - Never commit secrets
+.env
+.env.local
+.env.*.local
+*.key
+*.pem
+*.p12
+*.pfx
+id_rsa
+id_rsa.pub
+.aws/
+.ssh/
+
+# Audit logs (may contain sensitive data)
+.claude/audit.log
+.claude/audit_*.log
+
+# Security incident reports (temporary)
+INCIDENT_*.md
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor files
+.vscode/settings.json
+.idea/
+*.swp
+*.swo
+
+# Dependencies
+node_modules/
+vendor/
+
+# Logs
+*.log
+logs/
+

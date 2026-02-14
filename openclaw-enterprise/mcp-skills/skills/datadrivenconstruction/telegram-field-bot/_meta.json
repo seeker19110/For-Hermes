@@ -1,0 +1,11 @@
+{
+  "owner": "datadrivenconstruction",
+  "slug": "telegram-field-bot",
+  "displayName": "Telegram Field Bot",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1770475989116,
+    "commit": "https://github.com/openclaw/skills/commit/f1e461be5c451b31aacb455b14cefd2a965aafbe"
+  },
+  "history": []
+}

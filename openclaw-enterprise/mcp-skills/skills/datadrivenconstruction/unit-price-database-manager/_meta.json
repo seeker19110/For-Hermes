@@ -1,0 +1,11 @@
+{
+  "owner": "datadrivenconstruction",
+  "slug": "unit-price-database-manager",
+  "displayName": "Unit Price Database Manager",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1770475593602,
+    "commit": "https://github.com/openclaw/skills/commit/2557be2727030a7558cfe12b6325f640c39d5297"
+  },
+  "history": []
+}

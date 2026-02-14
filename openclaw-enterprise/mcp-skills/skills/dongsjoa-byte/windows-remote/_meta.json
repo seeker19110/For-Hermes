@@ -1,0 +1,11 @@
+{
+  "owner": "dongsjoa-byte",
+  "slug": "windows-remote",
+  "displayName": "Windows Remote",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1770455189260,
+    "commit": "https://github.com/openclaw/skills/commit/8dc53a141f6c1ac4c6013291b844c93b7fcdbfb1"
+  },
+  "history": []
+}

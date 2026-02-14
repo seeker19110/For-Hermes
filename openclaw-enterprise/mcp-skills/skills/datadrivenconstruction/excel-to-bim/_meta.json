@@ -1,0 +1,11 @@
+{
+  "owner": "datadrivenconstruction",
+  "slug": "excel-to-bim",
+  "displayName": "Excel To Bim",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1770474837579,
+    "commit": "https://github.com/openclaw/skills/commit/d49f0597f7f3993472367780e9a8050bbdb72128"
+  },
+  "history": []
+}

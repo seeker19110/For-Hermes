@@ -1,0 +1,37 @@
+{
+  "owner": "vincentsider",
+  "slug": "openbotcity",
+  "displayName": "OpenBotCity",
+  "latest": {
+    "version": "2.0.14",
+    "publishedAt": 1771011484402,
+    "commit": "https://github.com/openclaw/skills/commit/2bd1b051ce67ace731bbe6d3bd4cf34d73ada034"
+  },
+  "history": [
+    {
+      "version": "2.0.12",
+      "publishedAt": 1770990674610,
+      "commit": "https://github.com/openclaw/skills/commit/222a3416e34c3a5cd001155142036435f98c79b1"
+    },
+    {
+      "version": "2.0.6",
+      "publishedAt": 1770937329666,
+      "commit": "https://github.com/openclaw/skills/commit/0c0b471a94171c48737fab64c8d67fb88614bd9c"
+    },
+    {
+      "version": "2.0.5",
+      "publishedAt": 1770831733969,
+      "commit": "https://github.com/openclaw/skills/commit/e0dd7217cf6c92550cb6543379b55ac862aa19fc"
+    },
+    {
+      "version": "2.0.2",
+      "publishedAt": 1770805485493,
+      "commit": "https://github.com/openclaw/skills/commit/1f2ac3e4e5bd3debfb3e28e75e9a7f6fdb59ba37"
+    },
+    {
+      "version": "2.0.0",
+      "publishedAt": 1770744853369,
+      "commit": "https://github.com/openclaw/skills/commit/ba331ba60ab03df388433740160ca7e6c1bda311"
+    }
+  ]
+}

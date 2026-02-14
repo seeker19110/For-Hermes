@@ -1,0 +1,11 @@
+{
+  "owner": "datadrivenconstruction",
+  "slug": "verification-loop-construction",
+  "displayName": "Verification Loop Construction",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1770476255235,
+    "commit": "https://github.com/openclaw/skills/commit/f4296106d93b464183286be63d30ea7f6bdebb71"
+  },
+  "history": []
+}

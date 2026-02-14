@@ -1,0 +1,11 @@
+{
+  "owner": "bobdevibecoder",
+  "slug": "bobagent-polymarket",
+  "displayName": "polymarket",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1770901882184,
+    "commit": "https://github.com/openclaw/skills/commit/14a4a9b91bdf004cfa834c145d4b08977ea88a2e"
+  },
+  "history": []
+}

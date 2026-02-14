@@ -1,0 +1,46 @@
+{
+  "purple": {
+    "primary": "#6366f1",
+    "primary_hover": "#818cf8",
+    "accent": "#a78bfa",
+    "glow": "rgba(99, 102, 241, 0.15)",
+    "example": "ConvertFlow"
+  },
+  "green": {
+    "primary": "#10b981",
+    "primary_hover": "#34d399",
+    "accent": "#06b6d4",
+    "glow": "rgba(16, 185, 129, 0.15)",
+    "example": "MarkdownMagic"
+  },
+  "blue": {
+    "primary": "#3b82f6",
+    "primary_hover": "#60a5fa",
+    "accent": "#8b5cf6",
+    "glow": "rgba(59, 130, 246, 0.15)"
+  },
+  "orange": {
+    "primary": "#f97316",
+    "primary_hover": "#fb923c",
+    "accent": "#fbbf24",
+    "glow": "rgba(249, 115, 22, 0.15)"
+  },
+  "pink": {
+    "primary": "#ec4899",
+    "primary_hover": "#f472b6",
+    "accent": "#a855f7",
+    "glow": "rgba(236, 72, 153, 0.15)"
+  },
+  "red": {
+    "primary": "#ef4444",
+    "primary_hover": "#f87171",
+    "accent": "#f97316",
+    "glow": "rgba(239, 68, 68, 0.15)"
+  },
+  "cyan": {
+    "primary": "#06b6d4",
+    "primary_hover": "#22d3ee",
+    "accent": "#3b82f6",
+    "glow": "rgba(6, 182, 212, 0.15)"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "owner": "datadrivenconstruction",
+  "slug": "delay-analysis",
+  "displayName": "Delay Analysis",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1770476072237,
+    "commit": "https://github.com/openclaw/skills/commit/0d7565b6fdd1d7a23a7bc50e9a8170ace6b4af37"
+  },
+  "history": []
+}

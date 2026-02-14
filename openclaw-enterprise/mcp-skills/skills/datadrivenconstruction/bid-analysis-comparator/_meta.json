@@ -1,0 +1,11 @@
+{
+  "owner": "datadrivenconstruction",
+  "slug": "bid-analysis-comparator",
+  "displayName": "Bid Analysis Comparator",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1770475221487,
+    "commit": "https://github.com/openclaw/skills/commit/efa809f0312630b088cb7cdc0dc32c203e439965"
+  },
+  "history": []
+}

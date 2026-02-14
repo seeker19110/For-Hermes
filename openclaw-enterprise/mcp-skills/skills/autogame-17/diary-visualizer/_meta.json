@@ -1,0 +1,17 @@
+{
+  "owner": "autogame-17",
+  "slug": "diary-visualizer",
+  "displayName": "Diary Visualizer",
+  "latest": {
+    "version": "1.0.1",
+    "publishedAt": 1770791153168,
+    "commit": "https://github.com/openclaw/skills/commit/5905dba87855643659c9f297f84431eb8390cf08"
+  },
+  "history": [
+    {
+      "version": "1.0.0",
+      "publishedAt": 1770790837450,
+      "commit": "https://github.com/openclaw/skills/commit/658ea160437356584f8c4385866f5cc62b0f972f"
+    }
+  ]
+}
