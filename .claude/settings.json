@@ -3,73 +3,87 @@
   "initialPermissionMode": "manual",
   "allowedTools": ["Read", "Edit", "Bash", "Glob", "Grep"],
   "autoAcceptEdits": false,
+  "autoAccept Bash": false,
+  "dangerousIgnoreSafetyChecks": false,
   "mcpServers": {
-    "_meta": {
-      "securityNotice": "Все MCP серверы работают в режиме ручного подтверждения. Каждое действие требует вашего согласия."
+    "_security": {
+      "notice": "СТРОГИЙ РЕЖИМ БЕЗОПАСНОСТИ",
+      "lastUpdated": "2025-02-14",
+      "requiresApproval": true,
+      "auditLogEnabled": true
     },
     
     "filesystem": {
       "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-filesystem", "/Users/work/.local/share/opencode/worktree/3492fc5455829fa1f151b58aefd743e1f6dc3335/cosmic-knight/12-factor-agents"],
-      "description": "Безопасный доступ только к файлам проекта 12-factor-agents",
+      "args": ["-y", "@modelcontextprotocol/server-filesystem", "/Users/work/.local/share/opencode/worktree/3492fc5455829fa1f151b58aefd743e1f6dc3335/cosmic-knight/12-factor-agents/content", "/Users/work/.local/share/opencode/worktree/3492fc5455829fa1f151b58aefd743e1f6dc3335/cosmic-knight/12-factor-agents/README.md"],
+      "description": "ТОЛЬКО content/ и README.md - ограниченный доступ",
       "security": {
-        "scope": "project_only",
-        "allowsWrite": true,
-        "allowsDelete": false
+        "scope": "strict_read_write",
+        "allowedPaths": ["content/", "README.md"],
+        "forbiddenPaths": [".env", ".git/", "node_modules/", "*.key", "*.pem"],
+        "allowsDelete": false,
+        "allowsExecute": false,
+        "requiresDoubleConfirm": true
       }
     },
     
     "fetch": {
       "command": "npx",
       "args": ["-y", "@modelcontextprotocol/server-fetch"],
-      "description": "Загрузка веб-контента только для чтения",
+      "description": "Только GET, только HTTPS, только доверенные домены",
       "security": {
-        "scope": "read_only",
-        "allowsExternalRequests": true,
-        "note": "Только GET-запросы, без отправки данных"
+        "scope": "strict_read_only",
+        "allowedProtocols": ["https"],
+        "forbiddenHosts": ["localhost", "127.0.0.1", "*.internal", "*.local"],
+        "maxResponseSize": "10MB",
+        "timeout": 30,
+        "requiresConfirmation": true
       }
     },
     
     "git": {
       "command": "npx",
       "args": ["-y", "@modelcontextprotocol/server-git"],
-      "description": "Операции с Git репозиторием",
+      "description": "Git операции с запретом на push и опасные команды",
       "security": {
-        "scope": "read_write",
-        "allowsPush": false,
-        "note": "Требуется подтверждение для commit/push"
-      }
-    },
-    
-    "memory": {
-      "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-memory"],
-      "description": "Локальное хранилище знаний (knowledge graph)",
-      "security": {
-        "scope": "local_only",
-        "dataLocation": "~/.mcp/memory",
-        "note": "Все данные хранятся локально"
-      }
-    },
-    
-    "sequentialthinking": {
-      "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-sequential-thinking"],
-      "description": "Динамическое решение проблем через цепочки мыслей",
-      "security": {
-        "scope": "stateless",
-        "note": "Не сохраняет данные между сессиями"
+        "scope": "restricted",
+        "allowedCommands": ["status", "log", "diff", "show", "branch", "remote"],
+        "forbiddenCommands": ["push", "force-push", "reset --hard", "clean -fd", "rm -rf"],
+        "requiresConfirmation": true,
+        "auditAllCommands": true
       }
     },
     
     "time": {
       "command": "npx",
       "args": ["-y", "@modelcontextprotocol/server-time"],
-      "description": "Конвертация времени и часовых поясов",
+      "description": "Только чтение времени",
       "security": {
         "scope": "read_only",
-        "note": "Только чтение системного времени"
+        "stateless": true
       }
     }
+  },
+  
+  "security": {
+    "auditLog": {
+      "enabled": true,
+      "path": ".claude/audit.log",
+      "logLevel": "all"
+    },
+    "allowedDirectories": ["content/", "README.md"],
+    "forbiddenPatterns": [
+      "\.env$",
+      "\.key$",
+      "\.pem$",
+      "id_rsa",
+      "password",
+      "secret",
+      "token",
+      "api_key"
+    ],
+    "requireCommitBeforeExit": true,
+    "maxConsecutiveErrors": 3,
+    "sessionTimeout": 3600
   }
 }
