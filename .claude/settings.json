@@ -4,20 +4,72 @@
   "allowedTools": ["Read", "Edit", "Bash", "Glob", "Grep"],
   "autoAcceptEdits": false,
   "mcpServers": {
+    "_meta": {
+      "securityNotice": "Все MCP серверы работают в режиме ручного подтверждения. Каждое действие требует вашего согласия."
+    },
+    
     "filesystem": {
       "command": "npx",
       "args": ["-y", "@modelcontextprotocol/server-filesystem", "/Users/work/.local/share/opencode/worktree/3492fc5455829fa1f151b58aefd743e1f6dc3335/cosmic-knight/12-factor-agents"],
-      "description": "Доступ к файлам проекта 12-factor-agents"
+      "description": "Безопасный доступ только к файлам проекта 12-factor-agents",
+      "security": {
+        "scope": "project_only",
+        "allowsWrite": true,
+        "allowsDelete": false
+      }
     },
+    
     "fetch": {
-      "command": "uvx",
-      "args": ["mcp-server-fetch"],
-      "description": "Загрузка веб-страниц и документации"
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-fetch"],
+      "description": "Загрузка веб-контента только для чтения",
+      "security": {
+        "scope": "read_only",
+        "allowsExternalRequests": true,
+        "note": "Только GET-запросы, без отправки данных"
+      }
     },
+    
     "git": {
-      "command": "uvx",
-      "args": ["mcp-server-git"],
-      "description": "Операции с Git"
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-git"],
+      "description": "Операции с Git репозиторием",
+      "security": {
+        "scope": "read_write",
+        "allowsPush": false,
+        "note": "Требуется подтверждение для commit/push"
+      }
+    },
+    
+    "memory": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-memory"],
+      "description": "Локальное хранилище знаний (knowledge graph)",
+      "security": {
+        "scope": "local_only",
+        "dataLocation": "~/.mcp/memory",
+        "note": "Все данные хранятся локально"
+      }
+    },
+    
+    "sequentialthinking": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-sequential-thinking"],
+      "description": "Динамическое решение проблем через цепочки мыслей",
+      "security": {
+        "scope": "stateless",
+        "note": "Не сохраняет данные между сессиями"
+      }
+    },
+    
+    "time": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-time"],
+      "description": "Конвертация времени и часовых поясов",
+      "security": {
+        "scope": "read_only",
+        "note": "Только чтение системного времени"
+      }
     }
   }
 }
