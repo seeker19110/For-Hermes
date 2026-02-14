@@ -1,0 +1,23 @@
+{
+  "manifest_version": 3,
+  "name": "AI Capture: Design + Knowledge",
+  "version": "1.0.0",
+  "description": "Two-mode page/site capture for AI reconstruction and knowledge extraction.",
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "downloads",
+    "storage",
+    "tabs",
+    "windows"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "initialPermissionMode": "manual",
+  "allowedTools": ["Read", "Edit", "Bash", "Glob", "Grep"],
+  "autoAcceptEdits": false,
+  "mcpServers": {
+    "filesystem": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-filesystem", "/Users/work/.local/share/opencode/worktree/3492fc5455829fa1f151b58aefd743e1f6dc3335/cosmic-knight/12-factor-agents"],
+      "description": "Доступ к файлам проекта 12-factor-agents"
+    },
+    "fetch": {
+      "command": "uvx",
+      "args": ["mcp-server-fetch"],
+      "description": "Загрузка веб-страниц и документации"
+    },
+    "git": {
+      "command": "uvx",
+      "args": ["mcp-server-git"],
+      "description": "Операции с Git"
+    }
+  }
+}

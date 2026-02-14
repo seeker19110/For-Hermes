@@ -1,0 +1,122 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Capture</title>
+    <style>
+      :root {
+        --bg: #0f1115;
+        --panel: #171a21;
+        --line: #2a3140;
+        --text: #e8ecf5;
+        --muted: #9ca7bd;
+        --accent: #2f7cf6;
+        --ok: #19b36b;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        width: 280px;
+        padding: 12px;
+        background: var(--bg);
+        color: var(--text);
+        font: 12px/1.4 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+
+      .panel {
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        padding: 10px;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 4px;
+        color: var(--muted);
+        font-size: 11px;
+        text-transform: uppercase;
+      }
+
+      select,
+      button {
+        width: 100%;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #0f131b;
+        color: var(--text);
+      }
+
+      select {
+        padding: 8px;
+        margin-bottom: 10px;
+      }
+
+      .row {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin: 8px 0 4px;
+      }
+
+      .row input {
+        margin: 0;
+      }
+
+      .row span {
+        color: var(--muted);
+      }
+
+      button {
+        margin-top: 10px;
+        padding: 10px;
+        background: var(--accent);
+        border-color: var(--accent);
+        cursor: pointer;
+        font-weight: 700;
+      }
+
+      #status {
+        margin-top: 8px;
+        min-height: 16px;
+        font-size: 11px;
+        color: var(--muted);
+      }
+
+      #status.ok {
+        color: var(--ok);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="panel">
+      <label for="dataType">1) Что скачать</label>
+      <select id="dataType">
+        <option value="design">Design (HTML/CSS/JS/animations)</option>
+        <option value="content">Knowledge (clean markdown)</option>
+      </select>
+
+      <label for="depth">2) Глубина</label>
+      <select id="depth">
+        <option value="single">Текущая страница</option>
+        <option value="site">Весь сайт (до 10 страниц)</option>
+      </select>
+
+      <label class="row">
+        <input id="includeImages" type="checkbox" checked />
+        <span>Картинки (для Design полезно)</span>
+      </label>
+
+      <button id="startBtn">Скачать</button>
+      <div id="status"></div>
+    </div>
+
+    <script src="jszip.min.js"></script>
+    <script src="popup.js"></script>
+  </body>
+</html>

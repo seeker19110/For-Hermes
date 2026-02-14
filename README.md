@@ -215,6 +215,7 @@ After digging through hundreds of AI libriaries and working with dozens of found
 ## Related Resources
 
 - [Building 12-Factor Agents with Claude](https://github.com/humanlayer/12-factor-agents/blob/main/content/claude-12-factor-guide.md) - Comprehensive guide with Claude-specific examples and best practices
+- [MCP Серверы для Claude Code](https://github.com/humanlayer/12-factor-agents/blob/main/MCP_SETUP.md) - Русская документация по настройке MCP серверов (файловая система, GitHub, Fetch)
 - Contribute to this guide [here](https://github.com/humanlayer/12-factor-agents)
 - [I talked about a lot of this on an episode of the Tool Use podcast](https://youtu.be/8bIHcttkOTE) in March 2025
 - I write about some of this stuff at [The Outer Loop](https://theouterloop.substack.com)
