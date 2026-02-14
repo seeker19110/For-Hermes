@@ -38,4 +38,152 @@ Being intentional about size/scope of agents, and only growing in ways that allo
 
 Regardless of where that boundary is, if you can find that boundary and get it right consistently, you'll be building magical experiences. There are many moats to be built here, but as usual, they take some engineering rigor.
 
+### Claude Example
+
+Design small, focused Claude agents that excel at specific tasks:
+
+```python
+from anthropic import Anthropic
+
+client = Anthropic()
+
+# GOOD: Focused agent with clear scope
+class GitTagAgent:
+    """Handles only git tag operations - 3-5 steps max"""
+    
+    def __init__(self):
+        self.tools = [
+            {
+                "name": "list_git_tags",
+                "description": "List all git tags",
+                "input_schema": {"type": "object", "properties": {}}
+            },
+            {
+                "name": "get_latest_tag",
+                "description": "Get the most recent tag",
+                "input_schema": {"type": "object", "properties": {}}
+            },
+            {
+                "name": "done_for_now",
+                "description": "Complete the task",
+                "input_schema": {
+                    "type": "object",
+                    "properties": {"result": {"type": "string"}}
+                }
+            }
+        ]
+        self.max_steps = 5
+    
+    async def run(self, request):
+        """Simple focused workflow"""
+        thread = [{"role": "user", "content": request}]
+        
+        for _ in range(self.max_steps):
+            response = client.messages.create(
+                model="claude-3-5-sonnet-20241022",
+                max_tokens=1000,
+                messages=thread,
+                tools=self.tools
+            )
+            
+            if response.content[0].type == "tool_use":
+                tool = response.content[0]
+                
+                if tool.name == "done_for_now":
+                    return tool.input.get("result")
+                
+                # Execute tool
+                result = await self.execute_tool(tool.name, tool.input)
+                thread.append({
+                    "role": "user",
+                    "content": f"Result: {result}"
+                })
+        
+        return "Max steps reached"
+
+# GOOD: Composable agents in a DAG
+class DeploymentCoordinator:
+    """Coordinates multiple focused agents"""
+    
+    def __init__(self):
+        self.tag_agent = GitTagAgent()
+        self.test_agent = TestVerificationAgent()
+        self.deploy_agent = DeploymentExecutionAgent()
+    
+    async def deploy_workflow(self, user_request):
+        """Chain focused agents together"""
+        
+        # Step 1: Get tags (3-5 steps)
+        tag_info = await self.tag_agent.run("Get latest stable tag")
+        
+        # Step 2: Run tests (5-10 steps)
+        test_result = await self.test_agent.run(f"Verify {tag_info} passes tests")
+        
+        if test_result != "passed":
+            return {"status": "failed", "stage": "tests"}
+        
+        # Step 3: Deploy (5-10 steps)
+        deploy_result = await self.deploy_agent.run(f"Deploy {tag_info}")
+        
+        return deploy_result
+
+# BAD: Monolithic agent trying to do too much
+class MegaAgent:
+    """Tries to handle everything - leads to context window issues"""
+    
+    def __init__(self):
+        self.tools = [
+            # 50+ tools covering everything
+            "list_git_tags", "create_git_tag", "delete_git_tag",
+            "run_unit_tests", "run_integration_tests", "run_e2e_tests",
+            "deploy_staging", "deploy_production", "rollback",
+            "create_ticket", "update_ticket", "close_ticket",
+            "send_email", "send_slack", "send_sms",
+            # ... 40 more tools
+        ]
+        self.max_steps = 100  # Too many steps!
+    
+    async def run(self, request):
+        """Massive context window, easy to get lost"""
+        # After 20+ steps, Claude likely loses focus
+        pass
+
+# BEST PRACTICE: Agent boundaries with Claude
+async def claude_agent_best_practices():
+    """
+    Guidelines for Claude agent scope:
+    
+    1. Keep context window under 10K tokens when possible
+    2. Limit to 3-10 steps per agent
+    3. Use 3-7 tools per agent
+    4. Clear single responsibility
+    5. Chain agents in deterministic DAGs
+    """
+    
+    # Example: Clear boundaries
+    agents = {
+        "tag_manager": {
+            "tools": ["list", "create", "delete"],
+            "scope": "Git tag operations only",
+            "max_steps": 5
+        },
+        "test_runner": {
+            "tools": ["run_tests", "check_coverage"],
+            "scope": "Test execution only",
+            "max_steps": 8
+        },
+        "deployer": {
+            "tools": ["deploy", "rollback", "check_status"],
+            "scope": "Deployment operations only",
+            "max_steps": 10
+        }
+    }
+```
+
+Claude performs best with small agents because:
+- Smaller context windows = better attention
+- Clearer scope = more accurate tool selection
+- Easier to test and debug
+- Composable into larger workflows
+
 [← Compact Errors](https://github.com/humanlayer/12-factor-agents/blob/main/content/factor-09-compact-errors.md) | [Trigger From Anywhere →](https://github.com/humanlayer/12-factor-agents/blob/main/content/factor-11-trigger-from-anywhere.md)
