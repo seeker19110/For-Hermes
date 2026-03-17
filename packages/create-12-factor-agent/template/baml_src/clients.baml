@@ -35,12 +35,34 @@ client<llm> CustomHaiku {
   }
 }
 
+// MiniMax M2.5 - high-capability model with 204K context window
+// Uses OpenAI-compatible API: https://www.minimaxi.com/
+client<llm> MiniMaxM25 {
+  provider openai
+  options {
+    model "MiniMax-M2.5"
+    api_key env.MINIMAX_API_KEY
+    base_url "https://api.minimax.io/v1"
+  }
+}
+
+// MiniMax M2.5-highspeed - faster variant optimized for low-latency tasks
+client<llm> MiniMaxM25Highspeed {
+  provider openai
+  retry_policy Exponential
+  options {
+    model "MiniMax-M2.5-highspeed"
+    api_key env.MINIMAX_API_KEY
+    base_url "https://api.minimax.io/v1"
+  }
+}
+
 // https://docs.boundaryml.com/docs/snippets/clients/round-robin
 client<llm> CustomFast {
   provider round-robin
   options {
     // This will alternate between the two clients
-    strategy [CustomGPT4oMini, CustomHaiku]
+    strategy [CustomGPT4oMini, CustomHaiku, MiniMaxM25Highspeed]
   }
 }
 
@@ -49,7 +71,7 @@ client<llm> OpenaiFallback {
   provider fallback
   options {
     // This will try the clients in order until one succeeds
-    strategy [CustomGPT4oMini, CustomGPT4oMini]
+    strategy [CustomGPT4oMini, CustomGPT4oMini, MiniMaxM25]
   }
 }
 

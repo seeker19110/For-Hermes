@@ -111,18 +111,27 @@ If you want to try swapping out the model, you can change the `client` line.
 
 [Docs on baml clients can be found here](https://docs.boundaryml.com/guide/baml-basics/switching-llms)
 
-For example, you can configure [gemini](https://docs.boundaryml.com/ref/llm-client-providers/google-ai-gemini) 
+For example, you can configure [gemini](https://docs.boundaryml.com/ref/llm-client-providers/google-ai-gemini)
 or [anthropic](https://docs.boundaryml.com/ref/llm-client-providers/anthropic) as your model provider.
 
 For example, to use openai with an OPENAI_API_KEY, you can do:
 
     client "openai/gpt-4o"
 
+To use [MiniMax](https://www.minimaxi.com/) with a MINIMAX_API_KEY, you can use the pre-configured clients:
+
+    client MiniMaxM25           // MiniMax-M2.5 (204K context)
+    client MiniMaxM25Highspeed  // MiniMax-M2.5-highspeed (faster)
+
 
 Set your env vars
 
     export BASETEN_API_KEY=...
-export BASETEN_BASE_URL=...
+    export BASETEN_BASE_URL=...
+
+For MiniMax (optional):
+
+    export MINIMAX_API_KEY=...  # Get your key at https://www.minimaxi.com/
 
 Try it out
 

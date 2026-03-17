@@ -164,4 +164,29 @@ test MathOperationPostClarification {
   @@assert(b, {{this.a == 3}})
   @@assert(a, {{this.b == 12}})
 }
+
+// Test using MiniMax M2.5 as the LLM provider
+test HelloWorldMiniMax {
+  functions [DetermineNextStep]
+  args {
+    thread #"
+      <user_input>
+        hello!
+      </user_input>
+    "#
+  }
+  @@assert(intent, {{this.intent == "request_more_information"}})
+}
+
+test MathOperationMiniMax {
+  functions [DetermineNextStep]
+  args {
+    thread #"
+      <user_input>
+        can you add 5 and 7?
+      </user_input>
+    "#
+  }
+  @@assert(intent, {{this.intent == "add"}})
+}
         
