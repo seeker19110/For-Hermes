@@ -64,7 +64,52 @@ async function callMiniMax(model: string, prompt: string, temperature = 0.7): Pr
 async function main() {
   console.log("MiniMax Integration Tests\n");
 
-  // --- M2.5 model tests ---
+  // --- M2.7 model tests (latest) ---
+
+  await test("MiniMax-M2.7 responds to a simple prompt", async () => {
+    const result = await callMiniMax("MiniMax-M2.7", "Reply with exactly: hello");
+    assert.ok(result.choices, "Response should have choices array");
+    assert.ok(result.choices.length > 0, "Should have at least one choice");
+    assert.ok(
+      result.choices[0].message?.content,
+      "First choice should have message content"
+    );
+  });
+
+  await test("MiniMax-M2.7 returns valid chat completion format", async () => {
+    const result = await callMiniMax("MiniMax-M2.7", "What is 2+2?");
+    assert.ok(result.id, "Response should have an id");
+    assert.ok(result.model, "Response should have a model field");
+    assert.ok(result.choices[0].message.role === "assistant", "Role should be assistant");
+    assert.ok(result.usage, "Response should include usage info");
+    assert.ok(typeof result.usage.total_tokens === "number", "total_tokens should be a number");
+  });
+
+  await test("MiniMax-M2.7 respects temperature constraint", async () => {
+    const result = await callMiniMax("MiniMax-M2.7", "Say hi", 0.5);
+    assert.ok(result.choices, "Should respond with valid choices at temperature 0.5");
+  });
+
+  // --- M2.7-highspeed model tests ---
+
+  await test("MiniMax-M2.7-highspeed responds to a simple prompt", async () => {
+    const result = await callMiniMax("MiniMax-M2.7-highspeed", "Reply with exactly: world");
+    assert.ok(result.choices, "Response should have choices array");
+    assert.ok(result.choices.length > 0, "Should have at least one choice");
+    assert.ok(
+      result.choices[0].message?.content,
+      "First choice should have message content"
+    );
+  });
+
+  await test("MiniMax-M2.7-highspeed returns valid usage metrics", async () => {
+    const result = await callMiniMax("MiniMax-M2.7-highspeed", "Count to 3");
+    assert.ok(result.usage, "Response should include usage");
+    assert.ok(result.usage.prompt_tokens > 0, "prompt_tokens should be positive");
+    assert.ok(result.usage.completion_tokens > 0, "completion_tokens should be positive");
+  });
+
+  // --- M2.5 model tests (previous generation) ---
 
   await test("MiniMax-M2.5 responds to a simple prompt", async () => {
     const result = await callMiniMax("MiniMax-M2.5", "Reply with exactly: hello");

@@ -35,8 +35,29 @@ client<llm> CustomHaiku {
   }
 }
 
-// MiniMax M2.5 - high-capability model with 204K context window
+// MiniMax M2.7 - latest high-capability model (recommended)
 // Uses OpenAI-compatible API: https://www.minimaxi.com/
+client<llm> MiniMaxM27 {
+  provider openai
+  options {
+    model "MiniMax-M2.7"
+    api_key env.MINIMAX_API_KEY
+    base_url "https://api.minimax.io/v1"
+  }
+}
+
+// MiniMax M2.7-highspeed - faster variant optimized for low-latency tasks
+client<llm> MiniMaxM27Highspeed {
+  provider openai
+  retry_policy Exponential
+  options {
+    model "MiniMax-M2.7-highspeed"
+    api_key env.MINIMAX_API_KEY
+    base_url "https://api.minimax.io/v1"
+  }
+}
+
+// MiniMax M2.5 - previous generation model with 204K context window
 client<llm> MiniMaxM25 {
   provider openai
   options {
@@ -46,7 +67,7 @@ client<llm> MiniMaxM25 {
   }
 }
 
-// MiniMax M2.5-highspeed - faster variant optimized for low-latency tasks
+// MiniMax M2.5-highspeed - previous generation faster variant
 client<llm> MiniMaxM25Highspeed {
   provider openai
   retry_policy Exponential
@@ -62,7 +83,7 @@ client<llm> CustomFast {
   provider round-robin
   options {
     // This will alternate between the two clients
-    strategy [CustomGPT4oMini, CustomHaiku, MiniMaxM25Highspeed]
+    strategy [CustomGPT4oMini, CustomHaiku, MiniMaxM27Highspeed]
   }
 }
 
@@ -71,7 +92,7 @@ client<llm> OpenaiFallback {
   provider fallback
   options {
     // This will try the clients in order until one succeeds
-    strategy [CustomGPT4oMini, CustomGPT4oMini, MiniMaxM25]
+    strategy [CustomGPT4oMini, CustomGPT4oMini, MiniMaxM27]
   }
 }
 
