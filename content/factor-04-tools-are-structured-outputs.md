@@ -49,4 +49,63 @@ else: #... the model didn't call a tool we know about
 
 The "next step" might not be as atomic as just "run a pure function and return the result". You unlock a lot of flexibility when you think of "tool calls" as just a model outputting JSON describing what deterministic code should do. Put this together with [factor 8 own your control flow](https://github.com/humanlayer/12-factor-agents/blob/main/content/factor-08-own-your-control-flow.md).
 
+#### Tool contracts should describe outputs too
+
+If a tool returns structured data, its contract should describe both sides of
+the exchange:
+
+1. the structured input the model is allowed to request
+2. the structured output deterministic code will append back to state or context
+
+Input schemas help the model and runtime agree on how to call a tool. Output
+schemas help the model and runtime agree on what kind of data will come back.
+That closes an important gap for planning, validation, and context management.
+
+For example, a tool registry entry can include an `output_schema` next to the
+input schema. In JSON-based protocols this might be exposed as `outputSchema`;
+the naming matters less than making the output contract discoverable.
+
+```python
+class SearchIssues:
+  intent: "search_issues"
+  input_schema: {
+    "type": "object",
+    "required": ["query"],
+    "properties": {
+      "query": {"type": "string"}
+    }
+  }
+  output_schema: {
+    "type": "object",
+    "required": ["issues"],
+    "properties": {
+      "issues": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "required": ["id", "title", "status"],
+          "properties": {
+            "id": {"type": "string"},
+            "title": {"type": "string"},
+            "status": {"type": "string"},
+            "url": {"type": "string"}
+          }
+        }
+      }
+    }
+  }
+```
+
+Once the runtime knows the output shape, it can do a few useful things before
+the result goes back into the agent loop:
+
+- validate that the actual tool result matches the advertised contract
+- generate typed client objects for deterministic code
+- compare expected vs. actual outputs in logs and traces
+- let the model request a projection of the result, such as only `issues[].url`
+
+The last point is especially useful when a tool can return a large payload. If
+the model knows the output schema up front, it can ask for the small piece of
+data it needs instead of forcing the whole response into the context window.
+
 [← Own Your Context Window](https://github.com/humanlayer/12-factor-agents/blob/main/content/factor-03-own-your-context-window.md) | [Unify Execution State →](https://github.com/humanlayer/12-factor-agents/blob/main/content/factor-05-unify-execution-state.md)

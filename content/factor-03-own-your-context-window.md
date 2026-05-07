@@ -234,6 +234,16 @@ Key benefits of owning your context window:
 
 Context includes: prompts, instructions, RAG documents, history, tool calls, memory
 
+Tool result contracts are part of this context design. If your runtime can
+discover a tool's output schema before calling it, the model can plan around the
+shape of the result instead of waiting to inspect a large response after the
+fact. For example, if `search_issues` advertises that it returns
+`issues[].{id,title,status,url}`, the model can ask the runtime to append only
+`issues[].url` or only open issue titles when that is all the next step needs.
+
+This keeps the context window smaller and gives deterministic code a place to
+validate that the tool actually returned the shape it promised.
+
 
 Remember: The context window is your primary interface with the LLM. Taking control of how you structure and present information can dramatically improve your agent's performance.
 
