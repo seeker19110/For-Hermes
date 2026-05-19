@@ -163,7 +163,7 @@ In building HumanLayer, I've talked to at least 100 SaaS builders (mostly techni
 <details>
 <summary>Random Disclaimers</summary>
 
-**DISCLAIMER**: I'm not sure the exact right place to say this, but here seems as good as any: **this in BY NO MEANS meant to be a dig on either the many frameworks out there, or the pretty dang smart people who work on them**. They enable incredible things and have accelerated the AI ecosystem. 
+**DISCLAIMER**: I'm not sure the exact right place to say this, but here seems as good as any: **this is BY NO MEANS meant to be a dig on either the many frameworks out there, or the pretty dang smart people who work on them**. They enable incredible things and have accelerated the AI ecosystem. 
 
 I hope that one outcome of this post is that agent framework builders can learn from the journeys of myself and others, and make frameworks even better. 
 
