@@ -20,6 +20,8 @@ Deep Dive"></a>
 
 *In the spirit of [12 Factor Apps](https://12factor.net/)*.  *The source for this project is public at https://github.com/humanlayer/12-factor-agents, and I welcome your feedback and contributions. Let's figure this out together!*
 
+**Translations:** [简体中文](./README.zh-CN.md)
+
 > [!TIP]
 > Missed the AI Engineer World's Fair? [Catch the talk here](https://www.youtube.com/watch?v=8kMaTybvDUw)
 >
