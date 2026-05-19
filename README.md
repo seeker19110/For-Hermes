@@ -26,6 +26,8 @@ Deep Dive"></a>
 > Looking for Context Engineering? [Jump straight to factor 3](https://github.com/humanlayer/12-factor-agents/blob/main/content/factor-03-own-your-context-window.md)
 >
 > Want to contribute to `npx/uvx create-12-factor-agent` - check out [the discussion thread](https://github.com/humanlayer/12-factor-agents/discussions/61)
+>
+> Want a practical boilerplate to start from? See the [starter template](https://github.com/humanlayer/12-factor-agents/blob/main/content/starter-template.md)
 
 
 <img referrerpolicy="no-referrer-when-downgrade" src="https://static.scarf.sh/a.png?x-pxid=2acad99a-c2d9-48df-86f5-9ca8061b7bf9" />
