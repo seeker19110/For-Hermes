@@ -165,7 +165,7 @@ test MathOperationPostClarification {
   @@assert(a, {{this.b == 12}})
 }
 
-// Test using MiniMax M2.5 as the LLM provider
+// Test using MiniMax M3 as the LLM provider
 test HelloWorldMiniMax {
   functions [DetermineNextStep]
   args {

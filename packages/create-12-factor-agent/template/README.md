@@ -120,10 +120,9 @@ For example, to use openai with an OPENAI_API_KEY, you can do:
 
 To use [MiniMax](https://www.minimaxi.com/) with a MINIMAX_API_KEY, you can use the pre-configured clients:
 
-    client MiniMaxM27           // MiniMax-M2.7 (latest, recommended)
-    client MiniMaxM27Highspeed  // MiniMax-M2.7-highspeed (faster)
-    client MiniMaxM25           // MiniMax-M2.5 (previous generation)
-    client MiniMaxM25Highspeed  // MiniMax-M2.5-highspeed (previous gen, faster)
+    client MiniMaxM3            // MiniMax-M3 (latest, default — 512K context, image input)
+    client MiniMaxM27           // MiniMax-M2.7 (previous generation)
+    client MiniMaxM27Highspeed  // MiniMax-M2.7-highspeed (previous generation, faster)
 
 
 Set your env vars
