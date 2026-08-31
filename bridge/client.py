@@ -947,6 +947,7 @@ class AntigravityClient:
 
                 buffer = ""
                 newline = chr(10)
+                sent_finish_reason: Optional[str] = None
                 async for raw_chunk in response.aiter_text():
                     buffer += raw_chunk.replace(chr(13) + newline, newline).replace(chr(13), newline)
                     while newline + newline in buffer:
@@ -964,20 +965,29 @@ class AntigravityClient:
                                     event_obj, requested_model, stream_id
                                 )
                                 if chunk:
+                                    finish_reason = chunk["choices"][0].get("finish_reason")
+                                    if finish_reason:
+                                        sent_finish_reason = finish_reason
                                     yield f"data: {json.dumps(chunk)}\n\n"
                             except Exception as exc:
                                 logger.debug("Failed to parse SSE event: %s", exc)
 
-                final_chunk = {
-                    "id": stream_id,
-                    "object": "chat.completion.chunk",
-                    "created": int(time.time()),
-                    "model": requested_model,
-                    "choices": [
-                        {"index": 0, "delta": {}, "finish_reason": "stop"}
-                    ],
-                }
-                yield f"data: {json.dumps(final_chunk)}\n\n"
+                # Chỉ phát chunk đóng "stop" tổng hợp khi upstream CHƯA từng gửi
+                # finish_reason thật (ví dụ stream bị cắt ngang không rõ lý do).
+                # Gửi thêm "stop" đè lên sau khi đã gửi tool_calls/length/
+                # content_filter khiến client OpenAI-compat hiểu nhầm là hội
+                # thoại kết thúc bình thường, bỏ qua tool call/lý do cắt thật.
+                if sent_finish_reason is None:
+                    final_chunk = {
+                        "id": stream_id,
+                        "object": "chat.completion.chunk",
+                        "created": int(time.time()),
+                        "model": requested_model,
+                        "choices": [
+                            {"index": 0, "delta": {}, "finish_reason": "stop"}
+                        ],
+                    }
+                    yield f"data: {json.dumps(final_chunk)}\n\n"
                 yield "data: [DONE]\n\n"
                 return
 

@@ -371,6 +371,67 @@ class MultiAccountFailoverTests(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(seen_tokens, ["token-a", "token-b"])
         self.assertEqual(auth.marked, [])
 
+    async def test_stream_tool_call_finish_reason_is_not_overwritten_by_synthetic_stop(
+        self,
+    ) -> None:
+        # Bug đã sửa: sau khi Gemini gửi finishReason="STOP" kèm functionCall
+        # (dịch sang finish_reason="tool_calls"), bridge từng LUÔN nối thêm một
+        # chunk rỗng finish_reason="stop" ở cuối stream — ghi đè lên tín hiệu
+        # tool_calls thật, khiến client OpenAI-compat tưởng hội thoại đã xong
+        # và bỏ qua lệnh gọi tool.
+        auth = FakeAuthManager()
+
+        def handler(request: httpx.Request) -> httpx.Response:
+            event = {
+                "response": {
+                    "candidates": [
+                        {
+                            "finishReason": "STOP",
+                            "content": {
+                                "parts": [
+                                    {
+                                        "functionCall": {
+                                            "name": "search",
+                                            "args": {"q": "hermes"},
+                                        }
+                                    }
+                                ]
+                            },
+                        }
+                    ]
+                }
+            }
+            body = f"data: {json.dumps(event)}\n\ndata: [DONE]\n\n"
+            return httpx.Response(
+                200,
+                headers={"Content-Type": "text/event-stream"},
+                content=body.encode(),
+            )
+
+        client = AntigravityClient(auth)
+        await client._http.aclose()
+        client._http = httpx.AsyncClient(transport=httpx.MockTransport(handler))
+        try:
+            chunks = [
+                chunk
+                async for chunk in client.stream_chat_completion(
+                    {
+                        "model": "gemini-3.7-flash",
+                        "messages": [{"role": "user", "content": "hello"}],
+                        "stream": True,
+                    }
+                )
+            ]
+        finally:
+            await client.close()
+
+        finish_reasons = [
+            json.loads(c[len("data: "):])["choices"][0]["finish_reason"]
+            for c in chunks
+            if c.startswith("data: {")
+        ]
+        self.assertEqual(finish_reasons, [None, "tool_calls"])
+
 
 class AccountPoolTests(unittest.TestCase):
     def test_custom_auth_file_never_writes_global_auth_stores(self) -> None:
