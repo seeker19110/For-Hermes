@@ -1,26 +1,45 @@
-# X-Agents (Multi-Agent System)
+# Plugin Google Antigravity OAuth cho Hermes Agent
 
-Dự án này là một hệ thống Multi-Agent được tối ưu hóa dựa trên các nguyên tắc của [12-Factor Agents](https://github.com/humanlayer/12-factor-agents).
+Plugin model-provider + local OAuth bridge cho [Hermes Agent](https://github.com/NousResearch/hermes-agent).
+Giúp Hermes Agent gọi các mô hình AI cao cấp: Gemini 3.7/3.6/3.5/3.1, Claude Sonnet/Opus 4.6, và GPT-OSS 120B thông qua đăng nhập **Google Antigravity IDE** OAuth. Hỗ trợ tự động **xoay tài khoản** (multi-account failover) khi bị giới hạn rate limit/hết hạn ngạch (quota) và tự động chuyển đổi model dự phòng trong cùng một tài khoản (in-account model fallback).
 
-Hệ thống được thiết kế bằng **LangGraph** (Python) với các đặc điểm:
-- 🧠 **Supervisor Routing**: Có một nhạc trưởng điều phối các tác nhân con.
-- 💾 **Persistence (MemorySaver)**: Ghi nhớ hội thoại theo `thread_id`.
-- 🛡️ **Reviewer Guardrail**: Tác nhân kiểm duyệt đánh giá kết quả trước khi trả về cho người dùng.
-- 📦 **Stateful**: Quản lý State bằng biến `context` (dữ liệu dùng chung) và `errors` (xử lý lỗi).
+Xem hướng dẫn chi tiết tại [`README_DETAILED_VI.md`](README_DETAILED_VI.md) để biết cách thiết lập đầy đủ, và [`skills/antigravity-oauth-bridge/SKILL.md`](skills/antigravity-oauth-bridge/SKILL.md) để cài đặt skill hướng dẫn của Hermes Agent.
 
-## Cấu trúc thư mục
+## 📌 Tính Năng Mới (v1.0)
+- **🔄 In-Account Model Fallback**: Tự động thử model dự phòng (`claude-sonnet-4-6`) trên cùng một tài khoản Google khi model chính (`gemini-3.7-flash`) hết quota, giúp tiết kiệm tài khoản trước khi xoay tài khoản hoặc dùng provider ngoài.
+- **🛡️ Cải Tiến Priority Fallback**: Tự động gộp cấu hình dự phòng theo nhà cung cấp (provider-level deduplication) tránh trùng lặp cấu hình mặc định và bảo toàn các tùy chọn model thủ công của người dùng khi nâng cấp plugin.
 
-- `main.py`: File chạy chính.
-- `src/state.py`: Định nghĩa lược đồ dữ liệu chung cho đồ thị.
-- `src/agents.py`: Chứa mã nguồn của toàn bộ các tác nhân (Supervisor, RAG, Tool, Reviewer).
-- `src/graph.py`: Định nghĩa các node, edge và kết nối Đồ thị LangGraph.
-- `agentic.md`: Lộ trình phát triển hệ thống Agentic Vibe Coding.
-
-## Cài đặt và Chạy
-
-Dự án sử dụng `uv` để quản lý môi trường và thư viện.
+## 🚀 Khởi Động Nhanh
 
 ```bash
-# Chạy dự án
-uv run main.py
+python install.py
+python "$HERMES_HOME/bridge/antigravity/manage.py" login    # Tài khoản Google thứ nhất
+python "$HERMES_HOME/bridge/antigravity/manage.py" login    # Thêm tài khoản Google phụ (tùy chọn)
+python "$HERMES_HOME/bridge/antigravity/manage.py" start
+hermes chat -q "Phản hồi chính xác chữ: OK" --provider antigravity -m gemini-3.7-flash
 ```
+
+## 📂 Cấu Trúc Dự Án
+
+```
+plugin/                    Hermes model-provider plugin (ProviderProfile)
+bridge/                    Local OAuth + Code Assist translation bridge
+tests/                     Bộ test suite (unittest, không cần kết nối mạng)
+skills/antigravity-oauth-bridge/  Skill hướng dẫn vận hành cho Hermes Agent
+install.py                 Script cài đặt 1-Click tự động vào $HERMES_HOME
+manage.py                  CLI: login / start / stop / status / install / setup
+.hermes/environment.json   Cấu hình `hermes verify` tự động cho dự án
+```
+
+## 🔬 Kiểm Thử (Testing)
+
+```bash
+# Chạy toàn bộ unit tests
+python -m unittest discover -s tests -p "test_*.py" -v
+
+# Chạy test kiểm thử tích hợp
+python tests/verify_integration.py
+```
+
+## 📄 Giấy phép (License)
+Phát triển cho cộng đồng Hermes Agent & Antigravity. Bản quyền thuộc về giấy phép MIT — xem file [LICENSE](LICENSE).
