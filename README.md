@@ -25,11 +25,22 @@ hermes chat -q "Phản hồi chính xác chữ: OK" --provider antigravity -m ge
 plugin/                    Hermes model-provider plugin (ProviderProfile)
 bridge/                    Local OAuth + Code Assist translation bridge
 tests/                     Bộ test suite (unittest, không cần kết nối mạng)
-skills/antigravity-oauth-bridge/  Skill hướng dẫn vận hành cho Hermes Agent
+skills/                    16 Hermes Agent skills: OAuth bridge + engineering bundle
 install.py                 Script cài đặt 1-Click tự động vào $HERMES_HOME
 manage.py                  CLI: login / start / stop / status / install / setup
 .hermes/environment.json   Cấu hình `hermes verify` tự động cho dự án
 ```
+
+## 🧰 Bộ skill kỹ thuật đi kèm
+
+`python install.py` đồng bộ các skill được đóng gói vào `$HERMES_HOME/skills/`. Khi nâng cấp, chỉ các skill cùng tên trong bundle được thay thế; skill riêng của người dùng không bị xóa.
+
+- **Kiến trúc & tổ chức mã:** `architecture-patterns`, `api-and-interface-design`, `documentation-and-adrs`, `python-project-structure`, `context-engineering`.
+- **Triển khai, chất lượng & bảo mật:** `incremental-implementation`, `source-driven-development`, `doubt-driven-development`, `security-and-hardening`.
+- **Frontend:** `frontend-ui-engineering`.
+- **Data engineering:** `data-modelling`, `profile-data`, `pipeline-design`, `test-data`, `data-security-classification`.
+
+Nguồn, giấy phép MIT và danh sách đầy đủ được ghi tại [`skills/VENDORED-SKILLS.md`](skills/VENDORED-SKILLS.md).
 
 ## 🔬 Kiểm Thử (Testing)
 
