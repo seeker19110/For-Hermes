@@ -36,9 +36,13 @@ def install_bundled_skills(hermes_dir: Path) -> list[str]:
         if not source_skill.is_dir() or not (source_skill / "SKILL.md").is_file():
             continue
         destination_skill = destination_root / source_skill.name
-        if destination_skill.exists():
-            shutil.rmtree(destination_skill)
         destination_root.mkdir(parents=True, exist_ok=True)
+        if destination_skill.is_symlink():
+            destination_skill.unlink()
+        elif destination_skill.is_dir():
+            shutil.rmtree(destination_skill)
+        elif destination_skill.exists():
+            destination_skill.unlink()
         shutil.copytree(source_skill, destination_skill)
         installed.append(source_skill.name)
     return installed

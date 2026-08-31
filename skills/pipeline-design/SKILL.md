@@ -1,5 +1,5 @@
 ---
-name: solution-design
+name: pipeline-design
 description: Elicit and pin down requirements for a data pipeline, model, or report before any code, then produce a solution-design doc. Nails value (pains/gains/profiles), grain, sources & authority, definitions, freshness/volume SLAs, historization, access patterns, and acceptance criteria. Produces a one-page-style design with an SVG overview, day-sized (1-5d) work packages, a decisions register, dependencies and risks. Use when the user starts a new pipeline/model/report, or when scope is fuzzy and you need to prevent rework and scope creep.
 disable-model-invocation: true
 ---
