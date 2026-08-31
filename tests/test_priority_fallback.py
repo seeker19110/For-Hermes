@@ -238,5 +238,105 @@ class ConfigurePriorityFallbackIntegrationTests(unittest.TestCase):
             )
 
 
+class OllamaLastResortFallbackTests(unittest.TestCase):
+    def test_omitted_by_default(self) -> None:
+        # Recommended default: no --ollama-model given means no local hop at
+        # all — a 7B local model must be an explicit opt-in, never silently
+        # inserted into the chain.
+        config = {}
+        result = manage.apply_priority_fallback_config(
+            config,
+            antigravity_base_url="http://127.0.0.1:8100/v1",
+        )
+        providers = [e["provider"] for e in result["fallback_providers"]]
+        self.assertNotIn("custom", providers)
+
+    def test_appended_last_via_hermes_custom_provider_alias(self) -> None:
+        # Hermes has no built-in "ollama" provider: hermes_cli/auth.py aliases
+        # "ollama" -> "custom" (a generic OpenAI-compatible endpoint) and
+        # hermes_cli/runtime_provider.py auto-fills api_key="no-key-required"
+        # for a keyless "custom" entry, so this entry needs an explicit
+        # base_url and no API key — matching Ollama's unauthenticated local
+        # server. It must land AFTER antigravity/openai-codex/anthropic:
+        # small local models are a last-resort, not an early hop.
+        config = {}
+        result = manage.apply_priority_fallback_config(
+            config,
+            antigravity_base_url="http://127.0.0.1:8100/v1",
+            ollama_model="qwen2.5:7b-instruct",
+        )
+        self.assertEqual(
+            result["fallback_providers"],
+            [
+                {"provider": "openai-codex", "model": "gpt-5-codex"},
+                {"provider": "anthropic", "model": "claude-sonnet-4-6"},
+                {
+                    "provider": "custom",
+                    "model": "qwen2.5:7b-instruct",
+                    "base_url": manage.DEFAULT_OLLAMA_BASE_URL,
+                },
+            ],
+        )
+
+    def test_does_not_duplicate_or_clobber_an_unrelated_custom_entry(self) -> None:
+        # "custom" is shared by every generic local server (LM Studio, vLLM,
+        # llama.cpp too) — dedupe must key on (provider, base_url), not
+        # provider alone, or the user's own unrelated custom fallback (e.g.
+        # LM Studio on a different port) would be blocked or overwritten.
+        config = {
+            "fallback_providers": [
+                {
+                    "provider": "custom",
+                    "model": "my-lmstudio-model",
+                    "base_url": "http://127.0.0.1:1234/v1",
+                }
+            ]
+        }
+        result = manage.apply_priority_fallback_config(
+            config,
+            antigravity_base_url="http://127.0.0.1:8100/v1",
+            ollama_model="qwen2.5:7b-instruct",
+        )
+        custom_entries = [
+            e for e in result["fallback_providers"] if e["provider"] == "custom"
+        ]
+        self.assertEqual(len(custom_entries), 2)
+        self.assertIn(
+            {
+                "provider": "custom",
+                "model": "my-lmstudio-model",
+                "base_url": "http://127.0.0.1:1234/v1",
+            },
+            custom_entries,
+        )
+        self.assertIn(
+            {
+                "provider": "custom",
+                "model": "qwen2.5:7b-instruct",
+                "base_url": manage.DEFAULT_OLLAMA_BASE_URL,
+            },
+            custom_entries,
+        )
+
+    def test_rerun_with_same_ollama_model_does_not_duplicate(self) -> None:
+        config = {}
+        manage.apply_priority_fallback_config(
+            config,
+            antigravity_base_url="http://127.0.0.1:8100/v1",
+            ollama_model="qwen2.5:7b-instruct",
+        )
+        # Second run against the already-written config (e.g. re-running
+        # `manage.py setup --ollama-model ...`).
+        result = manage.apply_priority_fallback_config(
+            config,
+            antigravity_base_url="http://127.0.0.1:8100/v1",
+            ollama_model="qwen2.5:7b-instruct",
+        )
+        custom_entries = [
+            e for e in result["fallback_providers"] if e["provider"] == "custom"
+        ]
+        self.assertEqual(len(custom_entries), 1)
+
+
 if __name__ == "__main__":
     unittest.main()

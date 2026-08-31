@@ -281,6 +281,7 @@ def cmd_install(args: argparse.Namespace) -> int:
 
 DEFAULT_OPENAI_FALLBACK_MODEL = "gpt-5-codex"
 DEFAULT_ANTHROPIC_FALLBACK_MODEL = "claude-sonnet-4-6"
+DEFAULT_OLLAMA_BASE_URL = "http://127.0.0.1:11434/v1"
 
 
 def apply_priority_fallback_config(
@@ -291,8 +292,11 @@ def apply_priority_fallback_config(
     openai_model: str = DEFAULT_OPENAI_FALLBACK_MODEL,
     anthropic_model: str = DEFAULT_ANTHROPIC_FALLBACK_MODEL,
     set_primary: bool = True,
+    ollama_model: str | None = None,
+    ollama_base_url: str = DEFAULT_OLLAMA_BASE_URL,
 ) -> dict:
-    """Set the recommended zero-touch failover chain: antigravity -> openai-codex -> anthropic.
+    """Set the recommended zero-touch failover chain: antigravity -> openai-codex -> anthropic
+    (-> local ollama, if ``ollama_model`` is given).
 
     Mutates and returns ``config_data`` (a parsed ``config.yaml`` dict).
     ``set_primary=False`` leaves ``model.provider``/``model.default`` untouched
@@ -303,6 +307,15 @@ def apply_priority_fallback_config(
 
     Never duplicates a ``(provider, model)`` pair already present in
     ``fallback_providers`` — existing unrelated entries are preserved.
+
+    ``ollama_model`` (when given) is appended as the LAST resort — a local
+    Ollama server via Hermes' generic ``custom`` provider (Hermes aliases
+    "ollama" -> "custom" and, per hermes_cli/runtime_provider.py, fills in a
+    "no-key-required" api_key automatically for a custom entry with no key —
+    no env var needed for Ollama's unauthenticated local endpoint). Small
+    local models are unreliable at multi-step tool-calling/JSON-schema
+    adherence compared to antigravity/openai-codex/anthropic, so this is
+    meant as a last-ditch offline fallback, not a primary/early hop.
     """
     port = DEFAULT_BRIDGE_PORT
     base_url = antigravity_base_url or f"http://127.0.0.1:{port}/v1"
@@ -356,6 +369,25 @@ def apply_priority_fallback_config(
         chain.append(entry)
         seen_providers.add(key)
 
+    if ollama_model:
+        # "custom" is shared by every generic OpenAI-compatible local server
+        # (Ollama, LM Studio, vLLM, llama.cpp) — dedupe by (provider, base_url),
+        # not by provider alone, or a pre-existing unrelated "custom" entry
+        # (e.g. the user's own LM Studio fallback) would block this one, or
+        # this one would clobber it.
+        already_present = any(
+            isinstance(e, dict)
+            and str(e.get("provider") or "").strip().lower() == "custom"
+            and str(e.get("base_url") or "").strip() == ollama_base_url
+            for e in chain
+        )
+        if not already_present:
+            chain.append({
+                "provider": "custom",
+                "model": ollama_model,
+                "base_url": ollama_base_url,
+            })
+
     config_data["fallback_providers"] = chain
     config_data.pop("fallback_model", None)
     return config_data
@@ -368,6 +400,8 @@ def configure_priority_fallback_preserving_existing_primary(
     port: int | None = None,
     openai_model: str = DEFAULT_OPENAI_FALLBACK_MODEL,
     anthropic_model: str = DEFAULT_ANTHROPIC_FALLBACK_MODEL,
+    ollama_model: str | None = None,
+    ollama_base_url: str = DEFAULT_OLLAMA_BASE_URL,
 ) -> Path:
     """Upgrade-safe wrapper for ``configure_priority_fallback``.
 
@@ -398,6 +432,8 @@ def configure_priority_fallback_preserving_existing_primary(
         openai_model=openai_model,
         anthropic_model=anthropic_model,
         set_primary=(not has_existing_primary or existing_provider.lower() == "antigravity"),
+        ollama_model=ollama_model,
+        ollama_base_url=ollama_base_url,
     )
 
 
@@ -409,9 +445,12 @@ def configure_priority_fallback(
     openai_model: str = DEFAULT_OPENAI_FALLBACK_MODEL,
     anthropic_model: str = DEFAULT_ANTHROPIC_FALLBACK_MODEL,
     set_primary: bool = True,
+    ollama_model: str | None = None,
+    ollama_base_url: str = DEFAULT_OLLAMA_BASE_URL,
 ) -> Path:
     """Load, update, and persist ``<hermes_dir>/config.yaml`` with the
-    zero-touch antigravity -> openai-codex -> anthropic failover chain.
+    zero-touch antigravity -> openai-codex -> anthropic (-> ollama) failover
+    chain.
 
     Returns the path to the written config file.
     """
@@ -432,6 +471,8 @@ def configure_priority_fallback(
         openai_model=openai_model,
         anthropic_model=anthropic_model,
         set_primary=set_primary,
+        ollama_model=ollama_model,
+        ollama_base_url=ollama_base_url,
     )
 
     with open(config_file, "w", encoding="utf-8") as f:
@@ -490,6 +531,9 @@ def cmd_setup(args: argparse.Namespace) -> int:
             return 1
         return 0
 
+    ollama_model = getattr(args, "ollama_model", None)
+    ollama_base_url = getattr(args, "ollama_base_url", None) or DEFAULT_OLLAMA_BASE_URL
+
     print("[*] Configuring Hermes (~/.hermes/config.yaml) with automatic failover...")
     try:
         if getattr(args, "as_fallback_only", False):
@@ -498,6 +542,8 @@ def cmd_setup(args: argparse.Namespace) -> int:
                 antigravity_model=model_name,
                 port=port,
                 set_primary=False,
+                ollama_model=ollama_model,
+                ollama_base_url=ollama_base_url,
             )
         else:
             # `setup` is an explicit request to make Antigravity active. The
@@ -508,16 +554,26 @@ def cmd_setup(args: argparse.Namespace) -> int:
                 antigravity_model=model_name,
                 port=port,
                 set_primary=True,
+                ollama_model=ollama_model,
+                ollama_base_url=ollama_base_url,
             )
         print("[+] Hermes configured with zero-touch failover chain:")
         if getattr(args, "as_fallback_only", False):
             print("    1. antigravity  (unchanged primary provider stays first)")
             print(f"    2. openai-codex  ({DEFAULT_OPENAI_FALLBACK_MODEL})")
             print(f"    3. anthropic     ({DEFAULT_ANTHROPIC_FALLBACK_MODEL})")
+            if ollama_model:
+                print(f"    4. ollama (local, custom)  ({ollama_model} @ {ollama_base_url})")
         else:
             print(f"    Primary:  antigravity  ({model_name}) — {_pool_account_count()} Google account(s) rotate internally on rate limit")
             print(f"    Fallback 1: openai-codex  ({DEFAULT_OPENAI_FALLBACK_MODEL})")
             print(f"    Fallback 2: anthropic     ({DEFAULT_ANTHROPIC_FALLBACK_MODEL})")
+            if ollama_model:
+                print(f"    Fallback 3: ollama (local, custom)  ({ollama_model} @ {ollama_base_url})")
+        if ollama_model:
+            print("    Ollama is a LAST-RESORT offline hop — a 7B local model is much less reliable")
+            print("    at multi-step tool-calling than antigravity/openai-codex/anthropic; make sure")
+            print(f"    'ollama serve' is running and '{ollama_model}' is pulled ('ollama pull {ollama_model}').")
         print("    No manual action needed — Hermes rotates automatically on rate limit / quota / auth failure.")
         print("    Run 'hermes fallback list' to inspect or 'hermes fallback remove' to adjust.")
     except Exception as e:
@@ -571,6 +627,24 @@ def main() -> int:
         help="Do not change the current primary provider — only append "
         "antigravity, openai-codex, and anthropic to the fallback chain so "
         "the existing primary rotates through them automatically on failure.",
+    )
+    p_setup.add_argument(
+        "--ollama-model",
+        type=str,
+        default=None,
+        help="Add a local Ollama model (e.g. 'qwen2.5:7b-instruct') as the LAST "
+        "hop in the fallback chain, for offline/last-resort use when antigravity, "
+        "openai-codex, AND anthropic have all failed. Omit to leave it out "
+        "(recommended default) — a 7B local model is not reliable enough for "
+        "primary/early-hop tool-calling orchestration. Requires 'ollama serve' "
+        "running locally with the model already pulled.",
+    )
+    p_setup.add_argument(
+        "--ollama-base-url",
+        type=str,
+        default=DEFAULT_OLLAMA_BASE_URL,
+        help=f"Base URL of the local Ollama OpenAI-compatible endpoint "
+        f"(default: {DEFAULT_OLLAMA_BASE_URL}). Only used when --ollama-model is set.",
     )
 
     args = parser.parse_args()

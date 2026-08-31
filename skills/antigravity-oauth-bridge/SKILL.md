@@ -71,7 +71,10 @@ Tùy chỉnh khi cài đặt:
 ```bash
 python manage.py setup --no-fallback          # Chỉ dùng antigravity làm chính, không tạo chuỗi dự phòng
 python manage.py setup --as-fallback-only     # Giữ provider chính hiện tại của bạn, chỉ THÊM chuỗi dự phòng antigravity + openai-codex + anthropic
+python manage.py setup --ollama-model qwen2.5:7b-instruct   # Thêm Ollama LOCAL làm nấc dự phòng CUỐI CÙNG (offline)
 ```
+
+**Ollama local làm nấc dự phòng cuối (tùy chọn, KHÔNG bật mặc định):** Hermes không có provider "ollama" xây sẵn — nó ánh xạ "ollama" sang provider chung `custom` (endpoint OpenAI-compatible tự khai `base_url`), và tự điền `api_key="no-key-required"` cho endpoint local không cần xác thực (xem `hermes_cli/runtime_provider.py` trong mã nguồn Hermes) — không cần biến môi trường nào thêm. `manage.py` gắn nó vào SAU `anthropic`, không phải trước: model 7B chạy local **không đủ tin cậy để điều phối** (gọi tool nhiều bước, tuân thủ JSON Schema) so với antigravity/openai-codex/anthropic, nên chỉ nên dùng khi CẢ BA nấc cloud đều lỗi và cần chạy offline. Yêu cầu `ollama serve` đang chạy và đã `ollama pull <model>` model tương ứng.
 
 Bạn cũng có thể điều chỉnh bất kỳ lúc nào bằng CLI của Hermes:
 ```bash
