@@ -338,5 +338,67 @@ class OllamaLastResortFallbackTests(unittest.TestCase):
         self.assertEqual(len(custom_entries), 1)
 
 
+class GroqCloudFallbackTests(unittest.TestCase):
+    def test_omitted_by_default(self) -> None:
+        config = {}
+        result = manage.apply_priority_fallback_config(
+            config,
+            antigravity_base_url="http://127.0.0.1:8100/v1",
+        )
+        providers = [e["provider"] for e in result["fallback_providers"]]
+        self.assertNotIn("custom", providers)
+
+    def test_inserted_between_anthropic_and_ollama_with_no_api_key_field(self) -> None:
+        # Groq needs internet (unlike Ollama), so it belongs between the
+        # cloud providers and the true offline last resort. Like Ollama,
+        # Hermes has no built-in "groq" provider — it derives GROQ_API_KEY
+        # from the api.groq.com host for a keyless "custom" entry (per
+        # hermes_cli/runtime_provider.py's _host_derived_api_key), so the
+        # written config must never itself carry an api_key/secret.
+        config = {}
+        result = manage.apply_priority_fallback_config(
+            config,
+            antigravity_base_url="http://127.0.0.1:8100/v1",
+            groq_model="llama-3.3-70b-versatile",
+            ollama_model="qwen2.5:7b-instruct",
+        )
+        self.assertEqual(
+            result["fallback_providers"],
+            [
+                {"provider": "openai-codex", "model": "gpt-5-codex"},
+                {"provider": "anthropic", "model": "claude-sonnet-4-6"},
+                {
+                    "provider": "custom",
+                    "model": "llama-3.3-70b-versatile",
+                    "base_url": manage.DEFAULT_GROQ_BASE_URL,
+                },
+                {
+                    "provider": "custom",
+                    "model": "qwen2.5:7b-instruct",
+                    "base_url": manage.DEFAULT_OLLAMA_BASE_URL,
+                },
+            ],
+        )
+        for entry in result["fallback_providers"]:
+            self.assertNotIn("api_key", entry)
+
+    def test_rerun_with_same_groq_model_does_not_duplicate(self) -> None:
+        config = {}
+        manage.apply_priority_fallback_config(
+            config,
+            antigravity_base_url="http://127.0.0.1:8100/v1",
+            groq_model="llama-3.3-70b-versatile",
+        )
+        result = manage.apply_priority_fallback_config(
+            config,
+            antigravity_base_url="http://127.0.0.1:8100/v1",
+            groq_model="llama-3.3-70b-versatile",
+        )
+        custom_entries = [
+            e for e in result["fallback_providers"] if e["provider"] == "custom"
+        ]
+        self.assertEqual(len(custom_entries), 1)
+
+
 if __name__ == "__main__":
     unittest.main()

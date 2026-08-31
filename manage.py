@@ -282,6 +282,8 @@ def cmd_install(args: argparse.Namespace) -> int:
 DEFAULT_OPENAI_FALLBACK_MODEL = "gpt-5-codex"
 DEFAULT_ANTHROPIC_FALLBACK_MODEL = "claude-sonnet-4-6"
 DEFAULT_OLLAMA_BASE_URL = "http://127.0.0.1:11434/v1"
+DEFAULT_GROQ_BASE_URL = "https://api.groq.com/openai/v1"
+DEFAULT_GROQ_FALLBACK_MODEL = "llama-3.3-70b-versatile"
 
 
 def apply_priority_fallback_config(
@@ -292,11 +294,13 @@ def apply_priority_fallback_config(
     openai_model: str = DEFAULT_OPENAI_FALLBACK_MODEL,
     anthropic_model: str = DEFAULT_ANTHROPIC_FALLBACK_MODEL,
     set_primary: bool = True,
+    groq_model: str | None = None,
+    groq_base_url: str = DEFAULT_GROQ_BASE_URL,
     ollama_model: str | None = None,
     ollama_base_url: str = DEFAULT_OLLAMA_BASE_URL,
 ) -> dict:
     """Set the recommended zero-touch failover chain: antigravity -> openai-codex -> anthropic
-    (-> local ollama, if ``ollama_model`` is given).
+    (-> groq, if ``groq_model`` is given) (-> local ollama, if ``ollama_model`` is given).
 
     Mutates and returns ``config_data`` (a parsed ``config.yaml`` dict).
     ``set_primary=False`` leaves ``model.provider``/``model.default`` untouched
@@ -308,6 +312,15 @@ def apply_priority_fallback_config(
     Never duplicates a ``(provider, model)`` pair already present in
     ``fallback_providers`` — existing unrelated entries are preserved.
 
+    ``groq_model`` (when given) is appended right after anthropic — Groq is a
+    fast/cheap CLOUD provider (still needs internet), reached the same way as
+    Ollama: Hermes has no built-in "groq" provider, it derives the API key
+    from the env automatically by hostname (``api.groq.com`` -> ``groq`` ->
+    ``GROQ_API_KEY``, per hermes_cli/runtime_provider.py's
+    ``_host_derived_api_key``) for a ``custom`` entry with an explicit
+    ``base_url`` and no ``api_key`` field — set ``GROQ_API_KEY`` yourself,
+    the chain entry never carries a secret.
+
     ``ollama_model`` (when given) is appended as the LAST resort — a local
     Ollama server via Hermes' generic ``custom`` provider (Hermes aliases
     "ollama" -> "custom" and, per hermes_cli/runtime_provider.py, fills in a
@@ -315,7 +328,8 @@ def apply_priority_fallback_config(
     no env var needed for Ollama's unauthenticated local endpoint). Small
     local models are unreliable at multi-step tool-calling/JSON-schema
     adherence compared to antigravity/openai-codex/anthropic, so this is
-    meant as a last-ditch offline fallback, not a primary/early hop.
+    meant as a last-ditch OFFLINE fallback — it stays after groq, which still
+    needs a network connection.
     """
     port = DEFAULT_BRIDGE_PORT
     base_url = antigravity_base_url or f"http://127.0.0.1:{port}/v1"
@@ -369,12 +383,26 @@ def apply_priority_fallback_config(
         chain.append(entry)
         seen_providers.add(key)
 
+    # "custom" is shared by every generic OpenAI-compatible endpoint (Groq,
+    # Ollama, LM Studio, vLLM, llama.cpp) — dedupe each by (provider,
+    # base_url), not by provider alone, or a pre-existing unrelated "custom"
+    # entry (e.g. the user's own LM Studio fallback) would block one of
+    # these, or one of these would clobber it.
+    if groq_model:
+        already_present = any(
+            isinstance(e, dict)
+            and str(e.get("provider") or "").strip().lower() == "custom"
+            and str(e.get("base_url") or "").strip() == groq_base_url
+            for e in chain
+        )
+        if not already_present:
+            chain.append({
+                "provider": "custom",
+                "model": groq_model,
+                "base_url": groq_base_url,
+            })
+
     if ollama_model:
-        # "custom" is shared by every generic OpenAI-compatible local server
-        # (Ollama, LM Studio, vLLM, llama.cpp) — dedupe by (provider, base_url),
-        # not by provider alone, or a pre-existing unrelated "custom" entry
-        # (e.g. the user's own LM Studio fallback) would block this one, or
-        # this one would clobber it.
         already_present = any(
             isinstance(e, dict)
             and str(e.get("provider") or "").strip().lower() == "custom"
@@ -400,6 +428,8 @@ def configure_priority_fallback_preserving_existing_primary(
     port: int | None = None,
     openai_model: str = DEFAULT_OPENAI_FALLBACK_MODEL,
     anthropic_model: str = DEFAULT_ANTHROPIC_FALLBACK_MODEL,
+    groq_model: str | None = None,
+    groq_base_url: str = DEFAULT_GROQ_BASE_URL,
     ollama_model: str | None = None,
     ollama_base_url: str = DEFAULT_OLLAMA_BASE_URL,
 ) -> Path:
@@ -432,6 +462,8 @@ def configure_priority_fallback_preserving_existing_primary(
         openai_model=openai_model,
         anthropic_model=anthropic_model,
         set_primary=(not has_existing_primary or existing_provider.lower() == "antigravity"),
+        groq_model=groq_model,
+        groq_base_url=groq_base_url,
         ollama_model=ollama_model,
         ollama_base_url=ollama_base_url,
     )
@@ -445,12 +477,14 @@ def configure_priority_fallback(
     openai_model: str = DEFAULT_OPENAI_FALLBACK_MODEL,
     anthropic_model: str = DEFAULT_ANTHROPIC_FALLBACK_MODEL,
     set_primary: bool = True,
+    groq_model: str | None = None,
+    groq_base_url: str = DEFAULT_GROQ_BASE_URL,
     ollama_model: str | None = None,
     ollama_base_url: str = DEFAULT_OLLAMA_BASE_URL,
 ) -> Path:
     """Load, update, and persist ``<hermes_dir>/config.yaml`` with the
-    zero-touch antigravity -> openai-codex -> anthropic (-> ollama) failover
-    chain.
+    zero-touch antigravity -> openai-codex -> anthropic (-> groq) (-> ollama)
+    failover chain.
 
     Returns the path to the written config file.
     """
@@ -471,6 +505,8 @@ def configure_priority_fallback(
         openai_model=openai_model,
         anthropic_model=anthropic_model,
         set_primary=set_primary,
+        groq_model=groq_model,
+        groq_base_url=groq_base_url,
         ollama_model=ollama_model,
         ollama_base_url=ollama_base_url,
     )
@@ -531,49 +567,50 @@ def cmd_setup(args: argparse.Namespace) -> int:
             return 1
         return 0
 
+    groq_model = getattr(args, "groq_model", None)
+    groq_base_url = getattr(args, "groq_base_url", None) or DEFAULT_GROQ_BASE_URL
     ollama_model = getattr(args, "ollama_model", None)
     ollama_base_url = getattr(args, "ollama_base_url", None) or DEFAULT_OLLAMA_BASE_URL
 
     print("[*] Configuring Hermes (~/.hermes/config.yaml) with automatic failover...")
     try:
-        if getattr(args, "as_fallback_only", False):
-            configure_priority_fallback(
-                hermes_dir,
-                antigravity_model=model_name,
-                port=port,
-                set_primary=False,
-                ollama_model=ollama_model,
-                ollama_base_url=ollama_base_url,
-            )
-        else:
+        as_fallback_only = getattr(args, "as_fallback_only", False)
+        configure_priority_fallback(
+            hermes_dir,
+            antigravity_model=model_name,
+            port=port,
             # `setup` is an explicit request to make Antigravity active. The
             # installer preserves an existing primary on upgrades; callers who
             # want that behavior here must opt in with --as-fallback-only.
-            configure_priority_fallback(
-                hermes_dir,
-                antigravity_model=model_name,
-                port=port,
-                set_primary=True,
-                ollama_model=ollama_model,
-                ollama_base_url=ollama_base_url,
-            )
+            set_primary=not as_fallback_only,
+            groq_model=groq_model,
+            groq_base_url=groq_base_url,
+            ollama_model=ollama_model,
+            ollama_base_url=ollama_base_url,
+        )
         print("[+] Hermes configured with zero-touch failover chain:")
-        if getattr(args, "as_fallback_only", False):
-            print("    1. antigravity  (unchanged primary provider stays first)")
-            print(f"    2. openai-codex  ({DEFAULT_OPENAI_FALLBACK_MODEL})")
-            print(f"    3. anthropic     ({DEFAULT_ANTHROPIC_FALLBACK_MODEL})")
-            if ollama_model:
-                print(f"    4. ollama (local, custom)  ({ollama_model} @ {ollama_base_url})")
-        else:
-            print(f"    Primary:  antigravity  ({model_name}) — {_pool_account_count()} Google account(s) rotate internally on rate limit")
-            print(f"    Fallback 1: openai-codex  ({DEFAULT_OPENAI_FALLBACK_MODEL})")
-            print(f"    Fallback 2: anthropic     ({DEFAULT_ANTHROPIC_FALLBACK_MODEL})")
-            if ollama_model:
-                print(f"    Fallback 3: ollama (local, custom)  ({ollama_model} @ {ollama_base_url})")
+        hops = ["antigravity (unchanged primary)" if as_fallback_only else f"antigravity ({model_name})"]
+        hops.append(f"openai-codex  ({DEFAULT_OPENAI_FALLBACK_MODEL})")
+        hops.append(f"anthropic     ({DEFAULT_ANTHROPIC_FALLBACK_MODEL})")
+        if groq_model:
+            hops.append(f"groq (cloud, custom)   ({groq_model} @ {groq_base_url})")
         if ollama_model:
-            print("    Ollama is a LAST-RESORT offline hop — a 7B local model is much less reliable")
-            print("    at multi-step tool-calling than antigravity/openai-codex/anthropic; make sure")
-            print(f"    'ollama serve' is running and '{ollama_model}' is pulled ('ollama pull {ollama_model}').")
+            hops.append(f"ollama (local, custom) ({ollama_model} @ {ollama_base_url})")
+        if as_fallback_only:
+            for i, hop in enumerate(hops, start=1):
+                print(f"    {i}. {hop}")
+        else:
+            print(f"    Primary:  {hops[0]} — {_pool_account_count()} Google account(s) rotate internally on rate limit")
+            for i, hop in enumerate(hops[1:], start=1):
+                print(f"    Fallback {i}: {hop}")
+        if groq_model:
+            print("    Groq is a fast/cheap CLOUD hop (still needs internet) — set GROQ_API_KEY in")
+            print("    ~/.hermes/.env; Hermes derives it automatically from the api.groq.com host.")
+        if ollama_model:
+            print("    Ollama is a LAST-RESORT OFFLINE hop, tried after groq — a 7B local model is")
+            print("    much less reliable at multi-step tool-calling than the cloud providers above;")
+            print(f"    make sure 'ollama serve' is running and '{ollama_model}' is pulled")
+            print(f"    ('ollama pull {ollama_model}').")
         print("    No manual action needed — Hermes rotates automatically on rate limit / quota / auth failure.")
         print("    Run 'hermes fallback list' to inspect or 'hermes fallback remove' to adjust.")
     except Exception as e:
@@ -629,15 +666,32 @@ def main() -> int:
         "the existing primary rotates through them automatically on failure.",
     )
     p_setup.add_argument(
+        "--groq-model",
+        type=str,
+        default=None,
+        help=f"Add a Groq Cloud model (default '{DEFAULT_GROQ_FALLBACK_MODEL}') to the "
+        "fallback chain, right after openai-codex/anthropic — Groq is fast/cheap but "
+        "still needs internet (it is NOT an offline fallback). Omit to leave it out "
+        "(default). Requires GROQ_API_KEY in ~/.hermes/.env (Hermes derives it "
+        "automatically from the api.groq.com host — no extra config needed).",
+    )
+    p_setup.add_argument(
+        "--groq-base-url",
+        type=str,
+        default=DEFAULT_GROQ_BASE_URL,
+        help=f"Base URL of the Groq OpenAI-compatible endpoint "
+        f"(default: {DEFAULT_GROQ_BASE_URL}). Only used when --groq-model is set.",
+    )
+    p_setup.add_argument(
         "--ollama-model",
         type=str,
         default=None,
         help="Add a local Ollama model (e.g. 'qwen2.5:7b-instruct') as the LAST "
         "hop in the fallback chain, for offline/last-resort use when antigravity, "
-        "openai-codex, AND anthropic have all failed. Omit to leave it out "
-        "(recommended default) — a 7B local model is not reliable enough for "
-        "primary/early-hop tool-calling orchestration. Requires 'ollama serve' "
-        "running locally with the model already pulled.",
+        "openai-codex, anthropic, AND groq have all failed (or there is no network "
+        "at all). Omit to leave it out (recommended default) — a 7B local model is "
+        "not reliable enough for primary/early-hop tool-calling orchestration. "
+        "Requires 'ollama serve' running locally with the model already pulled.",
     )
     p_setup.add_argument(
         "--ollama-base-url",
