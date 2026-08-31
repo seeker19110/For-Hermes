@@ -25,7 +25,8 @@ hermes chat -q "Phản hồi chính xác chữ: OK" --provider antigravity -m ge
 plugin/                    Hermes model-provider plugin (ProviderProfile)
 bridge/                    Local OAuth + Code Assist translation bridge
 tests/                     Bộ test suite (unittest, không cần kết nối mạng)
-skills/antigravity-oauth-bridge/  Skill hướng dẫn vận hành cho Hermes Agent
+skills/antigravity-oauth-bridge/  Skill hướng dẫn vận hành plugin
+skills/project-harness-engineering/ Skill thiết kế và audit project harness
 install.py                 Script cài đặt 1-Click tự động vào $HERMES_HOME
 manage.py                  CLI: login / start / stop / status / install / setup
 .hermes/environment.json   Cấu hình `hermes verify` tự động cho dự án
