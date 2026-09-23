@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import importlib.util
 import json
 import tempfile
 import unittest
@@ -11,6 +12,17 @@ ROOT = Path(__file__).resolve().parents[1]
 SKILL = ROOT / "skills" / "ui-ux" / "SKILL.md"
 CONTRACT = ROOT / "skills" / "ui-ux" / "references" / "decision-contract.json"
 CHECKLIST = ROOT / "skills" / "ui-ux" / "references" / "review-checklist.md"
+
+
+def load_installer_module():
+    spec = importlib.util.spec_from_file_location("for_hermes_installer", ROOT / "install.py")
+    assert spec is not None and spec.loader is not None
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
+installer = load_installer_module()
 
 
 class UiUxSkillTests(unittest.TestCase):
@@ -48,10 +60,19 @@ class UiUxSkillTests(unittest.TestCase):
         self.assertNotRegex(raw, r"\b(?:rgb|oklch)\s*\(")
 
     def test_installer_copies_ui_ux_skill_to_hermes_home(self) -> None:
-        # Structural guard: installer must target the canonical Hermes skill directory.
-        installer = (ROOT / "install.py").read_text(encoding="utf-8")
-        self.assertIn('hermes_dir / "skills" / "ui-ux"', installer)
-        self.assertIn('PACKAGE_DIR / "skills" / "ui-ux"', installer)
+        with tempfile.TemporaryDirectory() as tmp:
+            hermes_home = Path(tmp) / ".hermes"
+            destination = installer.install_ui_ux_skill(hermes_home)
+
+            self.assertEqual(destination, hermes_home / "skills" / "ui-ux")
+            self.assertTrue((destination / "SKILL.md").is_file())
+            self.assertTrue((destination / "references" / "decision-contract.json").is_file())
+            self.assertTrue((destination / "references" / "review-checklist.md").is_file())
+
+            installed_contract = json.loads(
+                (destination / "references" / "decision-contract.json").read_text(encoding="utf-8")
+            )
+            self.assertEqual(installed_contract["version"], 1)
 
 
 if __name__ == "__main__":
