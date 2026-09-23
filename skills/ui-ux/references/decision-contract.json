@@ -1,0 +1,188 @@
+{
+  "version": 1,
+  "purpose": "generic-ui-ux-decision-routing",
+  "precedence": [
+    "security-domain-correctness",
+    "user-acceptance-criteria",
+    "project-local-rules",
+    "project-design-system",
+    "existing-project-patterns",
+    "ui-ux-skill",
+    "external-guidance"
+  ],
+  "actionPrefixes": [
+    "constraint",
+    "pattern",
+    "mode",
+    "review"
+  ],
+  "rules": {
+    "must-have": {
+      "signals": [
+        "*"
+      ],
+      "actions": [
+        "constraint:semantic-html",
+        "constraint:keyboard-focus",
+        "constraint:error-recovery",
+        "constraint:reduced-motion",
+        "constraint:no-color-only-meaning",
+        "review:dominant-intent-first"
+      ]
+    },
+    "reading-content": {
+      "signals": [
+        "reading",
+        "article",
+        "documentation",
+        "lesson",
+        "long-form",
+        "prose"
+      ],
+      "actions": [
+        "constraint:comfortable-line-length",
+        "constraint:readable-line-height",
+        "constraint:progressive-disclosure",
+        "pattern:reading-focus"
+      ]
+    },
+    "realtime-voice-media": {
+      "signals": [
+        "voice",
+        "speech",
+        "audio",
+        "video",
+        "realtime",
+        "streaming"
+      ],
+      "actions": [
+        "constraint:state-visible-without-motion",
+        "constraint:latency-feedback",
+        "constraint:interruptible-feedback",
+        "pattern:realtime-state-machine"
+      ]
+    },
+    "mobile-touch-low-end": {
+      "signals": [
+        "mobile",
+        "phone",
+        "touch",
+        "low-end",
+        "slow-device",
+        "poor-network",
+        "offline"
+      ],
+      "actions": [
+        "constraint:touch-targets",
+        "constraint:avoid-heavy-motion",
+        "constraint:offline-recovery",
+        "constraint:mobile-reprioritize-not-shrink",
+        "mode:performance-first"
+      ]
+    },
+    "forms-auth-settings": {
+      "signals": [
+        "form",
+        "input",
+        "validation",
+        "login",
+        "signup",
+        "profile",
+        "settings"
+      ],
+      "actions": [
+        "constraint:visible-label",
+        "constraint:semantic-input-autofill",
+        "constraint:error-recovery",
+        "constraint:read-only-vs-disabled",
+        "review:focus-and-validation"
+      ]
+    },
+    "trust-commerce": {
+      "signals": [
+        "checkout",
+        "payment",
+        "billing",
+        "subscription",
+        "pricing",
+        "purchase",
+        "upgrade"
+      ],
+      "actions": [
+        "constraint:total-and-status-visible",
+        "constraint:destructive-separation",
+        "constraint:no-ambiguous-success",
+        "constraint:recovery-path-visible",
+        "pattern:high-trust-flow"
+      ]
+    },
+    "data-heavy": {
+      "signals": [
+        "dashboard",
+        "analytics",
+        "table",
+        "admin",
+        "report",
+        "chart",
+        "metrics"
+      ],
+      "actions": [
+        "constraint:scanability-over-decoration",
+        "constraint:tabular-numbers",
+        "constraint:responsive-data-preserves-comparison",
+        "constraint:chart-needs-context",
+        "pattern:data-dense"
+      ]
+    },
+    "navigation-workflow": {
+      "signals": [
+        "navigation",
+        "routing",
+        "wizard",
+        "workflow",
+        "sidebar",
+        "tabs",
+        "breadcrumb"
+      ],
+      "actions": [
+        "constraint:hierarchy-consistency",
+        "constraint:state-preservation",
+        "constraint:route-focus",
+        "constraint:deep-link-orientation",
+        "review:back-navigation"
+      ]
+    },
+    "accessibility": {
+      "signals": [
+        "a11y",
+        "accessibility",
+        "screen-reader",
+        "keyboard",
+        "focus",
+        "wcag"
+      ],
+      "actions": [
+        "constraint:observable-outcome-first",
+        "constraint:test-at-boundary",
+        "review:one-accessibility-outcome-per-pass"
+      ]
+    },
+    "motion": {
+      "signals": [
+        "animation",
+        "motion",
+        "transition",
+        "drag",
+        "gesture",
+        "microinteraction"
+      ],
+      "actions": [
+        "constraint:motion-has-purpose",
+        "constraint:interruptible-motion",
+        "constraint:reduced-motion",
+        "constraint:prefer-transform-opacity",
+        "review:no-transition-all-default"
+      ]
+    }
+  }
+}

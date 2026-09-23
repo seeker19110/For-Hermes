@@ -3,7 +3,7 @@
 Plugin model-provider + local OAuth bridge cho [Hermes Agent](https://github.com/NousResearch/hermes-agent).
 Giúp Hermes Agent gọi các mô hình AI cao cấp: Gemini 3.7/3.6/3.5/3.1, Claude Sonnet/Opus 4.6, và GPT-OSS 120B thông qua đăng nhập **Google Antigravity IDE** OAuth. Hỗ trợ tự động **xoay tài khoản** (multi-account failover) khi bị giới hạn rate limit/hết hạn ngạch (quota) và tự động chuyển đổi model dự phòng trong cùng một tài khoản (in-account model fallback).
 
-Xem hướng dẫn chi tiết tại [`README_DETAILED_VI.md`](README_DETAILED_VI.md) để biết cách thiết lập đầy đủ, và [`skills/antigravity-oauth-bridge/SKILL.md`](skills/antigravity-oauth-bridge/SKILL.md) để cài đặt skill hướng dẫn của Hermes Agent.
+Xem hướng dẫn chi tiết tại [`README_DETAILED_VI.md`](README_DETAILED_VI.md), skill vận hành [`skills/antigravity-oauth-bridge/SKILL.md`](skills/antigravity-oauth-bridge/SKILL.md), và skill UI/UX dùng chung [`skills/ui-ux/SKILL.md`](skills/ui-ux/SKILL.md). `install.py` cài skill `ui-ux` vào `~/.hermes/skills/ui-ux/` để Hermes dùng ở mọi frontend project.
 
 ## 📌 Tính Năng Mới (v1.0)
 - **🔄 In-Account Model Fallback**: Tự động thử model dự phòng (`claude-sonnet-4-6`) trên cùng một tài khoản Google khi model chính (`gemini-3.7-flash`) hết quota, giúp tiết kiệm tài khoản trước khi xoay tài khoản hoặc dùng provider ngoài.
@@ -27,6 +27,7 @@ bridge/                    Local OAuth + Code Assist translation bridge
 tests/                     Bộ test suite (unittest, không cần kết nối mạng)
 skills/antigravity-oauth-bridge/  Skill hướng dẫn vận hành plugin
 skills/project-harness-engineering/ Skill thiết kế và audit project harness
+skills/ui-ux/               Skill UI/UX dùng chung cho Hermes Agent (decision contract + review refs)
 install.py                 Script cài đặt 1-Click tự động vào $HERMES_HOME
 manage.py                  CLI: login / start / stop / status / install / setup
 .hermes/environment.json   Cấu hình `hermes verify` tự động cho dự án

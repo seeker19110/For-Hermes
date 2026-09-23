@@ -17,6 +17,16 @@ from pathlib import Path
 
 PACKAGE_DIR = Path(__file__).resolve().parent
 
+def install_ui_ux_skill(hermes_dir: Path) -> Path:
+    """Install/update the bundled generic UI/UX skill in Hermes' canonical skill directory."""
+    uiux_src = PACKAGE_DIR / "skills" / "ui-ux"
+    uiux_dest = hermes_dir / "skills" / "ui-ux"
+    if not (uiux_src / "SKILL.md").is_file():
+        raise FileNotFoundError(f"Bundled UI/UX skill missing: {uiux_src / 'SKILL.md'}")
+    uiux_dest.parent.mkdir(parents=True, exist_ok=True)
+    shutil.copytree(uiux_src, uiux_dest, dirs_exist_ok=True)
+    return uiux_dest
+
 def get_hermes_home() -> Path:
     hermes_home = os.environ.get("HERMES_HOME")
     if hermes_home:
@@ -34,7 +44,7 @@ def main():
     # 1. Install Plugin
     plugin_dest = hermes_dir / "plugins" / "model-providers" / "antigravity"
     plugin_src = PACKAGE_DIR / "plugin"
-    print(f"\n[1/4] Installing Provider Plugin to {plugin_dest}...")
+    print(f"\n[1/6] Installing Provider Plugin to {plugin_dest}...")
     plugin_dest.mkdir(parents=True, exist_ok=True)
     for f in plugin_src.glob("*"):
         if f.is_file():
@@ -44,7 +54,7 @@ def main():
     # 2. Install Bridge Engine
     bridge_dest = hermes_dir / "bridge" / "antigravity" / "tools" / "antigravity_bridge"
     bridge_src = PACKAGE_DIR / "bridge"
-    print(f"\n[2/4] Installing Bridge Runtime Engine to {bridge_dest}...")
+    print(f"\n[2/6] Installing Bridge Runtime Engine to {bridge_dest}...")
     bridge_dest.parent.mkdir(parents=True, exist_ok=True)
     if bridge_dest.exists():
         shutil.rmtree(bridge_dest, ignore_errors=True)
@@ -53,12 +63,19 @@ def main():
 
     # 3. Copy Manager
     shutil.copy2(PACKAGE_DIR / "manage.py", hermes_dir / "bridge" / "antigravity" / "manage.py")
-    print(f"\n[3/4] Installed Management CLI at {hermes_dir / 'bridge' / 'antigravity' / 'manage.py'}")
+    print(f"\n[3/6] Installed Management CLI at {hermes_dir / 'bridge' / 'antigravity' / 'manage.py'}")
 
-    # 4. In-Repo synchronization (if executed from inside a hermes-agent git repo)
+    # 4. Install generic UI/UX skill into Hermes' canonical user skill directory.
+    #    Hermes discovers skills from ~/.hermes/skills/ automatically.
+    uiux_dest = hermes_dir / "skills" / "ui-ux"
+    print(f"\n[4/6] Installing generic UI/UX skill to {uiux_dest}...")
+    install_ui_ux_skill(hermes_dir)
+    print("      + Installed ui-ux skill with progressive references.")
+
+    # 5. In-Repo synchronization (if executed from inside a hermes-agent git repo)
     repo_candidate = PACKAGE_DIR.parent
     if (repo_candidate / "run_agent.py").is_file() and (repo_candidate / "hermes_cli").is_dir():
-        print(f"\n[4/5] Synchronizing with local workspace repository ({repo_candidate})...")
+        print(f"\n[5/6] Synchronizing with local workspace repository ({repo_candidate})...")
         repo_plugin = repo_candidate / "plugins" / "model-providers" / "antigravity"
         repo_tools = repo_candidate / "tools" / "antigravity_bridge"
         repo_plugin.mkdir(parents=True, exist_ok=True)
@@ -70,15 +87,15 @@ def main():
         shutil.copytree(bridge_src, repo_tools)
         print("      + Workspace repository fully synchronized.")
     else:
-        print(f"\n[4/5] Standalone environment installation complete.")
+        print(f"\n[5/6] Standalone environment installation complete.")
 
-    # 5. Zero-touch failover: make Hermes use Antigravity as primary (on a
+    # 6. Zero-touch failover: make Hermes use Antigravity as primary (on a
     #    fresh install only — an existing configured primary is left alone)
     #    and automatically rotate to openai-codex then anthropic on rate
     #    limit / quota / auth failure. No manual `hermes fallback add` needed,
     #    and re-running this installer on an upgrade never resets a primary
     #    provider the user already configured.
-    print(f"\n[5/5] Configuring automatic cross-provider failover...")
+    print(f"\n[6/6] Configuring automatic cross-provider failover...")
     try:
         sys.path.insert(0, str(PACKAGE_DIR))
         import manage as _manage  # local module, see manage.py
