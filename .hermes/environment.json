@@ -20,7 +20,9 @@
       "plugin",
       "install.py",
       "manage.py",
-      "tests/verify_integration.py"
+      "tests/verify_integration.py",
+      "skills/ui-ux/SKILL.md",
+      "tests/test_ui_ux_skill.py"
     ]
   }
 }
